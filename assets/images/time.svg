@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="80" viewBox="0 0 80 80">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.23" y1="0.126" x2="0.834" y2="0.93" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fc0"/>
+      <stop offset="1" stop-color="#e0139c"/>
+    </linearGradient>
+    <filter id="Ellipse_8" x="0" y="0" width="80" height="80" filterUnits="userSpaceOnUse">
+      <feOffset dy="7" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="4.5" result="blur"/>
+      <feFlood flood-color="#f456c3" flood-opacity="0.471"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Time" transform="translate(-139.5 -702.5)">
+    <g transform="matrix(1, 0, 0, 1, 139.5, 702.5)" filter="url(#Ellipse_8)">
+      <circle id="Ellipse_8-2" data-name="Ellipse 8" cx="26.5" cy="26.5" r="26.5" transform="translate(13.5 6.5)" fill="url(#linear-gradient)"/>
+    </g>
+    <path id="Icon_material-timer" data-name="Icon material-timer" d="M22.5,1.5h-9v3h9ZM16.5,21h3V12h-3v9Zm12.045-9.915,2.13-2.13A16.573,16.573,0,0,0,28.56,6.84L26.43,8.97a13.5,13.5,0,1,0,2.115,2.115ZM18,30A10.5,10.5,0,1,1,28.5,19.5,10.492,10.492,0,0,1,18,30Z" transform="translate(161.5 718.5)" fill="#fff"/>
+  </g>
+</svg>

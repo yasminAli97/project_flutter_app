@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="101.269" height="90.994" viewBox="0 0 101.269 90.994">
+  <defs>
+    <filter id="Path_24" x="1" y="3" width="98.822" height="87.994" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#fe5f5f"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="share" transform="translate(-14.895 -43)">
+    <path id="Path_23" data-name="Path 23" d="M75.952,0H25.317L0,43.85,25.317,87.7H75.952L101.269,43.85Z" transform="translate(14.895 43)" fill="#e6e6e6"/>
+    <g transform="matrix(1, 0, 0, 1, 14.9, 43)" filter="url(#Path_24)">
+      <path id="Path_24-2" data-name="Path 24" d="M217.8,219.332h40.411l20.205-35-20.206-35H217.8l-20.205,35Z" transform="translate(-187.59 -140.34)" fill="#fe5f5f"/>
+    </g>
+    <path id="Icon_awesome-share-alt" data-name="Icon awesome-share-alt" d="M24.75,22.5a6.721,6.721,0,0,0-4.2,1.469l-7.206-4.5a6.789,6.789,0,0,0,0-2.931l7.206-4.5A6.738,6.738,0,1,0,18.16,8.215l-7.206,4.5a6.75,6.75,0,1,0,0,10.562l7.206,4.5A6.751,6.751,0,1,0,24.75,22.5Z" transform="translate(49.895 69)" fill="#fff"/>
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="125.822" height="114.994" viewBox="0 0 125.822 114.994">
+  <defs>
+    <filter id="Path_24" x="0" y="0" width="125.822" height="114.994" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur"/>
+      <feFlood flood-color="#fc0"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="edit" transform="translate(-2.395 -32.557)">
+    <path id="Path_23" data-name="Path 23" d="M75.952,0H25.317L0,43.85,25.317,87.7H75.952L101.269,43.85Z" transform="translate(14.895 43.058)" fill="#e6e6e6"/>
+    <g transform="matrix(1, 0, 0, 1, 2.4, 32.56)" filter="url(#Path_24)">
+      <path id="Path_24-2" data-name="Path 24" d="M217.8,219.332h40.411l20.205-35-20.206-35H217.8l-20.205,35Z" transform="translate(-175.09 -129.84)" fill="#fc0"/>
+    </g>
+    <path id="Icon_material-edit" data-name="Icon material-edit" d="M4.5,35.32v8.11h8.11L36.529,19.511l-8.11-8.11ZM42.8,13.239a2.154,2.154,0,0,0,0-3.049L37.74,5.129a2.154,2.154,0,0,0-3.049,0L30.733,9.087l8.11,8.11L42.8,13.239Z" transform="translate(41.395 62.561)" fill="#fff"/>
+  </g>
+</svg>

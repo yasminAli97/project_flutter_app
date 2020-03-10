@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="97.138" height="93.016" viewBox="0 0 97.138 93.016">
+  <defs>
+    <filter id="Icon_simple-elasticsearch" x="0" y="0" width="97.138" height="93.016" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur"/>
+      <feFlood flood-color="#bbb4c9"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Icon_simple-elasticsearch)">
+    <path id="Icon_simple-elasticsearch-2" data-name="Icon simple-elasticsearch" d="M26.607,33.354H47.321a26.025,26.025,0,0,0,0-15.353H13.313a7.677,7.677,0,0,0-.064,15.353Zm.965,2.573H46.378A25.741,25.741,0,0,1,22.9,51.259,25.667,25.667,0,0,1,1.6,39.894a13.037,13.037,0,0,1,9.328-3.988ZM10.932,15.449A13.039,13.039,0,0,1,1.6,11.482a25.646,25.646,0,0,1,44.773,3.967H10.932Z" transform="translate(74.26 11.54) rotate(90)" fill="#96f" stroke="#ddd9e3" stroke-width="1"/>
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="125.822" height="114.994" viewBox="0 0 125.822 114.994">
+  <defs>
+    <filter id="Path_24" x="0" y="0" width="125.822" height="114.994" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur"/>
+      <feFlood flood-color="#7de82b"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="close" transform="translate(-2.395 -32.557)">
+    <path id="Path_23" data-name="Path 23" d="M75.952,0H25.317L0,43.85,25.317,87.7H75.952L101.269,43.85Z" transform="translate(14.895 43.058)" fill="#e6e6e6"/>
+    <g transform="matrix(1, 0, 0, 1, 2.4, 32.56)" filter="url(#Path_24)">
+      <path id="Path_24-2" data-name="Path 24" d="M217.8,219.332h40.411l20.205-35-20.206-35H217.8l-20.205,35Z" transform="translate(-175.09 -129.84)" fill="#7de82b"/>
+    </g>
+    <path id="Icon_ionic-ios-close" data-name="Icon ionic-ios-close" d="M31.911,27.959,43.822,16.048A2.791,2.791,0,1,0,39.875,12.1L27.964,24.012,16.053,12.1a2.791,2.791,0,1,0-3.947,3.947L24.017,27.959,12.106,39.87a2.791,2.791,0,1,0,3.947,3.947L27.964,31.906,39.875,43.817a2.791,2.791,0,1,0,3.947-3.947Z" transform="translate(37.61 58.769)" fill="#fff"/>
+  </g>
+</svg>
