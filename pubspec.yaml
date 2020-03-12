@@ -96,6 +96,8 @@ flutter:
    - family: Segoe UI
      fonts:
        - asset: fonts/SegoeUI.ttf
+       - asset: fonts/SegoeUI_Bold.ttf
+         weight: 900
    - family: Rubik
      fonts:
        - asset: fonts/Rubik-Regular.ttf

@@ -5,16 +5,18 @@ import 'package:projectflutterapp/screens/addTaskScreen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:projectflutterapp/screens/task_attribute.dart';
 
-class ChooseTopic extends StatefulWidget {
-  ChooseTopic({Key key}) : super(key: key);
+class categoriesScreen extends StatefulWidget {
+  categoriesScreen({Key key}) : super(key: key);
 
   @override
-  _ChooseTopic createState() => _ChooseTopic();
+  _categoriesScreen createState() => _categoriesScreen();
 }
 
-class _ChooseTopic extends State<ChooseTopic> {
+class _categoriesScreen extends State<categoriesScreen> {
 
   List<Task> tasks = List<Task>();
+
+  TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +58,7 @@ class _ChooseTopic extends State<ChooseTopic> {
                                 alignment: AlignmentDirectional.center,
                                 children: <Widget>[
                                   Container(
-                                    width: MediaQuery.of(context).size.width*1.4/4,
+                                    width: MediaQuery.of(context).size.width*1/4,
                                     height: 80,
                                     decoration: new BoxDecoration(
                                       color: Color(0xffA57DF4),
@@ -96,7 +98,7 @@ class _ChooseTopic extends State<ChooseTopic> {
                                       Navigator.of(context).pop();
                                     },
                                     child: Container(
-                                        width: MediaQuery.of(context).size.width*1.1/4,
+                                        width: MediaQuery.of(context).size.width*1/4,
                                         height: 50,
                                         decoration: new BoxDecoration(
                                           color: Color(0xffAB85F6),
@@ -129,7 +131,7 @@ class _ChooseTopic extends State<ChooseTopic> {
                                       alignment: AlignmentDirectional.center,
                                       children: <Widget>[
                                         Container(
-                                            width: 55,
+                                            width: 130,
                                             height: 5,
                                             decoration: BoxDecoration(
 
@@ -143,18 +145,21 @@ class _ChooseTopic extends State<ChooseTopic> {
                                             )
                                         ),
 
-                                        Container(
-                                            width: 80,
-                                            height: 50,
-                                            alignment: AlignmentDirectional.topCenter,
-                                            child: Text("Default",
-                                              style: TextStyle(
-                                                  fontFamily: "Segoe UI",
-                                                  fontSize: 22,
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold
-                                              ),
-                                            )
+                                        Wrap(
+                                          children: <Widget>[
+                                            Container(
+
+                                                alignment: AlignmentDirectional.topCenter,
+                                                child: Text("CATEGORIES",
+                                                  style: TextStyle(
+                                                      fontFamily: "Segoe UI",
+                                                      fontSize: 22,
+                                                      color: Colors.white,
+                                                      fontWeight: FontWeight.bold
+                                                  ),
+                                                )
+                                            ),
+                                          ],
                                         )
                                       ]
                                   ),
@@ -186,10 +191,8 @@ class _ChooseTopic extends State<ChooseTopic> {
                                 ),
                                 child: GestureDetector(
                                   onTap: (){
-                                    Navigator.push(context, MaterialPageRoute(builder: (context){
-                                      return AddNewTaskScreen();
-                                    }));
-
+                                    showDialog(context: context,
+                                        builder: (_) => showAlert());
                                   },
                                   child: Container(
                                     width: MediaQuery.of(context).size.width*1.6/4,
@@ -228,48 +231,29 @@ class _ChooseTopic extends State<ChooseTopic> {
 
                           SizedBox(height: 20),
 
-                          GestureDetector(
-                            onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context){
-                                return TaskAttribute();
-                              }));
-                            },
+                          CustomPaint(
+                            painter: Chevron(),
                             child: Container(
-                                alignment: AlignmentDirectional.topStart,
-                                margin: EdgeInsets.only(left: 40,right: 20),
-                                child: Column(
-                                  children: <Widget>[
-                                    Container(
-                                        alignment: AlignmentDirectional.topStart,
-                                        child: SvgPicture.asset("assets/images/ic_task.svg")
-                                    ),
-
-                                    SizedBox(height: 10),
-                                    Row(
-                                      children: <Widget>[
-                                        Text("Study",
-                                          style: TextStyle(
-                                              fontFamily: "Segoe UI",
-                                              fontSize: 35,
-                                              color: Colors.white),
-                                        ),
-                                        SizedBox(width: 30),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: SvgPicture.asset("assets/images/ic_check.svg"),
-                                        )
-                                      ],
-                                    ),
-                                  ],
-                                )
+                              width: 100.0,
+                              height: 120.0,
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 30.0),
+                                child: Align(
+                                  alignment: Alignment.topCenter,
+                                  child: Text("1", style: TextStyle(fontSize: 24.0)),
+                                ),
+                              ),
                             ),
                           ),
+
 
                         ],
 
 
 
                       ),
+
+
                     ),
 
                     Container(
@@ -285,7 +269,208 @@ class _ChooseTopic extends State<ChooseTopic> {
     );
   }
 
+  Widget showAlert() {
+    return Center(
+      child: Stack(
+        alignment: AlignmentDirectional.topStart,
+        children: <Widget>[
+
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height*2.1/5,
+            padding: EdgeInsets.only(top:10, left: 15, right: 15,),
+            margin: EdgeInsets.only(left: 25, right: 25,top: 20),
+            decoration: new BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(30),
+              boxShadow: [
+                BoxShadow(
+                  color: Color(0xffFFCC00),
+                  blurRadius: 15.0,
+                  offset: const Offset(0.0, 10.0),
+                ),
+              ],
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+
+                Container(
+                  margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*2.6/15),
+                 // alignment: AlignmentDirectional.center,
+                  child: Text(
+                      "Please input the Category name :",
+                      textAlign: TextAlign.start,
+                      style: (TextStyle(
+                          fontFamily: "Segoe UI",
+                          color:  Color(0xFF666666),
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold
+                      )
+                      )
+                  ),
+                ),
+                Card(
+                  elevation: 0,
+                  margin: EdgeInsets.only(left: 20,right: 20),
+                  child: TextField(
+                    controller: controller,
+                    cursorColor: Color(0xFFFFCC00),
+                    textAlignVertical: TextAlignVertical.bottom,
+                    style: TextStyle(
+                        color: Color(0xFF666666),
+                        fontFamily: "Segoe UI",
+                        fontSize:20 ),
+                    decoration: InputDecoration(
+                      filled: false,
+                      hintText: "new category",
+                      hintStyle: TextStyle(
+                          color: Color(0xFF666666),
+                          fontFamily: "Segoe UI",
+                          fontSize:20 ),
+
+                    )
+
+                  ),
+                ),
+                SizedBox(height: 10),
+                Container(
+                  alignment: AlignmentDirectional.bottomCenter,
+                  child: FlatButton(
+                    onPressed: () {
+
+                      addCategory(); // To close the dialog
+                    },
+                    child: Text("OK",
+                        textAlign: TextAlign.center,
+                        style: (TextStyle(
+                            fontFamily: "Segoe UI",
+                            color:  Color(0xFFE24C4B),
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold
+                        )
+                        )),
 
 
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Stack(
+            alignment: AlignmentDirectional.topEnd,
+            children: <Widget>[
 
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height*2.4/15,
+                margin: EdgeInsets.only(left: 25, right: 25, top: 20),
+                alignment: AlignmentDirectional.topStart,
+                decoration: new BoxDecoration(
+                    color: Color(0xffFFCC00),
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30),
+                        topRight: Radius.circular(30))
+                ),
+                child: Stack(
+                  alignment: AlignmentDirectional.bottomStart,
+                  children: <Widget>[
+                    Container(
+                        margin: EdgeInsets.only(left: 20, bottom: 25),
+                        width: 150,
+                        height: 10,
+                        decoration: BoxDecoration(
+
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Color(0xffF2ECD5),
+                                  offset: Offset(2, 2),
+                                  blurRadius: 17,
+                                  spreadRadius: 5
+                              )]
+                        )
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 15, bottom: 20),
+                      alignment: AlignmentDirectional.bottomStart,
+                      child: Text("Add Category",
+                        textAlign: TextAlign.start,
+                        style: (TextStyle(
+                            fontFamily: "Segoe UI",
+                            color:  Colors.white,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold
+                        )
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+              ),
+              Positioned(
+                right: 22,
+                child: Stack(
+                  alignment: AlignmentDirectional.center,
+                  children: <Widget>[
+                    CircleAvatar(
+                      backgroundColor: Color(0xffFFCC00),
+                      radius: 35,
+
+                    ),
+                    GestureDetector(
+                      onTap: (){
+                        setState(() {
+                          Navigator.of(context).pop();
+                        });
+
+                      },
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage("assets/images/circle_close.png"),
+
+                        radius: 28,
+
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+
+
+  }
+
+  void addCategory() {}
+
+
+}
+
+
+class Chevron extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+
+    final Rect colorBounds = Rect.fromLTRB(0, 0, size.width, size.height);
+    final Paint paint = new Paint()
+      ..shader = gradient.createShader(colorBounds);
+
+    Path path = Path();
+    path.moveTo(0, 0);
+    path.lineTo(0, size.height);
+    path.lineTo(size.width , 70);
+    path.lineTo(size.width, size.height);
+    path.lineTo(size.width, 0);
+    path.close();
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
