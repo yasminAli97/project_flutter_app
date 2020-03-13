@@ -25,51 +25,52 @@ class _categoriesScreen extends State<categoriesScreen> {
 
         backgroundColor: Color(0xff9966FF),
 
-        body: ListView(
-          children: <Widget>[
-            Container(
-                height: MediaQuery
-                    .of(context)
-                    .size
-                    .height,
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width,
+        body: SafeArea(
+          child: ListView(
+            children: <Widget>[
+              Container(
+                  height: MediaQuery
+                      .of(context)
+                      .size
+                      .height,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
 
-                margin: EdgeInsets.only(  bottom: 10),
+                  margin: EdgeInsets.only(  bottom: 10),
 
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/images/background.png"),
-                    fit: BoxFit.fill,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("assets/images/background.png"),
+                      fit: BoxFit.fill,
+                    ),
                   ),
-                ),
-                child:Column(
-                  children: <Widget>[
-                    Container(
-                      alignment: AlignmentDirectional.topStart,
-                      child: Column(
-                        children: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Stack(
-                                alignment: AlignmentDirectional.center,
-                                children: <Widget>[
-                                  Container(
-                                    width: MediaQuery.of(context).size.width*1/4,
-                                    height: 80,
-                                    decoration: new BoxDecoration(
-                                      color: Color(0xffA57DF4),
-                                      shape: BoxShape.rectangle,
-                                      borderRadius: BorderRadius.only(
-                                          bottomRight: Radius.circular(50),
-                                          bottomLeft: Radius.circular(0),
-                                          topLeft: Radius.circular(0),
-                                          topRight: Radius.circular(0)
+                  child:Column(
+                    children: <Widget>[
+                      Container(
+                        alignment: AlignmentDirectional.topStart,
+                        child: Column(
+                          children: <Widget>[
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Stack(
+                                  alignment: AlignmentDirectional.center,
+                                  children: <Widget>[
+                                    Container(
+                                      width: MediaQuery.of(context).size.width*1/4,
+                                      height: 80,
+                                      decoration: new BoxDecoration(
+                                        color: Color(0xffA57DF4),
+                                        shape: BoxShape.rectangle,
+                                        borderRadius: BorderRadius.only(
+                                            bottomRight: Radius.circular(50),
+                                            bottomLeft: Radius.circular(0),
+                                            topLeft: Radius.circular(0),
+                                            topRight: Radius.circular(0)
 
-                                      ),
+                                        ),
 //                                      border: Border(
 //                                        right: BorderSide(
 //                                          color: Colors.white,
@@ -82,104 +83,104 @@ class _categoriesScreen extends State<categoriesScreen> {
 //                                        ),
 //                                      ),
 
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Color(0xffBBB4C9).withOpacity(.35),
-                                          blurRadius: 15.0,
-                                          offset: const Offset(0.0, 10.0),
-                                        ),
-                                      ],
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Color(0xffBBB4C9).withOpacity(.35),
+                                            blurRadius: 15.0,
+                                            offset: const Offset(0.0, 10.0),
+                                          ),
+                                        ],
+
+                                      ),
 
                                     ),
+                                    GestureDetector(
+                                      onTap: (){
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Container(
+                                          width: MediaQuery.of(context).size.width*1/4,
+                                          height: 50,
+                                          decoration: new BoxDecoration(
+                                            color: Color(0xffAB85F6),
+                                            shape: BoxShape.rectangle,
+                                            borderRadius: BorderRadius.only(bottomRight: Radius.circular(30)),
 
-                                  ),
-                                  GestureDetector(
-                                    onTap: (){
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: Container(
-                                        width: MediaQuery.of(context).size.width*1/4,
+                                          ),
+                                          child: SvgPicture.asset("assets/images/ic_back_arrow.svg")
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                                  children: <Widget>[
+                                    Container(
+                                        width: 100,
                                         height: 50,
-                                        decoration: new BoxDecoration(
-                                          color: Color(0xffAB85F6),
-                                          shape: BoxShape.rectangle,
-                                          borderRadius: BorderRadius.only(bottomRight: Radius.circular(30)),
-
-                                        ),
-                                        child: SvgPicture.asset("assets/images/ic_back_arrow.svg")
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
-                                children: <Widget>[
-                                  Container(
-                                      width: 100,
-                                      height: 50,
-                                      alignment: AlignmentDirectional.topCenter,
-                                      child: Text("Choose Topic",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontFamily: "Segoe UI",
-                                            fontSize: 15,
-                                            color: Color(0xffFFCC00)),
-                                      )
-                                  ),
-                                  Stack(
-                                      alignment: AlignmentDirectional.center,
-                                      children: <Widget>[
-                                        Container(
-                                            width: 130,
-                                            height: 5,
-                                            decoration: BoxDecoration(
-
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                      color: Color(0xffFFCC00),
-                                                      offset: Offset(0, 2),
-                                                      blurRadius: 17,
-                                                      spreadRadius: 1
-                                                  )]
-                                            )
-                                        ),
-
-                                        Wrap(
-                                          children: <Widget>[
-                                            Container(
-
-                                                alignment: AlignmentDirectional.topCenter,
-                                                child: Text("CATEGORIES",
-                                                  style: TextStyle(
-                                                      fontFamily: "Segoe UI",
-                                                      fontSize: 22,
-                                                      color: Colors.white,
-                                                      fontWeight: FontWeight.bold
-                                                  ),
-                                                )
-                                            ),
-                                          ],
+                                        alignment: AlignmentDirectional.topCenter,
+                                        child: Text("Choose Topic",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontFamily: "Segoe UI",
+                                              fontSize: 15,
+                                              color: Color(0xffFFCC00)),
                                         )
-                                      ]
-                                  ),
+                                    ),
+                                    Stack(
+                                        alignment: AlignmentDirectional.center,
+                                        children: <Widget>[
+                                          Container(
+                                              width: 130,
+                                              height: 5,
+                                              decoration: BoxDecoration(
 
-                                ],
-                              ),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                        color: Color(0xffFFCC00),
+                                                        offset: Offset(0, 2),
+                                                        blurRadius: 17,
+                                                        spreadRadius: 1
+                                                    )]
+                                              )
+                                          ),
 
-                              Container(
-                                width: MediaQuery.of(context).size.width*1.4/4,
-                                height: 75,
-                                decoration: new BoxDecoration(
-                                  color: Color(0xffBCAAE0).withOpacity(.35),
-                                  shape: BoxShape.rectangle,
-                                  borderRadius: BorderRadius.only(
-                                      bottomRight: Radius.circular(0),
-                                      bottomLeft: Radius.circular(50),
-                                      topLeft: Radius.circular(0),
-                                      topRight: Radius.circular(0)
+                                          Wrap(
+                                            children: <Widget>[
+                                              Container(
 
-                                  ),
+                                                  alignment: AlignmentDirectional.topCenter,
+                                                  child: Text("CATEGORIES",
+                                                    style: TextStyle(
+                                                        fontFamily: "Segoe UI",
+                                                        fontSize: 22,
+                                                        color: Colors.white,
+                                                        fontWeight: FontWeight.bold
+                                                    ),
+                                                  )
+                                              ),
+                                            ],
+                                          )
+                                        ]
+                                    ),
+
+                                  ],
+                                ),
+
+                                Container(
+                                  width: MediaQuery.of(context).size.width*1.4/4,
+                                  height: 75,
+                                  decoration: new BoxDecoration(
+                                    color: Color(0xffBCAAE0).withOpacity(.35),
+                                    shape: BoxShape.rectangle,
+                                    borderRadius: BorderRadius.only(
+                                        bottomRight: Radius.circular(0),
+                                        bottomLeft: Radius.circular(50),
+                                        topLeft: Radius.circular(0),
+                                        topRight: Radius.circular(0)
+
+                                    ),
 //                              boxShadow: [
 //                                BoxShadow(
 //                                  color: Color(0xffBBB4C9).withOpacity(.35),
@@ -188,25 +189,25 @@ class _categoriesScreen extends State<categoriesScreen> {
 //                                ),
 //                              ],
 
-                                ),
-                                child: GestureDetector(
-                                  onTap: (){
-                                    showDialog(context: context,
-                                        builder: (_) => showAlert());
-                                  },
-                                  child: Container(
-                                    width: MediaQuery.of(context).size.width*1.6/4,
-                                    height: 80,
-                                    decoration: new BoxDecoration(
-                                      color: Color(0xffBCAAE0).withOpacity(.35),
-                                      shape: BoxShape.rectangle,
-                                      borderRadius: BorderRadius.only(
-                                          bottomRight: Radius.circular(0),
-                                          bottomLeft: Radius.circular(50),
-                                          topLeft: Radius.circular(0),
-                                          topRight: Radius.circular(0)
+                                  ),
+                                  child: GestureDetector(
+                                    onTap: (){
+                                      showDialog(context: context,
+                                          builder: (_) => showAlert());
+                                    },
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width*1.6/4,
+                                      height: 80,
+                                      decoration: new BoxDecoration(
+                                        color: Color(0xffBCAAE0).withOpacity(.35),
+                                        shape: BoxShape.rectangle,
+                                        borderRadius: BorderRadius.only(
+                                            bottomRight: Radius.circular(0),
+                                            bottomLeft: Radius.circular(50),
+                                            topLeft: Radius.circular(0),
+                                            topRight: Radius.circular(0)
 
-                                      ),
+                                        ),
 //                                      border: Border(
 //                                        right: BorderSide(
 //                                          color: Colors.white,
@@ -219,52 +220,67 @@ class _categoriesScreen extends State<categoriesScreen> {
 //                                        ),
 //
 //                                      ),
+                                      ),
+                                      child: SvgPicture.asset(
+                                        "assets/images/ic_plus.svg",
+                                        height: 10,width: 10,),
+
                                     ),
-                                    child: SvgPicture.asset("assets/images/ic_plus.svg", height: 10,width: 10,),
+                                  ) ,
 
-                                  ),
-                                ) ,
-
-                              ),
-                            ],
-                          ),
-
-                          SizedBox(height: 20),
-
-                          CustomPaint(
-                            painter: Chevron(),
-                            child: Container(
-                              width: 100.0,
-                              height: 120.0,
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 30.0),
-                                child: Align(
-                                  alignment: Alignment.topCenter,
-                                  child: Text("1", style: TextStyle(fontSize: 24.0)),
                                 ),
-                              ),
+                              ],
                             ),
-                          ),
+
+                            SizedBox(height: 20),
+
+                            Stack(
+                              alignment: AlignmentDirectional.centerStart,
+                              children: <Widget>[
+                                Container(
+                                  height: 55,
+                                  width: MediaQuery.of(context).size.width*4/5,
+                                 // margin: EdgeInsets.only(left: 30,right: 30),
+                                  child: CustomPaint(
+                                    painter: Chevron(),
+                                    child: Center(
+                                      child: Text("Default",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontFamily: "Segoe UI",
+                                            fontSize: 20,
+                                            color: Color(0xffFE5F5F),
+                                        fontWeight: FontWeight.bold),
+                                      ),
+
+                                    ),
+                                  ),
+                                ),
+
+                                SvgPicture.asset("assets/images/red_catg.svg"),
+                              ],
+                            ),
 
 
-                        ],
+                          ],
 
+
+
+                        ),
 
 
                       ),
 
+                      Container(
+                        alignment: AlignmentDirectional.bottomCenter,
+                        child: SvgPicture.asset("assets/images/ic_bottom.svg"),
+                      )
 
-                    ),
-
-                    Container(
-                      alignment: AlignmentDirectional.bottomCenter,
-                      child: SvgPicture.asset("assets/images/ic_bottom.svg"),
-                    )
-
-                  ],
-                )
-            ),
-          ],
+                    ],
+                  )
+              ),
+            ],
+          ),
         )
     );
   }
@@ -456,16 +472,18 @@ class Chevron extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
 
-    final Rect colorBounds = Rect.fromLTRB(0, 0, size.width, size.height);
-    final Paint paint = new Paint()
-      ..shader = gradient.createShader(colorBounds);
+    final Paint paint = new Paint();
+    paint.color = Colors.white;
+    paint.style = PaintingStyle.fill;
 
     Path path = Path();
-    path.moveTo(0, 0);
-    path.lineTo(0, size.height);
-    path.lineTo(size.width , 70);
-    path.lineTo(size.width, size.height);
-    path.lineTo(size.width, 0);
+    path.moveTo(0, size.height/2);
+    path.lineTo(size.width/7,size.height);
+    path.lineTo(size.width*6/7 , size.height);
+    path.lineTo(size.width, size.height/2);
+    path.lineTo(size.width*6/7, 0);
+    path.lineTo(size.width/7, 0);
+    path.moveTo(size.width/2, size.height/2);
     path.close();
 
     canvas.drawPath(path, paint);

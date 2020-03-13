@@ -70,7 +70,11 @@ flutter:
    - assets/images/ic_greenn.svg
    - assets/images/ic_yelloww.svg
    - assets/images/ic_imagepicker.svg
-
+   - assets/images/blue_catg.svg
+   - assets/images/red_catg.svg
+   - assets/images/yellow_catg.svg
+   - assets/images/green_catg.svg
+   - assets/images/mov_catg.svg
 
 
 
