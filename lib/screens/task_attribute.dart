@@ -263,10 +263,6 @@ class _TaskAttribute extends State<TaskAttribute> {
                       ),
                     ),
 
-                    Container(
-                      alignment: AlignmentDirectional.bottomCenter,
-                      child: SvgPicture.asset("assets/images/ic_bottom.svg"),
-                    )
 
                   ],
                 )

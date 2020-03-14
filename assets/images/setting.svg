@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="85.012" height="85.012" viewBox="0 0 85.012 85.012">
+  <defs>
+    <filter id="Path_1" x="0" y="0" width="85.012" height="85.012" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#fc0"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Setting" transform="translate(-17 -703)">
+    <g transform="matrix(1, 0, 0, 1, 17, 703)" filter="url(#Path_1)">
+      <path id="Path_1-2" data-name="Path 1" d="M3064.516,0h5.945a30.65,30.65,0,0,1,30.551,30.551V36.5a30.62,30.62,0,0,1-30.551,30.517h-5.945A30.591,30.591,0,0,1,3034,36.5V30.551A30.62,30.62,0,0,1,3064.516,0Z" transform="translate(-3025 6)" fill="#fc0" fill-rule="evenodd"/>
+    </g>
+    <path id="Icon_material-settings" data-name="Icon material-settings" d="M37.725,24.96a15.586,15.586,0,0,0,.14-1.96,15.586,15.586,0,0,0-.14-1.96l4.22-3.3a1.009,1.009,0,0,0,.24-1.28l-4-6.92a1,1,0,0,0-1.22-.44l-4.98,2A14.612,14.612,0,0,0,28.6,9.14l-.76-5.3a.975.975,0,0,0-.98-.84h-8a.975.975,0,0,0-.98.84l-.76,5.3a15.366,15.366,0,0,0-3.38,1.96l-4.98-2a.976.976,0,0,0-1.22.44l-4,6.92a.986.986,0,0,0,.24,1.28L8,21.04A15.861,15.861,0,0,0,7.865,23,15.861,15.861,0,0,0,8,24.96l-4.22,3.3a1.009,1.009,0,0,0-.24,1.28l4,6.92a1,1,0,0,0,1.22.44l4.98-2a14.612,14.612,0,0,0,3.38,1.96l.76,5.3a.975.975,0,0,0,.98.84h8a.975.975,0,0,0,.98-.84l.76-5.3a15.366,15.366,0,0,0,3.38-1.96l4.98,2a.976.976,0,0,0,1.22-.44l4-6.92a1.009,1.009,0,0,0-.24-1.28l-4.22-3.3ZM22.865,30a7,7,0,1,1,7-7A7.008,7.008,0,0,1,22.865,30Z" transform="translate(36.594 720)" fill="#fff"/>
+  </g>
+</svg>

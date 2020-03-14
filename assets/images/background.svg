@@ -1,5 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="375" height="812" viewBox="0 0 375 812">
   <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#96f"/>
+      <stop offset="0.188" stop-color="#b291f4"/>
+      <stop offset="0.402" stop-color="#d0c4e6"/>
+      <stop offset="0.586" stop-color="#ccb5f9"/>
+      <stop offset="0.757" stop-color="#ddd2f1"/>
+      <stop offset="0.946" stop-color="#ba9ae5"/>
+      <stop offset="1" stop-color="#d6d2de"/>
+    </linearGradient>
     <filter id="Icon_feather-star" x="6.5" y="22.5" width="383" height="721" filterUnits="userSpaceOnUse">
       <feOffset dx="10" dy="10" input="SourceAlpha"/>
       <feGaussianBlur stdDeviation="7.5" result="blur"/>
@@ -7,18 +16,122 @@
       <feComposite operator="in" in2="blur"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <clipPath id="clip-Task">
+    <filter id="Icon_simple-elasticsearch" x="139.491" y="664.074" width="97.138" height="93.016" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-2"/>
+      <feFlood flood-color="#bbb4c9"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_1" x="-331" y="703" width="85.012" height="85.012" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-3"/>
+      <feFlood flood-color="#fc0"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_2" x="-261.5" y="689.5" width="112.012" height="112.012" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-4"/>
+      <feFlood flood-color="#7de82b"/>
+      <feComposite operator="in" in2="blur-4"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_3" x="-178.5" y="689.5" width="112.012" height="112.012" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-5"/>
+      <feFlood flood-color="#25b0ff"/>
+      <feComposite operator="in" in2="blur-5"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_5" x="-95.738" y="690.613" width="112.01" height="112.01" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-6"/>
+      <feFlood flood-color="#e12c92"/>
+      <feComposite operator="in" in2="blur-6"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="bg" x="17" y="838" width="335" height="290" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-7"/>
+      <feFlood flood-color="#fc0"/>
+      <feComposite operator="in" in2="blur-7"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="bg-2" x="3.5" y="946.5" width="362" height="219" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-8"/>
+      <feFlood flood-color="#fc0"/>
+      <feComposite operator="in" in2="blur-8"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Add_Category_" x="20" y="878" width="217" height="80" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-9"/>
+      <feFlood flood-color="#f2ecd5"/>
+      <feComposite operator="in" in2="blur-9"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-Default_">
       <rect width="375" height="812"/>
     </clipPath>
   </defs>
-  <g id="Task" clip-path="url(#clip-Task)">
+  <g id="Default_" data-name="Default " clip-path="url(#clip-Default_)">
     <rect width="375" height="812" fill="#96f"/>
+    <rect id="Rectangle_17" data-name="Rectangle 17" width="375" height="812" transform="translate(0)" fill="url(#linear-gradient)"/>
     <g id="center" transform="translate(8 -7)">
-      <g id="bg" transform="translate(-7 -7.002)" opacity="0.71">
+      <g id="bg-3" data-name="bg" transform="translate(-7 -7.002)" opacity="0.71">
         <g transform="matrix(1, 0, 0, 1, -1, 14)" filter="url(#Icon_feather-star)">
           <path id="Icon_feather-star-2" data-name="Icon feather-star" d="M172,3l52.221,222.49L341,261.387,256.5,434.474,276.442,679,172,563.49,67.558,679,87.5,434.474,3,261.387l116.779-35.9Z" transform="translate(16 32)" fill="#a57df5"/>
         </g>
+        <g transform="matrix(1, 0, 0, 1, -1, 14)" filter="url(#Icon_simple-elasticsearch)">
+          <path id="Icon_simple-elasticsearch-2" data-name="Icon simple-elasticsearch" d="M26.607,33.354H47.321a26.025,26.025,0,0,0,0-15.353H13.313a7.677,7.677,0,0,0-.064,15.353Zm.965,2.573H46.378A25.741,25.741,0,0,1,22.9,51.259,25.667,25.667,0,0,1,1.6,39.894a13.037,13.037,0,0,1,9.328-3.988ZM10.932,15.449A13.039,13.039,0,0,1,1.6,11.482a25.646,25.646,0,0,1,44.773,3.967H10.932Z" transform="translate(213.75 675.61) rotate(90)" fill="#96f" stroke="#ddd9e3" stroke-width="1"/>
+        </g>
       </g>
+    </g>
+    <g id="Tool_Bar_Down_" data-name="Tool Bar (Down)" transform="translate(-348)" opacity="0">
+      <g id="Setting">
+        <g transform="matrix(1, 0, 0, 1, 348, 0)" filter="url(#Path_1)">
+          <path id="Path_1-2" data-name="Path 1" d="M3064.516,0h5.945a30.65,30.65,0,0,1,30.551,30.551V36.5a30.62,30.62,0,0,1-30.551,30.517h-5.945A30.591,30.591,0,0,1,3034,36.5V30.551A30.62,30.62,0,0,1,3064.516,0Z" transform="translate(-3356 709)" fill="#fc0" fill-rule="evenodd"/>
+        </g>
+        <path id="Icon_material-settings" data-name="Icon material-settings" d="M37.725,24.96a15.586,15.586,0,0,0,.14-1.96,15.586,15.586,0,0,0-.14-1.96l4.22-3.3a1.009,1.009,0,0,0,.24-1.28l-4-6.92a1,1,0,0,0-1.22-.44l-4.98,2A14.612,14.612,0,0,0,28.6,9.14l-.76-5.3a.975.975,0,0,0-.98-.84h-8a.975.975,0,0,0-.98.84l-.76,5.3a15.366,15.366,0,0,0-3.38,1.96l-4.98-2a.976.976,0,0,0-1.22.44l-4,6.92a.986.986,0,0,0,.24,1.28L8,21.04A15.861,15.861,0,0,0,7.865,23,15.861,15.861,0,0,0,8,24.96l-4.22,3.3a1.009,1.009,0,0,0-.24,1.28l4,6.92a1,1,0,0,0,1.22.44l4.98-2a14.612,14.612,0,0,0,3.38,1.96l.76,5.3a.975.975,0,0,0,.98.84h8a.975.975,0,0,0,.98-.84l.76-5.3a15.366,15.366,0,0,0,3.38-1.96l4.98,2a.976.976,0,0,0,1.22-.44l4-6.92a1.009,1.009,0,0,0-.24-1.28l-4.22-3.3ZM22.865,30a7,7,0,1,1,7-7A7.008,7.008,0,0,1,22.865,30Z" transform="translate(36.594 720)" fill="#fff"/>
+      </g>
+      <g id="Frinds">
+        <g transform="matrix(1, 0, 0, 1, 348, 0)" filter="url(#Path_2)">
+          <path id="Path_2-2" data-name="Path 2" d="M3064.516,0h5.945a30.65,30.65,0,0,1,30.551,30.551V36.5a30.62,30.62,0,0,1-30.551,30.517h-5.945A30.591,30.591,0,0,1,3034,36.5V30.551A30.62,30.62,0,0,1,3064.516,0Z" transform="translate(-3273 709)" fill="#7de82b" fill-rule="evenodd"/>
+        </g>
+        <path id="Icon_awesome-user-friends" data-name="Icon awesome-user-friends" d="M13.5,18a7.875,7.875,0,1,0-7.875-7.875A7.871,7.871,0,0,0,13.5,18Zm5.4,2.25h-.584a10.873,10.873,0,0,1-9.633,0H8.1A8.1,8.1,0,0,0,0,28.35v2.025A3.376,3.376,0,0,0,3.375,33.75h20.25A3.376,3.376,0,0,0,27,30.375V28.35A8.1,8.1,0,0,0,18.9,20.25ZM33.75,18A6.75,6.75,0,1,0,27,11.25,6.752,6.752,0,0,0,33.75,18Zm3.375,2.25h-.267a8.867,8.867,0,0,1-6.216,0h-.267a7.81,7.81,0,0,0-3.916,1.083A10.29,10.29,0,0,1,29.25,28.35v2.7c0,.155-.035.3-.042.45H41.625A3.376,3.376,0,0,0,45,28.125a7.871,7.871,0,0,0-7.875-7.875Z" transform="translate(120 724.75)" fill="#fff"/>
+      </g>
+      <g id="Share">
+        <g transform="matrix(1, 0, 0, 1, 348, 0)" filter="url(#Path_3)">
+          <path id="Path_3-2" data-name="Path 3" d="M3064.516,0h5.945a30.65,30.65,0,0,1,30.551,30.551V36.5a30.62,30.62,0,0,1-30.551,30.517h-5.945A30.591,30.591,0,0,1,3034,36.5V30.551A30.62,30.62,0,0,1,3064.516,0Z" transform="translate(-3190 709)" fill="#25b0ff" fill-rule="evenodd"/>
+        </g>
+        <path id="Icon_awesome-share-alt" data-name="Icon awesome-share-alt" d="M24.75,22.5a6.721,6.721,0,0,0-4.2,1.469l-7.206-4.5a6.789,6.789,0,0,0,0-2.931l7.206-4.5A6.738,6.738,0,1,0,18.16,8.215l-7.206,4.5a6.75,6.75,0,1,0,0,10.562l7.206,4.5A6.751,6.751,0,1,0,24.75,22.5Z" transform="translate(208 724)" fill="#fff"/>
+      </g>
+      <g id="More" transform="translate(0 4)">
+        <g transform="matrix(1, 0, 0, 1, 348, -4)" filter="url(#Path_5)">
+          <path id="Path_5-2" data-name="Path 5" d="M3064.515,8445h5.945a30.619,30.619,0,0,1,30.55,30.516v5.943a30.649,30.649,0,0,1-30.55,30.551h-5.945A30.619,30.619,0,0,1,3034,8481.459v-5.943A30.589,30.589,0,0,1,3064.515,8445Z" transform="translate(-3107.24 -7734.89)" fill="#e12c92" fill-rule="evenodd"/>
+        </g>
+        <path id="Path_6" data-name="Path 6" d="M3654.2,9249.082a6.1,6.1,0,1,1-6.117-6.082A6.077,6.077,0,0,1,3654.2,9249.082Z" transform="translate(-3346.169 -8509.231)" fill="#fff" fill-rule="evenodd"/>
+        <path id="Path_7" data-name="Path 7" d="M4056.165,9271.117a6.083,6.083,0,1,1-6.083-6.117A6.07,6.07,0,0,1,4056.165,9271.117Z" transform="translate(-3734.238 -8530.47)" fill="#fff" fill-rule="evenodd"/>
+      </g>
+    </g>
+    <g id="Dialog_add_category" transform="translate(-1831.735 410.003)" opacity="0">
+      <g transform="matrix(1, 0, 0, 1, 1831.74, -410)" filter="url(#bg)">
+        <path id="bg-4" data-name="bg" d="M40,0H277a40,40,0,0,1,40,40V232a40,40,0,0,1-40,40H40A40,40,0,0,1,0,232V40A40,40,0,0,1,40,0Z" transform="translate(26 844)" fill="#fc0"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 1831.74, -410)" filter="url(#bg-2)">
+        <path id="bg-5" data-name="bg" d="M0,0H317a0,0,0,0,1,0,0V134a40,40,0,0,1-40,40H40A40,40,0,0,1,0,134V0A0,0,0,0,1,0,0Z" transform="translate(26 959)" fill="#fff"/>
+      </g>
+      <ellipse id="Ellipse_5" data-name="Ellipse 5" cx="42" cy="39.5" rx="42" ry="39.5" transform="translate(2095.735 412.997)" fill="#fc0"/>
+      <g transform="matrix(1, 0, 0, 1, 1831.74, -410)" filter="url(#Add_Category_)">
+        <text id="Add_Category_2" data-name="Add Category " transform="translate(43.5 925.5)" fill="#fff" stroke="#fff" stroke-width="1" font-size="25" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="0" y="0">Add Category </tspan></text>
+      </g>
+      <text id="Please_input_the_Category_name_:_" data-name="Please input the Category name :
+" transform="translate(1875.235 586.497)" fill="#666" stroke="#666" stroke-width="1" font-size="18" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="0" y="0">Please input the Category name :</tspan><tspan x="0" y="24"></tspan></text>
+      <image id="close_1_" data-name="close (1)" width="64" height="64" transform="translate(2105.735 420.997)" xlink:href="data:image/png;base64,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"/>
+      <text id="OK" transform="translate(2000.235 684.997)" fill="#e24c4b" stroke="#e24c4b" stroke-width="1" font-size="25" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="0" y="0">OK</tspan></text>
+      <line id="Line_1" data-name="Line 1" x2="227.473" transform="translate(1902.235 634.35)" fill="none" stroke="#979797" stroke-linecap="square" stroke-miterlimit="10" stroke-width="0.431"/>
     </g>
   </g>
 </svg>

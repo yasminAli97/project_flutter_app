@@ -272,10 +272,6 @@ class _defaultCategory extends State<defaultCategory> {
                       ),
                     ),
 
-                    Container(
-                      alignment: AlignmentDirectional.bottomCenter,
-                      child: SvgPicture.asset("assets/images/ic_bottom.svg"),
-                    )
 
                   ],
                 )

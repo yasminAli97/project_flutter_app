@@ -47,7 +47,6 @@ flutter:
   assets:
    - assets/images/background.svg
    - assets/images/background.png
-   - assets/images/ic_bottom.svg
    - assets/images/ic_task.svg
    - assets/images/ic_check.svg
    - assets/images/edit.svg
@@ -75,6 +74,18 @@ flutter:
    - assets/images/yellow_catg.svg
    - assets/images/green_catg.svg
    - assets/images/mov_catg.svg
+   - assets/images/score.svg
+   - assets/images/ic_middle.svg
+   - assets/images/ic_friends.svg
+   - assets/images/setting.svg
+   - assets/images/ic_more.svg
+   - assets/images/circle_share.svg
+
+
+
+
+
+
 
 
 
@@ -105,7 +116,9 @@ flutter:
    - family: Rubik
      fonts:
        - asset: fonts/Rubik-Regular.ttf
-
+   - family: segoepr
+     fonts:
+       - asset: fonts/segoepr.ttf
 
 
   #   - family: Trajan Pro
