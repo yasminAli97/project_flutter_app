@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:projectflutterapp/models/Category.dart';
 import 'package:projectflutterapp/models/Task.dart';
 import 'package:projectflutterapp/screens/addTaskScreen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,20 +16,50 @@ class categoriesScreen extends StatefulWidget {
 class _categoriesScreen extends State<categoriesScreen> {
 
   List<Task> tasks = List<Task>();
+  List<Category> categories = List<Category>();
+
+  List<String> colorImageCatg =[
+    "assets/images/red_catg.svg",
+    "assets/images/blue_catg.svg",
+    "assets/images/yellow_catg.svg",
+    "assets/images/green_catg.svg",
+    "assets/images/mov_catg.svg"
+  ];
+
+  List<Color> colors =[
+    Color(0xffFE5F5F),
+    Color(0xff25B0FF),
+    Color(0xffFFCC00),
+    Color(0xff7DE82B),
+    Color(0xff9966FF)
+  ];
 
   TextEditingController controller = TextEditingController();
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    categories.add(Category.withSomePar("Default",tasks));//fromdatabase
+    categories.add(Category.withSomePar("Work",tasks));
+    categories.add(Category.withSomePar("Study",tasks));
+    categories.add(Category.withSomePar("Sport",tasks));
+    categories.add(Category.withSomePar("Reading",tasks));
+    categories.add(Category.withSomePar("Sport",tasks));
+  }
+
+  @override
   Widget build(BuildContext context) {
+
 
     return Scaffold(
 
         backgroundColor: Color(0xff9966FF),
 
-        body: SafeArea(
-          child: ListView(
-            children: <Widget>[
-              Container(
+        body: ListView(
+          children: <Widget>[
+            SafeArea(
+              child: Container(
                   height: MediaQuery
                       .of(context)
                       .size
@@ -234,32 +265,44 @@ class _categoriesScreen extends State<categoriesScreen> {
 
                             SizedBox(height: 20),
 
-                            Stack(
-                              alignment: AlignmentDirectional.centerStart,
-                              children: <Widget>[
-                                Container(
-                                  height: 55,
-                                  width: MediaQuery.of(context).size.width*4/5,
-                                 // margin: EdgeInsets.only(left: 30,right: 30),
-                                  child: CustomPaint(
-                                    painter: Chevron(),
-                                    child: Center(
-                                      child: Text("Default",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontFamily: "Segoe UI",
-                                            fontSize: 20,
-                                            color: Color(0xffFE5F5F),
-                                        fontWeight: FontWeight.bold),
-                                      ),
+                            //colorImageCatg
 
-                                    ),
-                                  ),
-                                ),
+                            ListView.builder(
+                                itemCount: categories.length,
+                                scrollDirection: Axis.vertical,
+                                shrinkWrap: true,
+                                itemBuilder: (context, index){
+                                  return
+                                    Center(
+                                      child: Stack(
+                                           alignment: AlignmentDirectional.centerStart,
+                                          children: <Widget>[
+                                               Container(
+                                               height: 55,
+                                                   width: MediaQuery.of(context).size.width*4/5,
+                                                    // margin: EdgeInsets.only(left: 30,right: 30),
+                                                      child: CustomPaint(
+                                                      painter: Chevron(),
+                                                         child: Center(
+                                                           child: Text(categories[index].title,
+                                                          textAlign: TextAlign.center,
+                                                                style: TextStyle(
+                                                           fontFamily: "Segoe UI",
+                                                            fontSize: 20,
+                                                                  color: colors[index%5],
+                                                           fontWeight: FontWeight.bold),
+                                                             ),
 
-                                SvgPicture.asset("assets/images/red_catg.svg"),
+                                                            ),
+                                                         ),
+                                                        ),
+
+                                                     SvgPicture.asset(colorImageCatg[index%5]),
                               ],
                             ),
+                                    );
+                                }
+                            )
 
 
                           ],
@@ -279,8 +322,8 @@ class _categoriesScreen extends State<categoriesScreen> {
                     ],
                   )
               ),
-            ],
-          ),
+            ),
+          ],
         )
     );
   }
