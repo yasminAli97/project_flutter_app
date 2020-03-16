@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:projectflutterapp/screens/addTaskScreen.dart';
 import 'package:projectflutterapp/screens/categoriesScreen.dart';
 import 'package:projectflutterapp/screens/defaultCategory.dart';
+import 'package:projectflutterapp/screens/home_screen.dart';
 import 'package:projectflutterapp/screens/task_attribute.dart';
 
 import 'constants/constants.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-  home: categoriesScreen(),
+  home: HomeScreen(),
 //    routes: <String, WidgetBuilder>{
 //       HOME_SCREEN: (BuildContext context) => MyHomePage(),
 //
