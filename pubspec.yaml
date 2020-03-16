@@ -30,6 +30,8 @@ dev_dependencies:
   flutter_svg: ^0.17.2
   custom_switch_button: ^0.5.0
   image_picker: ^0.6.1+4
+  flutter_slidable: "^0.5.4"
+  star_menu: ^1.0.4
 
 
 # For information on the generic Dart part of this file, see the
@@ -80,6 +82,15 @@ flutter:
    - assets/images/setting.svg
    - assets/images/ic_more.svg
    - assets/images/circle_share.svg
+   - assets/images/ic_pen_edit.svg
+   - assets/images/ic_share_friends.svg
+   - assets/images/img_notasks.svg
+   - assets/images/bottomNoTask.svg
+   - assets/images/rating.svg
+   - assets/images/bottomNoTask.svg
+   - assets/images/score_stars.svg
+   - assets/images/score_value.svg
+   - assets/images/sore_items.svg
 
 
 
@@ -96,7 +107,13 @@ flutter:
 
 
 
-       # An image asset can refer to one or more resolution-specific "variants", see
+
+
+
+
+
+
+    # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
   # For details regarding adding assets from package dependencies, see

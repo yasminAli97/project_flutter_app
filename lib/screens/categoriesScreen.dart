@@ -4,7 +4,9 @@ import 'package:projectflutterapp/models/Category.dart';
 import 'package:projectflutterapp/models/Task.dart';
 import 'package:projectflutterapp/screens/addTaskScreen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:projectflutterapp/screens/categoryDetailsScreen.dart';
 import 'package:projectflutterapp/screens/task_attribute.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class CategoriesScreen extends StatefulWidget {
   CategoriesScreen({Key key}) : super(key: key);
@@ -42,12 +44,13 @@ class _CategoriesScreen extends State<CategoriesScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    categories.add(Category.withSomePar("Default",tasks));//fromdatabase
-    categories.add(Category.withSomePar("Work",tasks));
-    categories.add(Category.withSomePar("Study",tasks));
-    categories.add(Category.withSomePar("Sport",tasks));
-    categories.add(Category.withSomePar("Reading",tasks));
-    categories.add(Category.withSomePar("Sport",tasks));
+//    categories.add(Category.withSomePar("Default",tasks));//fromdatabase
+//    categories.add(Category.withSomePar("Work",tasks));
+//    categories.add(Category.withSomePar("Study",tasks));
+//    categories.add(Category.withSomePar("Sport",tasks));
+//    categories.add(Category.withSomePar("Reading",tasks));
+//    categories.add(Category.withSomePar("Sport",tasks));
+    categories.add(Category.withTitle("Reading"));
   }
 
   @override
@@ -303,7 +306,7 @@ class _CategoriesScreen extends State<CategoriesScreen> {
 
                               focusedBorder:OutlineInputBorder(
 
-                                  borderSide: const BorderSide(color: Color(0xFFD5D5D5)),
+                                  borderSide: const BorderSide(color: Colors.transparent),
                                   borderRadius:const BorderRadius.all(
                                     const Radius.circular(30),
                                   ),
@@ -322,35 +325,58 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                             shrinkWrap: true,
                             itemBuilder: (context, index){
                               return
-                                Center(
-                                  child: Stack(
-                                       alignment: AlignmentDirectional.centerStart,
-                                      children: <Widget>[
-                                           Container(
-                                           height: 53,
-                                               width: MediaQuery.of(context).size.width*4/5,
-                                                // margin: EdgeInsets.only(left: 30,right: 30),
-                                                  child: CustomPaint(
-                                                  painter: Chevron(),
-                                                     child: Center(
-                                                       child: Text(categories[index].title,
-                                                      textAlign: TextAlign.center,
-                                                            style: TextStyle(
-                                                       fontFamily: "Segoe UI",
-                                                        fontSize: 20,
-                                                              color: colors[index%5],
-                                                       fontWeight: FontWeight.bold),
+                                GestureDetector(
+                                  onTap: (){
+                                    Navigator.push(context, MaterialPageRoute(builder: (context){
+                                      return CategoryDetails(categories[index]);
+                                    }));
+
+                                  },
+                                  child: Center(
+                                    child: Slidable(
+                                      actionPane: SlidableDrawerActionPane(),
+                                      actionExtentRatio: 1/7 ,
+
+                                      secondaryActions: <Widget>[
+                                        IconSlideAction(
+                                          color: Colors.transparent,
+                                          onTap: () {
+                                            showDialog(context: context,
+                                                builder: (_) => showEditAlert());
+                                          }  ,
+                                          iconWidget: mySlider(),
+                                        )
+                                      ],
+                                      child: Stack(
+                                           alignment: AlignmentDirectional.centerStart,
+                                          children: <Widget>[
+                                               Container(
+                                               height: 53,
+                                                   width: MediaQuery.of(context).size.width*4/5,
+                                                    // margin: EdgeInsets.only(left: 30,right: 30),
+                                                      child: CustomPaint(
+                                                      painter: Chevron(),
+                                                         child: Center(
+                                                           child: Text(categories[index].title,
+                                                          textAlign: TextAlign.center,
+                                                                style: TextStyle(
+                                                           fontFamily: "Segoe UI",
+                                                            fontSize: 20,
+                                                                  color: colors[index%5],
+                                                           fontWeight: FontWeight.bold),
+                                                             ),
+
+                                                            ),
                                                          ),
-
                                                         ),
-                                                     ),
-                                                    ),
 
-                                                 Container(
-                                                   height: 75,
-                                                     child: SvgPicture.asset(colorImageCatg[index%5])),
+                                                     Container(
+                                                       height: 75,
+                                                         child: SvgPicture.asset(colorImageCatg[index%5])),
                           ],
                         ),
+                                    ),
+                                  ),
                                 );
                             }
                         ),
@@ -597,6 +623,225 @@ class _CategoriesScreen extends State<CategoriesScreen> {
 
   void addCategory() {}
 
+  Widget mySlider() {
+
+      return Container(
+            height: 53,
+            width: MediaQuery.of(context).size.width*2/5,
+            child:CustomPaint(
+              painter: Chevron1() ,
+              child:   Container(
+                width: 5,height: 5,
+                child: SvgPicture.asset("assets/images/ic_pen_edit.svg",
+                  width: 5,height: 5,),
+              ),
+
+            )
+
+
+        );
+
+  }
+
+  showEditAlert() {
+
+    return Center(
+      child: Stack(
+        alignment: AlignmentDirectional.topStart,
+        children: <Widget>[
+
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height*2.1/5,
+            padding: EdgeInsets.only(top:10, left: 15, right: 15,),
+            margin: EdgeInsets.only(left: 25, right: 25,top: 20),
+            decoration: new BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(30),
+              boxShadow: [
+                BoxShadow(
+                  color: Color(0xffFFCC00),
+                  blurRadius: 15.0,
+                  offset: const Offset(0.0, 10.0),
+                ),
+              ],
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+
+                Container(
+                  margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*2.6/15),
+                  alignment: AlignmentDirectional.centerStart,
+                  child: Text(
+                      " Category name :",
+                      textAlign: TextAlign.start,
+                      style: (TextStyle(
+                          fontFamily: "Segoe UI",
+                          color:  Color(0xFF666666),
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold
+                      )
+                      )
+                  ),
+                ),
+                Card(
+                  elevation: 0,
+                  margin: EdgeInsets.only(left: 20,right: 20),
+                  child: TextField(
+                      controller: controller,
+                      cursorColor: Color(0xFFFFCC00),
+                      textAlignVertical: TextAlignVertical.bottom,
+                      style: TextStyle(
+                          color: Color(0xFF666666),
+                          fontFamily: "Segoe UI",
+                          fontSize:20 ),
+                      decoration: InputDecoration(
+                        filled: false,
+                        hintText: "new category",
+                        hintStyle: TextStyle(
+                            color: Color(0xFF666666),
+                            fontFamily: "Segoe UI",
+                            fontSize:20 ),
+
+                      )
+
+                  ),
+                ),
+                SizedBox(height: 10),
+                Container(
+                  alignment: AlignmentDirectional.bottomCenter,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      FlatButton(
+                        onPressed: () {
+
+                          addCategory(); // To close the dialog
+                        },
+                        child: Text("Delete Category",
+                            textAlign: TextAlign.center,
+                            style: (TextStyle(
+                                fontFamily: "Segoe UI",
+                                color:  Color(0xFFE24C4B),
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold
+                            )
+                            )),
+
+
+                      ),
+
+                      FlatButton(
+                        onPressed: () {
+
+                          addCategory(); // To close the dialog
+                        },
+                        child: Text("Save",
+                            textAlign: TextAlign.center,
+                            style: (TextStyle(
+                                fontFamily: "Segoe UI",
+                                color:  Color(0xFFCCCCCC),
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold
+                            )
+                            )),
+
+
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Stack(
+            alignment: AlignmentDirectional.topEnd,
+            children: <Widget>[
+
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height*2.4/15,
+                margin: EdgeInsets.only(left: 25, right: 25, top: 20),
+                alignment: AlignmentDirectional.topStart,
+                decoration: new BoxDecoration(
+                    color: Color(0xffFFCC00),
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30),
+                        topRight: Radius.circular(30))
+                ),
+                child: Stack(
+                  alignment: AlignmentDirectional.bottomStart,
+                  children: <Widget>[
+                    Container(
+                        margin: EdgeInsets.only(left: 20, bottom: 25),
+                        width: 150,
+                        height: 10,
+                        decoration: BoxDecoration(
+
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Color(0xffF2ECD5),
+                                  offset: Offset(2, 2),
+                                  blurRadius: 17,
+                                  spreadRadius: 5
+                              )]
+                        )
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 15, bottom: 20),
+                      alignment: AlignmentDirectional.bottomStart,
+                      child: Text("Edit Category",
+                        textAlign: TextAlign.start,
+                        style: (TextStyle(
+                            fontFamily: "Segoe UI",
+                            color:  Colors.white,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold
+                        )
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+              ),
+              Positioned(
+                right: 22,
+                child: Stack(
+                  alignment: AlignmentDirectional.center,
+                  children: <Widget>[
+                    CircleAvatar(
+                      backgroundColor: Color(0xffFFCC00),
+                      radius: 35,
+
+                    ),
+                    GestureDetector(
+                      onTap: (){
+                        setState(() {
+                          Navigator.of(context).pop();
+                        });
+
+                      },
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage("assets/images/circle_close.png"),
+
+                        radius: 28,
+
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
 
 }
 
@@ -612,11 +857,35 @@ class Chevron extends CustomPainter {
     Path path = Path();
     path.moveTo(20, size.height/2);
     path.lineTo(size.width/7,size.height);
-    path.lineTo(size.width*6/7 , size.height);
+    path.lineTo(size.width*6.2/7 , size.height);
     path.lineTo(size.width, size.height/2);
-    path.lineTo(size.width*6/7, 0);
+    path.lineTo(size.width*6.2/7, 0);
     path.lineTo(size.width/7, 0);
     path.moveTo(size.width/2, size.height/2);
+    path.close();
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
+}
+
+class Chevron1 extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+
+    final Paint paint = new Paint();
+    paint.color = Color(0xffDBC9FF);
+    paint.style = PaintingStyle.fill;
+
+    Path path = Path();
+    path.moveTo(size.width*-1, 0);
+    path.lineTo(size.width*-1,size.height);
+    path.lineTo(size.width*1.2/3 , size.height);
+    path.lineTo(size.width, size.height/2);
+    path.lineTo(size.width*1.2/3, 0);
+    path.lineTo(size.width/2, 0);
     path.close();
 
     canvas.drawPath(path, paint);

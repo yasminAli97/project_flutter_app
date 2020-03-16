@@ -506,6 +506,7 @@ class _AddNewTaskScreen extends State<AddNewTaskScreen> {
 
                           ]
                       ),
+                      SizedBox(width: 20),
                       GestureDetector(
                         onTap: (){
                           getImage();
@@ -556,6 +557,7 @@ class _AddNewTaskScreen extends State<AddNewTaskScreen> {
 
                           ]
                       ),
+                      SizedBox(width: 20),
 
                       GestureDetector(
                         onTap: (){
@@ -577,6 +579,56 @@ class _AddNewTaskScreen extends State<AddNewTaskScreen> {
                       )
                     ],
                   ),
+
+                  SizedBox(height: 20),
+                  Row(
+                    children: <Widget>[
+                      Stack(
+                          alignment: AlignmentDirectional.centerStart,
+                          children: <Widget>[
+                            Container(
+                                width: 170,
+                                margin: EdgeInsets.only(left: 20),
+                                decoration: BoxDecoration(
+
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Color(0xffFFCC00),
+                                          offset: Offset(0, 2),
+                                          blurRadius: 17,
+                                          spreadRadius: 2
+                                      )]
+                                )
+                            ),
+
+                            Container(
+                                width: MediaQuery.of(context).size.width/2,
+                                margin: EdgeInsets.only(left: 20),
+                                alignment: AlignmentDirectional.centerStart,
+                                child: Text("Share With Friends",
+                                  style: TextStyle(
+                                      fontFamily: "Segoe UI",
+                                      fontSize: 20,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold
+                                  ),
+                                )
+                            ),
+
+                          ]
+                      ),
+
+                      SizedBox(width: 25),
+                      GestureDetector(
+                        onTap: (){
+
+                        },
+                        child: SvgPicture.asset("assets/images/ic_share_friends.svg"),
+                      )
+                    ],
+                  ),
+
+
 
                   Container(
                     child: SvgPicture.asset("assets/images/time.svg"),

@@ -83,13 +83,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.6"
+  flutter_slidable:
+    dependency: "direct dev"
+    description:
+      name: flutter_slidable
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.5.4"
   flutter_svg:
     dependency: "direct dev"
     description:
       name: flutter_svg
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.17.3"
+    version: "0.17.3+1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -191,6 +198,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.9.3"
+  star_menu:
+    dependency: "direct dev"
+    description:
+      name: star_menu
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.4"
   stream_channel:
     dependency: transitive
     description:

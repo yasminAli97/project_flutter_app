@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:projectflutterapp/screens/addTaskScreen.dart';
 import 'package:projectflutterapp/screens/categoriesScreen.dart';
-import 'package:projectflutterapp/screens/defaultCategory.dart';
+import 'package:projectflutterapp/screens/categoryDetailsScreen.dart';
 import 'package:projectflutterapp/screens/home_screen.dart';
 import 'package:projectflutterapp/screens/task_attribute.dart';
+
 
 import 'constants/constants.dart';
 

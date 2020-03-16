@@ -13,6 +13,7 @@ class Category {
 
   Category.withPar(this._title, this._description, this._tasks);
   Category.withSomePar(this._title,this._tasks);
+  Category.withTitle(this._title);
 
 
   String get title => _title;
