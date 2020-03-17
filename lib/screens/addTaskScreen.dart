@@ -82,7 +82,7 @@ class _AddNewTaskScreen extends State<AddNewTaskScreen> {
 
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/images/background.png"),
+                  image: AssetImage("assets/images/bgwithout.png"),
                   fit: BoxFit.fill,
                 ),
               ),
@@ -630,9 +630,22 @@ class _AddNewTaskScreen extends State<AddNewTaskScreen> {
 
 
 
-                  Container(
-                    child: SvgPicture.asset("assets/images/time.svg"),
-                  )
+                  GestureDetector(
+                    onTap: (){
+                      showDatePicker(
+                        context: context,
+                        initialDate: new DateTime.now(),
+                        firstDate:
+                        new DateTime.now().subtract(new Duration(days: 30)),
+                        lastDate: new DateTime.now().add(new Duration(days: 30)),
+                      );
+                    },
+                    child: Container(
+                      child: SvgPicture.asset("assets/images/time.svg"),
+
+                    ),
+                  ),
+
 
 
 

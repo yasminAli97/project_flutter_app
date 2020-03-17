@@ -198,13 +198,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.9.3"
-  star_menu:
-    dependency: "direct dev"
-    description:
-      name: star_menu
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.4"
   stream_channel:
     dependency: transitive
     description:

@@ -44,13 +44,13 @@ class _CategoriesScreen extends State<CategoriesScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-//    categories.add(Category.withSomePar("Default",tasks));//fromdatabase
-//    categories.add(Category.withSomePar("Work",tasks));
-//    categories.add(Category.withSomePar("Study",tasks));
-//    categories.add(Category.withSomePar("Sport",tasks));
-//    categories.add(Category.withSomePar("Reading",tasks));
-//    categories.add(Category.withSomePar("Sport",tasks));
-    categories.add(Category.withTitle("Reading"));
+    categories.add(Category.withSomePar("Default",tasks));//fromdatabase
+    categories.add(Category.withSomePar("Work",tasks));
+    categories.add(Category.withSomePar("Study",tasks));
+    categories.add(Category.withSomePar("Sport",tasks));
+    categories.add(Category.withSomePar("Reading",tasks));
+    categories.add(Category.withSomePar("Sport",tasks));
+
   }
 
   @override
@@ -445,176 +445,179 @@ class _CategoriesScreen extends State<CategoriesScreen> {
   }
 
   Widget showAlert() {
-    return Center(
-      child: Stack(
-        alignment: AlignmentDirectional.topStart,
-        children: <Widget>[
+    return Material(
+      color: Colors.transparent,
+      child: Center(
+        child: Stack(
+          alignment: AlignmentDirectional.topStart,
+          children: <Widget>[
 
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height*2.1/5,
-            padding: EdgeInsets.only(top:10, left: 15, right: 15,),
-            margin: EdgeInsets.only(left: 25, right: 25,top: 20),
-            decoration: new BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.circular(30),
-              boxShadow: [
-                BoxShadow(
-                  color: Color(0xffFFCC00),
-                  blurRadius: 15.0,
-                  offset: const Offset(0.0, 10.0),
-                ),
-              ],
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-
-                Container(
-                  margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*2.6/15),
-                 // alignment: AlignmentDirectional.center,
-                  child: Text(
-                      "Please input the Category name :",
-                      textAlign: TextAlign.start,
-                      style: (TextStyle(
-                          fontFamily: "Segoe UI",
-                          color:  Color(0xFF666666),
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold
-                      )
-                      )
-                  ),
-                ),
-                Card(
-                  elevation: 0,
-                  margin: EdgeInsets.only(left: 20,right: 20),
-                  child: TextField(
-                    controller: controller,
-                    cursorColor: Color(0xFFFFCC00),
-                    textAlignVertical: TextAlignVertical.bottom,
-                    style: TextStyle(
-                        color: Color(0xFF666666),
-                        fontFamily: "Segoe UI",
-                        fontSize:20 ),
-                    decoration: InputDecoration(
-                      filled: false,
-                      hintText: "new category",
-                      hintStyle: TextStyle(
-                          color: Color(0xFF666666),
-                          fontFamily: "Segoe UI",
-                          fontSize:20 ),
-
-                    )
-
-                  ),
-                ),
-                SizedBox(height: 10),
-                Container(
-                  alignment: AlignmentDirectional.bottomCenter,
-                  child: FlatButton(
-                    onPressed: () {
-
-                      addCategory(); // To close the dialog
-                    },
-                    child: Text("OK",
-                        textAlign: TextAlign.center,
-                        style: (TextStyle(
-                            fontFamily: "Segoe UI",
-                            color:  Color(0xFFE24C4B),
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold
-                        )
-                        )),
-
-
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Stack(
-            alignment: AlignmentDirectional.topEnd,
-            children: <Widget>[
-
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height*2.4/15,
-                margin: EdgeInsets.only(left: 25, right: 25, top: 20),
-                alignment: AlignmentDirectional.topStart,
-                decoration: new BoxDecoration(
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height*2.1/5,
+              padding: EdgeInsets.only(top:10, left: 15, right: 15,),
+              margin: EdgeInsets.only(left: 25, right: 25,top: 20),
+              decoration: new BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(30),
+                boxShadow: [
+                  BoxShadow(
                     color: Color(0xffFFCC00),
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30))
-                ),
-                child: Stack(
-                  alignment: AlignmentDirectional.bottomStart,
-                  children: <Widget>[
-                    Container(
-                        margin: EdgeInsets.only(left: 20, bottom: 25),
-                        width: 150,
-                        height: 10,
-                        decoration: BoxDecoration(
+                    blurRadius: 15.0,
+                    offset: const Offset(0.0, 10.0),
+                  ),
+                ],
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
 
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Color(0xffF2ECD5),
-                                  offset: Offset(2, 2),
-                                  blurRadius: 17,
-                                  spreadRadius: 5
-                              )]
-                        )
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 15, bottom: 20),
-                      alignment: AlignmentDirectional.bottomStart,
-                      child: Text("Add Category",
+                  Container(
+                    margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*2.6/15),
+                   // alignment: AlignmentDirectional.center,
+                    child: Text(
+                        "Please input the Category name :",
                         textAlign: TextAlign.start,
                         style: (TextStyle(
                             fontFamily: "Segoe UI",
-                            color:  Colors.white,
-                            fontSize: 25,
+                            color:  Color(0xFF666666),
+                            fontSize: 18,
                             fontWeight: FontWeight.bold
                         )
+                        )
+                    ),
+                  ),
+                  Card(
+                    elevation: 0,
+                    margin: EdgeInsets.only(left: 20,right: 20),
+                    child: TextField(
+                      controller: controller,
+                      cursorColor: Color(0xFFFFCC00),
+                      textAlignVertical: TextAlignVertical.bottom,
+                      style: TextStyle(
+                          color: Color(0xFF666666),
+                          fontFamily: "Segoe UI",
+                          fontSize:20 ),
+                      decoration: InputDecoration(
+                        filled: false,
+                        hintText: "new category",
+                        hintStyle: TextStyle(
+                            color: Color(0xFF666666),
+                            fontFamily: "Segoe UI",
+                            fontSize:20 ),
+
+                      )
+
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Container(
+                    alignment: AlignmentDirectional.bottomCenter,
+                    child: FlatButton(
+                      onPressed: () {
+
+                        addCategory(); // To close the dialog
+                      },
+                      child: Text("OK",
+                          textAlign: TextAlign.center,
+                          style: (TextStyle(
+                              fontFamily: "Segoe UI",
+                              color:  Color(0xFFE24C4B),
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold
+                          )
+                          )),
+
+
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Stack(
+              alignment: AlignmentDirectional.topEnd,
+              children: <Widget>[
+
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height*2.4/15,
+                  margin: EdgeInsets.only(left: 25, right: 25, top: 20),
+                  alignment: AlignmentDirectional.topStart,
+                  decoration: new BoxDecoration(
+                      color: Color(0xffFFCC00),
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30))
+                  ),
+                  child: Stack(
+                    alignment: AlignmentDirectional.bottomStart,
+                    children: <Widget>[
+                      Container(
+                          margin: EdgeInsets.only(left: 20, bottom: 25),
+                          width: 150,
+                          height: 10,
+                          decoration: BoxDecoration(
+
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Color(0xffF2ECD5),
+                                    offset: Offset(2, 2),
+                                    blurRadius: 17,
+                                    spreadRadius: 5
+                                )]
+                          )
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 15, bottom: 20),
+                        alignment: AlignmentDirectional.bottomStart,
+                        child: Text("Add Category",
+                          textAlign: TextAlign.start,
+                          style: (TextStyle(
+                              fontFamily: "Segoe UI",
+                              color:  Colors.white,
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold
+                          )
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
+
                 ),
-
-              ),
-              Positioned(
-                right: 22,
-                child: Stack(
-                  alignment: AlignmentDirectional.center,
-                  children: <Widget>[
-                    CircleAvatar(
-                      backgroundColor: Color(0xffFFCC00),
-                      radius: 35,
-
-                    ),
-                    GestureDetector(
-                      onTap: (){
-                        setState(() {
-                          Navigator.of(context).pop();
-                        });
-
-                      },
-                      child: CircleAvatar(
-                        backgroundImage: AssetImage("assets/images/circle_close.png"),
-
-                        radius: 28,
+                Positioned(
+                  right: 22,
+                  child: Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: <Widget>[
+                      CircleAvatar(
+                        backgroundColor: Color(0xffFFCC00),
+                        radius: 35,
 
                       ),
-                    ),
-                  ],
+                      GestureDetector(
+                        onTap: (){
+                          setState(() {
+                            Navigator.of(context).pop();
+                          });
+
+                        },
+                        child: CircleAvatar(
+                          backgroundImage: AssetImage("assets/images/circle_close.png"),
+
+                          radius: 28,
+
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
 
@@ -646,198 +649,201 @@ class _CategoriesScreen extends State<CategoriesScreen> {
   showEditAlert() {
 
     return Center(
-      child: Stack(
-        alignment: AlignmentDirectional.topStart,
-        children: <Widget>[
+      child: Material(
+        color: Colors.transparent,
+        child: Stack(
+          alignment: AlignmentDirectional.topStart,
+          children: <Widget>[
 
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height*2.1/5,
-            padding: EdgeInsets.only(top:10, left: 15, right: 15,),
-            margin: EdgeInsets.only(left: 25, right: 25,top: 20),
-            decoration: new BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.circular(30),
-              boxShadow: [
-                BoxShadow(
-                  color: Color(0xffFFCC00),
-                  blurRadius: 15.0,
-                  offset: const Offset(0.0, 10.0),
-                ),
-              ],
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-
-                Container(
-                  margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*2.6/15),
-                  alignment: AlignmentDirectional.centerStart,
-                  child: Text(
-                      " Category name :",
-                      textAlign: TextAlign.start,
-                      style: (TextStyle(
-                          fontFamily: "Segoe UI",
-                          color:  Color(0xFF666666),
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold
-                      )
-                      )
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height*2.1/5,
+              padding: EdgeInsets.only(top:10, left: 15, right: 15,),
+              margin: EdgeInsets.only(left: 25, right: 25,top: 20),
+              decoration: new BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(30),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0xffFFCC00),
+                    blurRadius: 15.0,
+                    offset: const Offset(0.0, 10.0),
                   ),
-                ),
-                Card(
-                  elevation: 0,
-                  margin: EdgeInsets.only(left: 20,right: 20),
-                  child: TextField(
-                      controller: controller,
-                      cursorColor: Color(0xFFFFCC00),
-                      textAlignVertical: TextAlignVertical.bottom,
-                      style: TextStyle(
-                          color: Color(0xFF666666),
-                          fontFamily: "Segoe UI",
-                          fontSize:20 ),
-                      decoration: InputDecoration(
-                        filled: false,
-                        hintText: "new category",
-                        hintStyle: TextStyle(
+                ],
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+
+                  Container(
+                    margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*2.6/15),
+                    alignment: AlignmentDirectional.centerStart,
+                    child: Text(
+                        " Category name :",
+                        textAlign: TextAlign.start,
+                        style: (TextStyle(
+                            fontFamily: "Segoe UI",
+                            color:  Color(0xFF666666),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold
+                        )
+                        )
+                    ),
+                  ),
+                  Card(
+                    elevation: 0,
+                    margin: EdgeInsets.only(left: 20,right: 20),
+                    child: TextField(
+                        controller: controller,
+                        cursorColor: Color(0xFFFFCC00),
+                        textAlignVertical: TextAlignVertical.bottom,
+                        style: TextStyle(
                             color: Color(0xFF666666),
                             fontFamily: "Segoe UI",
                             fontSize:20 ),
+                        decoration: InputDecoration(
+                          filled: false,
+                          hintText: "new category",
+                          hintStyle: TextStyle(
+                              color: Color(0xFF666666),
+                              fontFamily: "Segoe UI",
+                              fontSize:20 ),
 
-                      )
+                        )
 
+                    ),
                   ),
-                ),
-                SizedBox(height: 10),
+                  SizedBox(height: 10),
+                  Container(
+                    alignment: AlignmentDirectional.bottomCenter,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        FlatButton(
+                          onPressed: () {
+
+                            addCategory(); // To close the dialog
+                          },
+                          child: Text("Delete Category",
+                              textAlign: TextAlign.center,
+                              style: (TextStyle(
+                                  fontFamily: "Segoe UI",
+                                  color:  Color(0xFFE24C4B),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold
+                              )
+                              )),
+
+
+                        ),
+
+                        FlatButton(
+                          onPressed: () {
+
+                            addCategory(); // To close the dialog
+                          },
+                          child: Text("Save",
+                              textAlign: TextAlign.center,
+                              style: (TextStyle(
+                                  fontFamily: "Segoe UI",
+                                  color:  Color(0xFFCCCCCC),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold
+                              )
+                              )),
+
+
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Stack(
+              alignment: AlignmentDirectional.topEnd,
+              children: <Widget>[
+
                 Container(
-                  alignment: AlignmentDirectional.bottomCenter,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height*2.4/15,
+                  margin: EdgeInsets.only(left: 25, right: 25, top: 20),
+                  alignment: AlignmentDirectional.topStart,
+                  decoration: new BoxDecoration(
+                      color: Color(0xffFFCC00),
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30))
+                  ),
+                  child: Stack(
+                    alignment: AlignmentDirectional.bottomStart,
                     children: <Widget>[
-                      FlatButton(
-                        onPressed: () {
+                      Container(
+                          margin: EdgeInsets.only(left: 20, bottom: 25),
+                          width: 150,
+                          height: 10,
+                          decoration: BoxDecoration(
 
-                          addCategory(); // To close the dialog
-                        },
-                        child: Text("Delete Category",
-                            textAlign: TextAlign.center,
-                            style: (TextStyle(
-                                fontFamily: "Segoe UI",
-                                color:  Color(0xFFE24C4B),
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            )
-                            )),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Color(0xffF2ECD5),
+                                    offset: Offset(2, 2),
+                                    blurRadius: 17,
+                                    spreadRadius: 5
+                                )]
+                          )
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 15, bottom: 20),
+                        alignment: AlignmentDirectional.bottomStart,
+                        child: Text("Edit Category",
+                          textAlign: TextAlign.start,
+                          style: (TextStyle(
+                              fontFamily: "Segoe UI",
+                              color:  Colors.white,
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold
+                          )
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
 
+                ),
+                Positioned(
+                  right: 22,
+                  child: Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: <Widget>[
+                      CircleAvatar(
+                        backgroundColor: Color(0xffFFCC00),
+                        radius: 35,
 
                       ),
+                      GestureDetector(
+                        onTap: (){
+                          setState(() {
+                            Navigator.of(context).pop();
+                          });
 
-                      FlatButton(
-                        onPressed: () {
-
-                          addCategory(); // To close the dialog
                         },
-                        child: Text("Save",
-                            textAlign: TextAlign.center,
-                            style: (TextStyle(
-                                fontFamily: "Segoe UI",
-                                color:  Color(0xFFCCCCCC),
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold
-                            )
-                            )),
+                        child: CircleAvatar(
+                          backgroundImage: AssetImage("assets/images/circle_close.png"),
 
+                          radius: 28,
 
+                        ),
                       ),
                     ],
                   ),
                 ),
               ],
             ),
-          ),
-          Stack(
-            alignment: AlignmentDirectional.topEnd,
-            children: <Widget>[
-
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height*2.4/15,
-                margin: EdgeInsets.only(left: 25, right: 25, top: 20),
-                alignment: AlignmentDirectional.topStart,
-                decoration: new BoxDecoration(
-                    color: Color(0xffFFCC00),
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30))
-                ),
-                child: Stack(
-                  alignment: AlignmentDirectional.bottomStart,
-                  children: <Widget>[
-                    Container(
-                        margin: EdgeInsets.only(left: 20, bottom: 25),
-                        width: 150,
-                        height: 10,
-                        decoration: BoxDecoration(
-
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Color(0xffF2ECD5),
-                                  offset: Offset(2, 2),
-                                  blurRadius: 17,
-                                  spreadRadius: 5
-                              )]
-                        )
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 15, bottom: 20),
-                      alignment: AlignmentDirectional.bottomStart,
-                      child: Text("Edit Category",
-                        textAlign: TextAlign.start,
-                        style: (TextStyle(
-                            fontFamily: "Segoe UI",
-                            color:  Colors.white,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold
-                        )
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-
-              ),
-              Positioned(
-                right: 22,
-                child: Stack(
-                  alignment: AlignmentDirectional.center,
-                  children: <Widget>[
-                    CircleAvatar(
-                      backgroundColor: Color(0xffFFCC00),
-                      radius: 35,
-
-                    ),
-                    GestureDetector(
-                      onTap: (){
-                        setState(() {
-                          Navigator.of(context).pop();
-                        });
-
-                      },
-                      child: CircleAvatar(
-                        backgroundImage: AssetImage("assets/images/circle_close.png"),
-
-                        radius: 28,
-
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

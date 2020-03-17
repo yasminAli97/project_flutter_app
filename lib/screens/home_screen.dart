@@ -5,8 +5,7 @@ import 'package:projectflutterapp/models/Task.dart';
 import 'package:projectflutterapp/screens/addTaskScreen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:projectflutterapp/screens/categoriesScreen.dart';
-import 'package:projectflutterapp/utility/radialMenu.dart';
-import 'package:star_menu/star_menu.dart';
+
 import 'package:projectflutterapp/screens/task_attribute.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,13 +19,15 @@ class _HomeScreen extends State<HomeScreen> {
   List<Task> tasks = List<Task>();
   List<Category> categories = List<Category>();
 
-  var _value = ValueNotifier<bool>(false);
-
   TextEditingController controller = TextEditingController();
 
   TextEditingController _searchQuery = TextEditingController();
 
   int score = 60;
+
+  int arrangment =5;
+
+  int frinds = 10;
 
   @override
   Widget build(BuildContext context) {
@@ -150,9 +151,10 @@ class _HomeScreen extends State<HomeScreen> {
                           ),
                           child: GestureDetector(
                             onTap: () {
-                              showDialog(
-                                  context: context,
-                                  builder: (_) => Center(child: showAlert()));
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                    return AddNewTaskScreen();
+                                  }));
                             },
                             child: Container(
                               width:
@@ -308,43 +310,12 @@ class _HomeScreen extends State<HomeScreen> {
                                     GestureDetector(
                                       onTap: () {},
                                       child: Container(
-//                                        key: moreMenuKey,
-//                                        width:MediaQuery.of(context).size.width*1.2/5,
-//                                        child: SvgPicture.asset("assets/images/ic_more.svg"),
-
-                                        child: FabCircularMenu(
-                                          child: Container(
-                                            color: Colors.indigo[900],
-                                            child: Center(
-                                                child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                  bottom: 25.0),
-                                            )),
-                                          ),
-                                          ringColor: Colors.white30,
-                                          options: <Widget>[
-                                            IconButton(
-                                                icon: Icon(Icons.widgets),
-                                                onPressed: () {},
-                                                iconSize: 48.0,
-                                                color: Colors.white),
-                                            IconButton(
-                                                icon: Icon(Icons.widgets),
-                                                onPressed: () {},
-                                                iconSize: 48.0,
-                                                color: Colors.white),
-                                            IconButton(
-                                                icon: Icon(Icons.widgets),
-                                                onPressed: () {},
-                                                iconSize: 48.0,
-                                                color: Colors.white),
-                                            IconButton(
-                                                icon: Icon(Icons.widgets),
-                                                onPressed: () {},
-                                                iconSize: 48.0,
-                                                color: Colors.white),
-                                          ],
-                                        ),
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                1.2 /
+                                                5,
+                                        child: SvgPicture.asset(
+                                            "assets/images/ic_more.svg"),
                                       ),
                                     ),
                                   ]))
@@ -357,220 +328,17 @@ class _HomeScreen extends State<HomeScreen> {
     );
   }
 
-  Widget showAlert() {
-    return Stack(
-      alignment: AlignmentDirectional.topStart,
-      children: <Widget>[
-        Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height * 2.1 / 5,
-          padding: EdgeInsets.only(
-            top: 10,
-            left: 15,
-            right: 15,
-          ),
-          margin: EdgeInsets.only(left: 25, right: 25, top: 20),
-          decoration: new BoxDecoration(
-            color: Colors.white,
-            shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.circular(30),
-            boxShadow: [
-              BoxShadow(
-                color: Color(0xffFFCC00),
-                blurRadius: 15.0,
-                offset: const Offset(0.0, 10.0),
-              ),
-            ],
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 2.6 / 15),
-                // alignment: AlignmentDirectional.center,
-                child: Text("Please input the Category name :",
-                    textAlign: TextAlign.start,
-                    style: (TextStyle(
-                        fontFamily: "Segoe UI",
-                        color: Color(0xFF666666),
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold))),
-              ),
-              Card(
-                elevation: 0,
-                margin: EdgeInsets.only(left: 20, right: 20),
-                child: TextField(
-                    controller: controller,
-                    cursorColor: Color(0xFFFFCC00),
-                    textAlignVertical: TextAlignVertical.bottom,
-                    style: TextStyle(
-                        color: Color(0xFF666666),
-                        fontFamily: "Segoe UI",
-                        fontSize: 20),
-                    decoration: InputDecoration(
-                      filled: false,
-                      hintText: "new category",
-                      hintStyle: TextStyle(
-                          color: Color(0xFF666666),
-                          fontFamily: "Segoe UI",
-                          fontSize: 20),
-                    )),
-              ),
-              SizedBox(height: 10),
-              Container(
-                alignment: AlignmentDirectional.bottomCenter,
-                child: FlatButton(
-                  onPressed: () {
-                    addCategory(); // To close the dialog
-                  },
-                  child: Text("OK",
-                      textAlign: TextAlign.center,
-                      style: (TextStyle(
-                          fontFamily: "Segoe UI",
-                          color: Color(0xFFE24C4B),
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold))),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Stack(
-          alignment: AlignmentDirectional.topEnd,
-          children: <Widget>[
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 2.4 / 15,
-              margin: EdgeInsets.only(left: 25, right: 25, top: 20),
-              alignment: AlignmentDirectional.topStart,
-              decoration: new BoxDecoration(
-                  color: Color(0xffFFCC00),
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30),
-                      topRight: Radius.circular(30))),
-              child: Stack(
-                alignment: AlignmentDirectional.bottomStart,
-                children: <Widget>[
-                  Container(
-                      margin: EdgeInsets.only(left: 20, bottom: 25),
-                      width: 150,
-                      height: 10,
-                      decoration: BoxDecoration(boxShadow: [
-                        BoxShadow(
-                            color: Color(0xffF2ECD5),
-                            offset: Offset(2, 2),
-                            blurRadius: 17,
-                            spreadRadius: 5)
-                      ])),
-                  Container(
-                    margin: EdgeInsets.only(left: 15, bottom: 20),
-                    alignment: AlignmentDirectional.bottomStart,
-                    child: Text(
-                      "Add Category",
-                      textAlign: TextAlign.start,
-                      style: (TextStyle(
-                          fontFamily: "Segoe UI",
-                          color: Colors.white,
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold)),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Positioned(
-              right: 22,
-              child: Stack(
-                alignment: AlignmentDirectional.center,
-                children: <Widget>[
-                  CircleAvatar(
-                    backgroundColor: Color(0xffFFCC00),
-                    radius: 35,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        Navigator.of(context).pop();
-                      });
-                    },
-                    child: CircleAvatar(
-                      backgroundImage:
-                          AssetImage("assets/images/circle_close.png"),
-                      radius: 28,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-
-  void addCategory() {}
-
-//
-//  Widget _buildStarMenu(GlobalKey parent) {
-//    return StarMenu(
-//      key: starMenuKey,
-//      parentKey: parent,
-//      shape: MenuShape.linear,
-//      durationMs: 400,
-//      radiusX: 100,
-//      radiusY: 150,
-//      itemDelayMs: 80,
-//      radiusIncrement:80,
-//        columnsSpaceV: 10,
-//      columnsSpaceH: 10,
-//
-//      backgroundColor: Color.fromARGB(180, 0, 0, 0),
-//      animationCurve: Curves.linear,
-//      onItemPressed: (i) => {print("Item pressed: $i")},
-//      items: <Widget>[
-//        FloatingActionButton(
-//          backgroundColor: Colors.red,
-//          child: Icon(Icons.beach_access),
-//          onPressed: () {
-//            // This widget has the onPressed event and StarMenu doesn't grab its [onItemPressed].
-//            // If you want to manually close this menu, assign a
-//            // GlobalKey to it and do the following:
-//            StarMenuState sms = starMenuKey.currentState;
-//            sms.close();
-//          },
-//        ),
-//        Material(
-//          color: Colors.yellow,
-//          child: ValueListenableBuilder(
-//            // Since StarMenu is built on an overlay, it has a different context and
-//            // its [value] property should be binded to a Listenable to be updated.
-//            // The same happens for example to the [Switch] widget and others widgets
-//            // that need to be updated.
-//              valueListenable: _value,
-//              builder: (context, value, child) {
-//                return Checkbox(
-//                  value: _value.value,
-//                  onChanged: (bool b) {
-//                    setState( () => _value.value = b );
-//                  },
-//                );
-//              }
-//          ),
-//        ),
-//      ],
-//    );
-//  }
 
   Widget scoreShape() {
-    return Stack(
-      alignment: AlignmentDirectional.topCenter,
-      children: <Widget>[
-        Stack(
-          alignment: AlignmentDirectional.center,
-          children: <Widget>[
-            Container(
+    return Material(
+      color: Colors.transparent,
+      child: Stack(
+        alignment: AlignmentDirectional.topCenter,
+        children: <Widget>[
+          Stack(
+            alignment: AlignmentDirectional.center,
+            children: <Widget>[
+              Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height / 2 + 30,
                 margin: EdgeInsets.only(top: 30, left: 15, right: 15),
@@ -586,68 +354,232 @@ class _HomeScreen extends State<HomeScreen> {
                       offset: const Offset(0.0, 10.0),
                     ),
                   ],
-                )),
-            Column(
-              children: <Widget>[
-                Stack(
-                  alignment: AlignmentDirectional.bottomCenter,
-                  children: <Widget>[
-                    Container(
-                      child: SvgPicture.asset("assets/images/score_stars.svg"),
-                    ),
-                    Container(
-                      child: SvgPicture.asset("assets/images/score_value.svg"),
-                    ),
-                  ],
                 ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  margin: EdgeInsets.only(left: 25, right: 25),
-                  height: 55,
-                  decoration: new BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(25),
-                    border: Border.all(color: Color(0xff9966FF), width: 4),
+                child: Center(
+                  child: Wrap(
+                    children: <Widget>[
+                      Stack(
+                        alignment: AlignmentDirectional.bottomCenter,
+                        children: <Widget>[
+                          Container(
+                            child:
+                                SvgPicture.asset("assets/images/score_stars.svg"),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(bottom: 25),
+                            child: Stack(
+                              alignment: AlignmentDirectional.center,
+                              children: <Widget>[
+                                SvgPicture.asset("assets/images/score_value.svg"),
+                                Container(
+                                  margin: EdgeInsets.only(bottom: 5),
+                                  child: Text(
+                                    score.toString(),
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontFamily: "Segoe UI",
+                                        fontSize: 20,
+                                        color: Color(0xffFE5F5F)),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        margin: EdgeInsets.only(left: 25, right: 25),
+                        height: 55,
+                        decoration: new BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.circular(25),
+                          border: Border.all(color: Color(0xff9966FF), width: 4),
+                        ),
+
+                        child: Row(
+                          children: <Widget>[
+                            Container(
+                              width: MediaQuery.of(context).size.width/4,
+                              margin: EdgeInsets.only(left: 5 , right: 5),
+                              child: Text(
+                                "Arrangement",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontFamily: "Segoe UI",
+                                    fontSize: 12,
+                                    color: Color(0xffFE5F5F)),
+                              ),
+                            ),
+
+                            VerticalDivider(
+                              width: 2,
+                              thickness: 1.5,
+                              color:Color(0xffC3B8D9),
+
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width/7,
+                              margin: EdgeInsets.only(left: 5 , right: 5),
+                              child: Text(
+                                "Tasks",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontFamily: "Segoe UI",
+                                    fontSize: 12,
+                                    color: Color(0xffFE5F5F)),
+                              ),
+                            ),
+
+                            VerticalDivider(
+                              width: 2,
+                              thickness: 1.5,
+                              color:Color(0xffC3B8D9),
+
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width/6,
+                              margin: EdgeInsets.only(left: 5 , right: 5),
+                              child: Text(
+                                "Frinds",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontFamily: "Segoe UI",
+                                    fontSize: 12,
+                                    color: Color(0xffFE5F5F)),
+                              ),
+                            ),
+
+
+
+                          ],
+                        ),
+                      ),
+                      Stack(
+                        alignment: AlignmentDirectional.center,
+                        children: <Widget>[
+                          SvgPicture.asset("assets/images/sore_items.svg"),
+
+                          Wrap(
+                            children: <Widget>[
+                              Container(
+                                decoration: new BoxDecoration(
+                                  color: Color(0xffBCAAE0).withOpacity(.35),
+                                  shape: BoxShape.circle,
+                                  border: Border.all(width: 2.5 , color: Color(0xffFFCC00))
+                                ),
+                                child: CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  child: Text(
+                                    arrangment.toString(),
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontFamily: "Segoe UI",
+                                        fontSize: 20,
+                                        color: Color(0xffFE5F5F)),
+                                  ),
+                                ),
+                              ),
+
+                              Container(
+                                width: 10,
+                                margin: EdgeInsets.only(top: 5, bottom: 5),
+                                child: VerticalDivider(
+                                  width: 2,
+                                  thickness: 1.5,
+                                  color:Color(0xffC3B8D9),
+
+                                ),
+                              ),
+                              Container(
+                                decoration: new BoxDecoration(
+                                    color: Color(0xffBCAAE0).withOpacity(.35),
+                                    shape: BoxShape.circle,
+                                    border: Border.all(width: 2.5 , color: Color(0xffFFCC00))
+                                ),
+                                width: MediaQuery.of(context).size.width/7,
+                                margin: EdgeInsets.only(left: 5 , right: 5),
+                                child: CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  child: Text(
+                                    tasks.length.toString(),
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontFamily: "Segoe UI",
+                                        fontSize: 20,
+                                        color: Color(0xffFE5F5F)),
+                                  ),
+                                ),
+                              ),
+
+                              VerticalDivider(
+                                width: 2,
+                                thickness: 1.5,
+                                color:Color(0xffC3B8D9),
+
+                              ),
+                              Container(
+                                decoration: new BoxDecoration(
+                                    color: Color(0xffBCAAE0).withOpacity(.35),
+                                    shape: BoxShape.circle,
+                                    border: Border.all(width: 2.5 , color: Color(0xffFFCC00))
+                                ),
+                                width: MediaQuery.of(context).size.width/6,
+                                margin: EdgeInsets.only(left: 5 , right: 5),
+                                child: CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  child: Text(
+                                    frinds.toString(),
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontFamily: "Segoe UI",
+                                        fontSize: 20,
+                                        color: Color(0xffFE5F5F)),
+                                  ),
+                                ),
+                              ),
+
+
+
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-//verticalDivider
                 ),
-                Stack(
-                  children: <Widget>[
-                    SvgPicture.asset("assets/images/sore_items.svg"),
-                  ],
-                ),
-              ],
-            ),
-          ],
-        ),
-        Container(
-          width: MediaQuery.of(context).size.width / 2,
-          height: 65,
-          decoration: new BoxDecoration(
-            color: Colors.white,
-            shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.circular(25),
-            border: Border.all(color: Color(0xff9966FF), width: 4),
-            boxShadow: [
-              BoxShadow(
-                color: Color(0xff9966FF),
-                blurRadius: 10.0,
-                offset: const Offset(0.0, 3.0),
               ),
             ],
           ),
-          child: Center(
-            child: Text(
-              "Score",
-              style: TextStyle(
-                  fontFamily: "Segoe UI",
-                  fontSize: 30,
-                  color: Color(0xffFE5F5F)),
+          Container(
+            width: MediaQuery.of(context).size.width / 2,
+            height: 65,
+            decoration: new BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(25),
+              border: Border.all(color: Color(0xff9966FF), width: 4),
+              boxShadow: [
+                BoxShadow(
+                  color: Color(0xff9966FF),
+                  blurRadius: 10.0,
+                  offset: const Offset(0.0, 3.0),
+                ),
+              ],
             ),
-          ),
-        )
-      ],
+            child: Center(
+              child: Text(
+                "Score",
+                style: TextStyle(
+                    fontFamily: "Segoe UI",
+                    fontSize: 30,
+                    color: Color(0xffFE5F5F)),
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
