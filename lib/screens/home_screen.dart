@@ -5,7 +5,7 @@ import 'package:projectflutterapp/models/Task.dart';
 import 'package:projectflutterapp/screens/addTaskScreen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:projectflutterapp/screens/categoriesScreen.dart';
-
+import 'package:projectflutterapp/screens/friends.dart';
 import 'package:projectflutterapp/screens/task_attribute.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -288,6 +288,12 @@ class _HomeScreen extends State<HomeScreen> {
                                               "assets/images/setting.svg")),
                                     ),
                                     GestureDetector(
+                                      onTap: () {
+                                            Navigator.push(context,
+                                            MaterialPageRoute(builder: (context) {
+                                            return Friends();
+                                            }));
+                                            },
                                       child: Container(
                                           width: MediaQuery.of(context)
                                                   .size

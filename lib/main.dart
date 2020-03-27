@@ -5,6 +5,7 @@ import 'package:projectflutterapp/screens/categoriesScreen.dart';
 import 'package:projectflutterapp/screens/categoryDetailsScreen.dart';
 import 'package:projectflutterapp/screens/home_screen.dart';
 import 'package:projectflutterapp/screens/task_attribute.dart';
+import 'package:projectflutterapp/screens/friends.dart';
 
 
 import 'constants/constants.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-  home: HomeScreen(),
+      home: Friends(),
 //    routes: <String, WidgetBuilder>{
 //       HOME_SCREEN: (BuildContext context) => MyHomePage(),
 //
