@@ -222,9 +222,9 @@ class _AddNewTaskScreen extends State<AddNewTaskScreen> {
                       child: Text("Add new task",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontFamily: "Segoe UI",
-                            fontSize: 30,
-                            color: Color(0xffFFCC00),
+                            fontFamily: "segoepr",
+                            fontSize: 18,
+                            color: Colors.white,
                         fontWeight: FontWeight.bold),
 
                       )

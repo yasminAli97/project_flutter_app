@@ -1,3 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="18.29" height="18.29" viewBox="0 0 18.29 18.29">
+<svg xmlns="http://www.w3.org/2000/svg"
+    width="18.29" height="18.29"
+    viewBox="0 0 18.29 18.29">
   <path id="Icon_material-edit" data-name="Icon material-edit" d="M4.5,18.977v3.81H8.31L19.547,11.55l-3.81-3.81ZM22.493,8.6a1.012,1.012,0,0,0,0-1.433L20.116,4.793a1.012,1.012,0,0,0-1.433,0L16.824,6.653l3.81,3.81Z" transform="translate(-4.5 -4.496)" fill="#777"/>
 </svg>

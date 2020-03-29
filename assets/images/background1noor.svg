@@ -10,5 +10,7 @@
       <stop offset="1" stop-color="#d6d2de"/>
     </linearGradient>
   </defs>
-  <path id="Path_1838" data-name="Path 1838" d="M0,0H375V812H0Z" fill="url(#linear-gradient)"/>
+  <path id="Path_1838" data-name="Path 1838"
+      d="M0,0H375V812H0Z"
+      fill="url(#linear-gradient)"/>
 </svg>

@@ -77,7 +77,6 @@ flutter:
    - assets/images/yellow_catg.svg
    - assets/images/green_catg.svg
    - assets/images/mov_catg.svg
-   - assets/images/score.svg
    - assets/images/ic_middle.svg
    - assets/images/ic_friends.svg
    - assets/images/setting.svg
@@ -93,6 +92,8 @@ flutter:
    - assets/images/score_value.svg
    - assets/images/sore_items.svg
    - assets/images/bgwithout.png
+   - assets/images/champion.svg
+
 
 
 

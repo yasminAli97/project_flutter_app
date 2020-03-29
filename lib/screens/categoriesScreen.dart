@@ -16,11 +16,10 @@ class CategoriesScreen extends StatefulWidget {
 }
 
 class _CategoriesScreen extends State<CategoriesScreen> {
-
   List<Task> tasks = List<Task>();
   List<Category> categories = List<Category>();
 
-  List<String> colorImageCatg =[
+  List<String> colorImageCatg = [
     "assets/images/red_catg.svg",
     "assets/images/blue_catg.svg",
     "assets/images/yellow_catg.svg",
@@ -28,7 +27,7 @@ class _CategoriesScreen extends State<CategoriesScreen> {
     "assets/images/mov_catg.svg"
   ];
 
-  List<Color> colors =[
+  List<Color> colors = [
     Color(0xffFE5F5F),
     Color(0xff25B0FF),
     Color(0xffFFCC00),
@@ -44,66 +43,54 @@ class _CategoriesScreen extends State<CategoriesScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    categories.add(Category.withSomePar("Default",tasks));//fromdatabase
-    categories.add(Category.withSomePar("Work",tasks));
-    categories.add(Category.withSomePar("Study",tasks));
-    categories.add(Category.withSomePar("Sport",tasks));
-    categories.add(Category.withSomePar("Reading",tasks));
-    categories.add(Category.withSomePar("Sport",tasks));
-
+    categories.add(Category.withSomePar("Default", tasks)); //fromdatabase
+    categories.add(Category.withSomePar("Work", tasks));
+    categories.add(Category.withSomePar("Study", tasks));
+    categories.add(Category.withSomePar("Sport", tasks));
+    categories.add(Category.withSomePar("Reading", tasks));
+    categories.add(Category.withSomePar("Sport", tasks));
   }
 
   @override
   Widget build(BuildContext context) {
-
-
-    return Scaffold(
-
-        backgroundColor: Color(0xff9966FF),
-
-        body: SingleChildScrollView(
-          child: Container(
-
-              width: MediaQuery
-                  .of(context)
-                  .size
-                  .width,
-
-              margin: EdgeInsets.only(  bottom: 10),
-
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/background.png"),
-                  fit: BoxFit.fill,
+    return SafeArea(
+      child: Scaffold(
+          backgroundColor: Color(0xff9966FF),
+          body: SingleChildScrollView(
+            child: Container(
+                width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.only(bottom: 10),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/background.png"),
+                    fit: BoxFit.fill,
+                  ),
                 ),
-              ),
-              child:Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Container(
-                    alignment: AlignmentDirectional.topStart,
-                    child: Column(
-
-                      children: <Widget>[
-                        Row(
-                      //    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Stack(
-                              alignment: AlignmentDirectional.center,
-                              children: <Widget>[
-                                Container(
-                                  width: MediaQuery.of(context).size.width*1/4,
-                                  height: 80,
-                                  decoration: new BoxDecoration(
-                                    color: Color(0xffA57DF4),
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.only(
-                                        bottomRight: Radius.circular(50),
-                                        bottomLeft: Radius.circular(0),
-                                        topLeft: Radius.circular(0),
-                                        topRight: Radius.circular(0)
-
-                                    ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    Container(
+                      alignment: AlignmentDirectional.topStart,
+                      child: Column(
+                        children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Stack(
+                                alignment: AlignmentDirectional.center,
+                                children: <Widget>[
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width * 1 / 4,
+                                    height: 80,
+                                    decoration: new BoxDecoration(
+                                      color: Color(0xffA57DF4),
+                                      shape: BoxShape.rectangle,
+                                      borderRadius: BorderRadius.only(
+                                          bottomRight: Radius.circular(50),
+                                          bottomLeft: Radius.circular(0),
+                                          topLeft: Radius.circular(0),
+                                          topRight: Radius.circular(0)),
 //                                      border: Border(
 //                                        right: BorderSide(
 //                                          color: Colors.white,
@@ -116,104 +103,95 @@ class _CategoriesScreen extends State<CategoriesScreen> {
 //                                        ),
 //                                      ),
 
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Color(0xffBBB4C9).withOpacity(.35),
-                                        blurRadius: 15.0,
-                                        offset: const Offset(0.0, 10.0),
-                                      ),
-                                    ],
-
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color:
+                                              Color(0xffBBB4C9).withOpacity(.35),
+                                          blurRadius: 15.0,
+                                          offset: const Offset(0.0, 10.0),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-
-                                ),
-                                GestureDetector(
-                                  onTap: (){
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: Container(
-                                      width: MediaQuery.of(context).size.width*1/4,
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Container(
+                                        width: MediaQuery.of(context).size.width *
+                                            1 /
+                                            4,
+                                        height: 50,
+                                        decoration: new BoxDecoration(
+                                          color: Color(0xffAB85F6),
+                                          shape: BoxShape.rectangle,
+                                          borderRadius: BorderRadius.only(
+                                              bottomRight: Radius.circular(30)),
+                                        ),
+                                        child: SvgPicture.asset(
+                                            "assets/images/ic_back_arrow.svg")),
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: <Widget>[
+                                  Container(
+                                      width: 100,
                                       height: 50,
-                                      decoration: new BoxDecoration(
-                                        color: Color(0xffAB85F6),
-                                        shape: BoxShape.rectangle,
-                                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(30)),
-
-                                      ),
-                                      child: SvgPicture.asset("assets/images/ic_back_arrow.svg")
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
-                              children: <Widget>[
-                                Container(
-                                    width: 100,
-                                    height: 50,
-                                    alignment: AlignmentDirectional.topCenter,
-                                    child: Text("Choose Topic",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontFamily: "Segoe UI",
-                                          fontSize: 15,
-                                          color: Color(0xffFFCC00)),
-                                    )
-                                ),
-                                Stack(
-                                    alignment: AlignmentDirectional.center,
-                                    children: <Widget>[
-                                      Container(
-                                          width: 130,
-                                          height: 5,
-                                          decoration: BoxDecoration(
-
-                                              boxShadow: [
-                                                BoxShadow(
-                                                    color: Color(0xffFFCC00),
-                                                    offset: Offset(0, 2),
-                                                    blurRadius: 17,
-                                                    spreadRadius: 1
-                                                )]
-                                          )
-                                      ),
-
-                                      Wrap(
-                                        children: <Widget>[
-                                          Container(
-
-                                              alignment: AlignmentDirectional.topCenter,
-                                              child: Text("CATEGORIES",
-                                                style: TextStyle(
-                                                    fontFamily: "segoepr",
-                                                    fontSize: 22,
-                                                    color: Colors.white,
-                                                    fontWeight: FontWeight.bold
-                                                ),
-                                              )
-                                          ),
-                                        ],
-                                      )
-                                    ]
-                                ),
-
-                              ],
-                            ),
-
-                            Container(
-                              width: MediaQuery.of(context).size.width*1.2/4,
-                              height: 75,
-                              decoration: new BoxDecoration(
-                                color: Color(0xffBCAAE0).withOpacity(.35),
-                                shape: BoxShape.rectangle,
-                                borderRadius: BorderRadius.only(
-                                    bottomRight: Radius.circular(0),
-                                    bottomLeft: Radius.circular(50),
-                                    topLeft: Radius.circular(0),
-                                    topRight: Radius.circular(0)
-
-                                ),
+                                      alignment: AlignmentDirectional.topCenter,
+                                      child: Text(
+                                        "Choose Topic",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontFamily: "Segoe UI",
+                                            fontSize: 15,
+                                            color: Color(0xffFFCC00)),
+                                      )),
+                                  Stack(
+                                      alignment: AlignmentDirectional.center,
+                                      children: <Widget>[
+                                        Container(
+                                            width: 130,
+                                            height: 5,
+                                            decoration: BoxDecoration(boxShadow: [
+                                              BoxShadow(
+                                                  color: Color(0xffFFCC00),
+                                                  offset: Offset(0, 2),
+                                                  blurRadius: 17,
+                                                  spreadRadius: 1)
+                                            ])),
+                                        Wrap(
+                                          children: <Widget>[
+                                            Container(
+                                                alignment: AlignmentDirectional
+                                                    .topCenter,
+                                                child: Text(
+                                                  "CATEGORIES",
+                                                  style: TextStyle(
+                                                      fontFamily: "segoepr",
+                                                      fontSize: 22,
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                )),
+                                          ],
+                                        )
+                                      ]),
+                                ],
+                              ),
+                              Container(
+                                width:
+                                    MediaQuery.of(context).size.width * 1.2 / 4,
+                                height: 75,
+                                decoration: new BoxDecoration(
+                                  color: Color(0xffBCAAE0).withOpacity(.35),
+                                  shape: BoxShape.rectangle,
+                                  borderRadius: BorderRadius.only(
+                                      bottomRight: Radius.circular(0),
+                                      bottomLeft: Radius.circular(50),
+                                      topLeft: Radius.circular(0),
+                                      topRight: Radius.circular(0)),
 //                              boxShadow: [
 //                                BoxShadow(
 //                                  color: Color(0xffBBB4C9).withOpacity(.35),
@@ -221,26 +199,26 @@ class _CategoriesScreen extends State<CategoriesScreen> {
 //                                  offset: const Offset(0.0, 10.0),
 //                                ),
 //                              ],
-
-                              ),
-                              child: GestureDetector(
-                                onTap: (){
-                                  showDialog(context: context,
-                                      builder: (_) => showAlert());
-                                },
-                                child: Container(
-                                  width: MediaQuery.of(context).size.width*1.6/4,
-                                  height: 80,
-                                  decoration: new BoxDecoration(
-                                    color: Color(0xffBCAAE0).withOpacity(.35),
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.only(
-                                        bottomRight: Radius.circular(0),
-                                        bottomLeft: Radius.circular(50),
-                                        topLeft: Radius.circular(0),
-                                        topRight: Radius.circular(0)
-
-                                    ),
+                                ),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    showDialog(
+                                        context: context,
+                                        builder: (_) => showAlert());
+                                  },
+                                  child: Container(
+                                    width: MediaQuery.of(context).size.width *
+                                        1.6 /
+                                        4,
+                                    height: 80,
+                                    decoration: new BoxDecoration(
+                                      color: Color(0xffBCAAE0).withOpacity(.35),
+                                      shape: BoxShape.rectangle,
+                                      borderRadius: BorderRadius.only(
+                                          bottomRight: Radius.circular(0),
+                                          bottomLeft: Radius.circular(50),
+                                          topLeft: Radius.circular(0),
+                                          topRight: Radius.circular(0)),
 //                                      border: Border(
 //                                        right: BorderSide(
 //                                          color: Colors.white,
@@ -253,194 +231,196 @@ class _CategoriesScreen extends State<CategoriesScreen> {
 //                                        ),
 //
 //                                      ),
+                                    ),
+                                    child: SvgPicture.asset(
+                                      "assets/images/ic_plus.svg",
+                                      height: 10,
+                                      width: 10,
+                                    ),
                                   ),
-                                  child: SvgPicture.asset(
-                                    "assets/images/ic_plus.svg",
-                                    height: 10,width: 10,),
-
                                 ),
-                              ) ,
-
-                            ),
-                          ],
-                        ),
-
-                        SizedBox(height: 20),
-
-                        Container(
-                          width: MediaQuery.of(context).size.width,
-                          margin: EdgeInsets.only(left: 30,right: 30),
-                          height: 40,
-                          decoration: BoxDecoration(
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 20),
+                          Container(
+                            width: MediaQuery.of(context).size.width,
+                            margin: EdgeInsets.only(left: 30, right: 30),
+                            height: 40,
+                            decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30.0),
                               border: Border.all(
-                            color: Color(0xFFD5D5D5),
-                                width: 1.5
-                          ),
-
-                          ),
-
-                          child: new TextField(
-                            controller: _searchQuery,
-                            textAlign: TextAlign.start,
-                            style: new TextStyle(
-                              color: Color(0xFFD5D5D5),
+                                  color: Color(0xFFD5D5D5), width: 1.5),
                             ),
-                            cursorColor:Color(0xFFD5D5D5) ,
-                            decoration: InputDecoration(
-                           //   border: InputBorder(),
-                              hintText: "Search",
-                              hintStyle: TextStyle(
-                                    fontFamily: "segoepr",
-                                    fontSize: 12,
-                                    color: Color(0xFFD5D5D5),
-
-                                ),
-
-                              prefix: Icon(Icons.search,color: Color(0xFFD5D5D5)),
-                              filled: true,
-                              fillColor: Colors.transparent,
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.transparent),
-                              ),
-
-                              focusedBorder:OutlineInputBorder(
-
-                                  borderSide: const BorderSide(color: Colors.transparent),
-                                  borderRadius:const BorderRadius.all(
-                                    const Radius.circular(30),
+                            child: Stack(
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 20,top: 5),
+                                  child: Icon(Icons.search , color: Color(0xFFD5D5D5)
                                   ),
+                                ),
+                                 Padding(
+                                   padding: const EdgeInsets.only(left: 35,top: 16),
+                                   child: TextField(
+                                    controller: _searchQuery,
+                                    textAlign: TextAlign.start,
+                                    style: new TextStyle(
+                                      color: Color(0xFFD5D5D5),
+                                    ),
+                                    cursorColor: Color(0xFFD5D5D5),
+                                    decoration: InputDecoration(
+                                      //   border: InputBorder(),
+                                      hintText: " Search",
+                                      hintStyle: TextStyle(
+                                        fontFamily: "segoepr",
+                                        fontSize: 12,
+                                        color: Color(0xFFD5D5D5),
+                                      ),
 
-                              ),
+//                                  prefix:
+//                                      Icon(Icons.search, color: Color(0xFFD5D5D5)),
+                                      filled: true,
+                                      fillColor: Colors.transparent,
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.transparent),
+                                      ),
+
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide:
+                                            const BorderSide(color: Colors.transparent),
+                                        borderRadius: const BorderRadius.all(
+                                          const Radius.circular(30),
+                                        ),
+                                      ),
+                                    ),
+                                ),
+                                 ),
+                              ],
                             ),
-
                           ),
-                        ),
-
-
-                        ListView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: categories.length,
-                            scrollDirection: Axis.vertical,
-                            shrinkWrap: true,
-                            itemBuilder: (context, index){
-                              return
-                                GestureDetector(
-                                  onTap: (){
-                                    Navigator.push(context, MaterialPageRoute(builder: (context){
+                          ListView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: categories.length,
+                              scrollDirection: Axis.vertical,
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) {
                                       return CategoryDetails(categories[index]);
                                     }));
-
                                   },
                                   child: Center(
                                     child: Slidable(
                                       actionPane: SlidableDrawerActionPane(),
-                                      actionExtentRatio: 1/7 ,
-
+                                      actionExtentRatio: 1 / 7,
                                       secondaryActions: <Widget>[
                                         IconSlideAction(
                                           color: Colors.transparent,
                                           onTap: () {
-                                            showDialog(context: context,
+                                            showDialog(
+                                                context: context,
                                                 builder: (_) => showEditAlert());
-                                          }  ,
+                                          },
                                           iconWidget: mySlider(),
                                         )
                                       ],
                                       child: Stack(
-                                           alignment: AlignmentDirectional.centerStart,
-                                          children: <Widget>[
-                                               Container(
-                                               height: 53,
-                                                   width: MediaQuery.of(context).size.width*4/5,
-                                                    // margin: EdgeInsets.only(left: 30,right: 30),
-                                                      child: CustomPaint(
-                                                      painter: Chevron(),
-                                                         child: Center(
-                                                           child: Text(categories[index].title,
-                                                          textAlign: TextAlign.center,
-                                                                style: TextStyle(
-                                                           fontFamily: "Segoe UI",
-                                                            fontSize: 20,
-                                                                  color: colors[index%5],
-                                                           fontWeight: FontWeight.bold),
-                                                             ),
-
-                                                            ),
-                                                         ),
-                                                        ),
-
-                                                     Container(
-                                                       height: 75,
-                                                         child: SvgPicture.asset(colorImageCatg[index%5])),
-                          ],
-                        ),
+                                        alignment:
+                                            AlignmentDirectional.centerStart,
+                                        children: <Widget>[
+                                          Container(
+                                            height: 52,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                4 /
+                                                5,
+                                            // margin: EdgeInsets.only(left: 30,right: 30),
+                                            child: CustomPaint(
+                                              painter: Chevron(),
+                                              child: Center(
+                                                child: Text(
+                                                  categories[index].title,
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      fontFamily: "Segoe UI",
+                                                      fontSize: 20,
+                                                      color: colors[index % 5],
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                              margin: EdgeInsetsDirectional.only(
+                                                  top: 5),
+                                              child: SvgPicture.asset(
+                                                  colorImageCatg[index % 5])),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 );
-                            }
-                        ),
-
-                      ],
-
+                              }),
+                        ],
+                      ),
                     ),
-                  ),
-
-                  Container(
-                      alignment: AlignmentDirectional.topStart,
-                      child: Text("Categories with Friends",
-                        style: TextStyle(
-                            fontFamily: "segoepr",
-                            fontSize: 22,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold
-                        ),
-                      )
-                  ),
-
-                  ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: categories.length,
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      itemBuilder: (context, index){
-                        return
-                          Center(
+                    Container(
+                      margin: EdgeInsetsDirectional.only(start: 20),
+                        alignment: AlignmentDirectional.topStart,
+                        child: Text(
+                          "Categories with Friends",
+                          style: TextStyle(
+                              fontFamily: "segoepr",
+                              fontSize: 22,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        )),
+                    ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: categories.length,
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          return Center(
                             child: Stack(
                               alignment: AlignmentDirectional.centerStart,
                               children: <Widget>[
                                 Container(
-                                  height: 55,
-                                  width: MediaQuery.of(context).size.width*4/5,
+                                  height: 52,
+                                  width:
+                                      MediaQuery.of(context).size.width * 4 / 5,
                                   // margin: EdgeInsets.only(left: 30,right: 30),
                                   child: CustomPaint(
                                     painter: Chevron(),
                                     child: Center(
-                                      child: Text(categories[index].title,
+                                      child: Text(
+                                        categories[index].title,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             fontFamily: "Segoe UI",
                                             fontSize: 20,
-                                            color: colors[index%5],
+                                            color: colors[index % 5],
                                             fontWeight: FontWeight.bold),
                                       ),
-
                                     ),
                                   ),
                                 ),
-
-                                SvgPicture.asset(colorImageCatg[index%5]),
+                                Container(
+                                    margin: EdgeInsetsDirectional.only(top: 5),
+                                    child: SvgPicture.asset(
+                                        colorImageCatg[index % 5])),
                               ],
                             ),
                           );
-                      }
-                  ),
-
-
-                ],
-              )
-          ),
-        )
+                        }),
+                  ],
+                )),
+          )),
     );
   }
 
@@ -451,12 +431,15 @@ class _CategoriesScreen extends State<CategoriesScreen> {
         child: Stack(
           alignment: AlignmentDirectional.topStart,
           children: <Widget>[
-
             Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height*2.1/5,
-              padding: EdgeInsets.only(top:10, left: 15, right: 15,),
-              margin: EdgeInsets.only(left: 25, right: 25,top: 20),
+              height: MediaQuery.of(context).size.height * 2.1 / 5,
+              padding: EdgeInsets.only(
+                top: 10,
+                left: 15,
+                right: 15,
+              ),
+              margin: EdgeInsets.only(left: 25, right: 25, top: 20),
               decoration: new BoxDecoration(
                 color: Colors.white,
                 shape: BoxShape.rectangle,
@@ -472,64 +455,52 @@ class _CategoriesScreen extends State<CategoriesScreen> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-
                   Container(
-                    margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*2.6/15),
-                   // alignment: AlignmentDirectional.center,
-                    child: Text(
-                        "Please input the Category name :",
+                    margin: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height * 2.6 / 15),
+                    // alignment: AlignmentDirectional.center,
+                    child: Text("Please input the Category name :",
                         textAlign: TextAlign.start,
                         style: (TextStyle(
                             fontFamily: "Segoe UI",
-                            color:  Color(0xFF666666),
+                            color: Color(0xFF666666),
                             fontSize: 18,
-                            fontWeight: FontWeight.bold
-                        )
-                        )
-                    ),
+                            fontWeight: FontWeight.bold))),
                   ),
                   Card(
                     elevation: 0,
-                    margin: EdgeInsets.only(left: 20,right: 20),
+                    margin: EdgeInsets.only(left: 20, right: 20),
                     child: TextField(
-                      controller: controller,
-                      cursorColor: Color(0xFFFFCC00),
-                      textAlignVertical: TextAlignVertical.bottom,
-                      style: TextStyle(
-                          color: Color(0xFF666666),
-                          fontFamily: "Segoe UI",
-                          fontSize:20 ),
-                      decoration: InputDecoration(
-                        filled: false,
-                        hintText: "new category",
-                        hintStyle: TextStyle(
+                        controller: controller,
+                        cursorColor: Color(0xFFFFCC00),
+                        textAlignVertical: TextAlignVertical.bottom,
+                        style: TextStyle(
                             color: Color(0xFF666666),
                             fontFamily: "Segoe UI",
-                            fontSize:20 ),
-
-                      )
-
-                    ),
+                            fontSize: 20),
+                        decoration: InputDecoration(
+                          filled: false,
+                          hintText: "new category",
+                          hintStyle: TextStyle(
+                              color: Color(0xFF666666),
+                              fontFamily: "Segoe UI",
+                              fontSize: 20),
+                        )),
                   ),
                   SizedBox(height: 10),
                   Container(
                     alignment: AlignmentDirectional.bottomCenter,
                     child: FlatButton(
                       onPressed: () {
-
                         addCategory(); // To close the dialog
                       },
                       child: Text("OK",
                           textAlign: TextAlign.center,
                           style: (TextStyle(
                               fontFamily: "Segoe UI",
-                              color:  Color(0xFFE24C4B),
+                              color: Color(0xFFE24C4B),
                               fontSize: 25,
-                              fontWeight: FontWeight.bold
-                          )
-                          )),
-
-
+                              fontWeight: FontWeight.bold))),
                     ),
                   ),
                 ],
@@ -538,10 +509,9 @@ class _CategoriesScreen extends State<CategoriesScreen> {
             Stack(
               alignment: AlignmentDirectional.topEnd,
               children: <Widget>[
-
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height*2.4/15,
+                  height: MediaQuery.of(context).size.height * 2.4 / 15,
                   margin: EdgeInsets.only(left: 25, right: 25, top: 20),
                   alignment: AlignmentDirectional.topStart,
                   decoration: new BoxDecoration(
@@ -549,8 +519,7 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                       shape: BoxShape.rectangle,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(30),
-                          topRight: Radius.circular(30))
-                  ),
+                          topRight: Radius.circular(30))),
                   child: Stack(
                     alignment: AlignmentDirectional.bottomStart,
                     children: <Widget>[
@@ -558,34 +527,28 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                           margin: EdgeInsets.only(left: 20, bottom: 25),
                           width: 150,
                           height: 10,
-                          decoration: BoxDecoration(
-
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Color(0xffF2ECD5),
-                                    offset: Offset(2, 2),
-                                    blurRadius: 17,
-                                    spreadRadius: 5
-                                )]
-                          )
-                      ),
+                          decoration: BoxDecoration(boxShadow: [
+                            BoxShadow(
+                                color: Color(0xffF2ECD5),
+                                offset: Offset(2, 2),
+                                blurRadius: 17,
+                                spreadRadius: 5)
+                          ])),
                       Container(
                         margin: EdgeInsets.only(left: 15, bottom: 20),
                         alignment: AlignmentDirectional.bottomStart,
-                        child: Text("Add Category",
+                        child: Text(
+                          "Add Category",
                           textAlign: TextAlign.start,
                           style: (TextStyle(
                               fontFamily: "Segoe UI",
-                              color:  Colors.white,
+                              color: Colors.white,
                               fontSize: 25,
-                              fontWeight: FontWeight.bold
-                          )
-                          ),
+                              fontWeight: FontWeight.bold)),
                         ),
                       ),
                     ],
                   ),
-
                 ),
                 Positioned(
                   right: 22,
@@ -595,20 +558,17 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                       CircleAvatar(
                         backgroundColor: Color(0xffFFCC00),
                         radius: 35,
-
                       ),
                       GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           setState(() {
                             Navigator.of(context).pop();
                           });
-
                         },
                         child: CircleAvatar(
-                          backgroundImage: AssetImage("assets/images/circle_close.png"),
-
+                          backgroundImage:
+                              AssetImage("assets/images/circle_close.png"),
                           radius: 28,
-
                         ),
                       ),
                     ],
@@ -620,46 +580,44 @@ class _CategoriesScreen extends State<CategoriesScreen> {
         ),
       ),
     );
-
-
   }
 
   void addCategory() {}
 
   Widget mySlider() {
-
-      return Container(
-            height: 53,
-            width: MediaQuery.of(context).size.width*2/5,
-            child:CustomPaint(
-              painter: Chevron1() ,
-              child:   Container(
-                width: 5,height: 5,
-                child: SvgPicture.asset("assets/images/ic_pen_edit.svg",
-                  width: 5,height: 5,),
-              ),
-
-            )
-
-
-        );
-
+    return Container(
+        height: 53,
+        width: MediaQuery.of(context).size.width * 2 / 5,
+        child: CustomPaint(
+          painter: Chevron1(),
+          child: Container(
+            width: 5,
+            height: 5,
+            child: SvgPicture.asset(
+              "assets/images/ic_pen_edit.svg",
+              width: 5,
+              height: 5,
+            ),
+          ),
+        ));
   }
 
   showEditAlert() {
-
     return Center(
       child: Material(
         color: Colors.transparent,
         child: Stack(
           alignment: AlignmentDirectional.topStart,
           children: <Widget>[
-
             Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height*2.1/5,
-              padding: EdgeInsets.only(top:10, left: 15, right: 15,),
-              margin: EdgeInsets.only(left: 25, right: 25,top: 20),
+              height: MediaQuery.of(context).size.height * 2.1 / 5,
+              padding: EdgeInsets.only(
+                top: 10,
+                left: 15,
+                right: 15,
+              ),
+              margin: EdgeInsets.only(left: 25, right: 25, top: 20),
               decoration: new BoxDecoration(
                 color: Colors.white,
                 shape: BoxShape.rectangle,
@@ -675,25 +633,21 @@ class _CategoriesScreen extends State<CategoriesScreen> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-
                   Container(
-                    margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*2.6/15),
+                    margin: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height * 2.6 / 15),
                     alignment: AlignmentDirectional.centerStart,
-                    child: Text(
-                        " Category name :",
+                    child: Text(" Category name :",
                         textAlign: TextAlign.start,
                         style: (TextStyle(
                             fontFamily: "Segoe UI",
-                            color:  Color(0xFF666666),
+                            color: Color(0xFF666666),
                             fontSize: 18,
-                            fontWeight: FontWeight.bold
-                        )
-                        )
-                    ),
+                            fontWeight: FontWeight.bold))),
                   ),
                   Card(
                     elevation: 0,
-                    margin: EdgeInsets.only(left: 20,right: 20),
+                    margin: EdgeInsets.only(left: 20, right: 20),
                     child: TextField(
                         controller: controller,
                         cursorColor: Color(0xFFFFCC00),
@@ -701,18 +655,15 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                         style: TextStyle(
                             color: Color(0xFF666666),
                             fontFamily: "Segoe UI",
-                            fontSize:20 ),
+                            fontSize: 20),
                         decoration: InputDecoration(
                           filled: false,
                           hintText: "new category",
                           hintStyle: TextStyle(
                               color: Color(0xFF666666),
                               fontFamily: "Segoe UI",
-                              fontSize:20 ),
-
-                        )
-
-                    ),
+                              fontSize: 20),
+                        )),
                   ),
                   SizedBox(height: 10),
                   Container(
@@ -722,38 +673,27 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                       children: <Widget>[
                         FlatButton(
                           onPressed: () {
-
                             addCategory(); // To close the dialog
                           },
                           child: Text("Delete Category",
                               textAlign: TextAlign.center,
                               style: (TextStyle(
                                   fontFamily: "Segoe UI",
-                                  color:  Color(0xFFE24C4B),
+                                  color: Color(0xFFE24C4B),
                                   fontSize: 16,
-                                  fontWeight: FontWeight.bold
-                              )
-                              )),
-
-
+                                  fontWeight: FontWeight.bold))),
                         ),
-
                         FlatButton(
                           onPressed: () {
-
                             addCategory(); // To close the dialog
                           },
                           child: Text("Save",
                               textAlign: TextAlign.center,
                               style: (TextStyle(
                                   fontFamily: "Segoe UI",
-                                  color:  Color(0xFFCCCCCC),
+                                  color: Color(0xFFCCCCCC),
                                   fontSize: 16,
-                                  fontWeight: FontWeight.bold
-                              )
-                              )),
-
-
+                                  fontWeight: FontWeight.bold))),
                         ),
                       ],
                     ),
@@ -764,10 +704,9 @@ class _CategoriesScreen extends State<CategoriesScreen> {
             Stack(
               alignment: AlignmentDirectional.topEnd,
               children: <Widget>[
-
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height*2.4/15,
+                  height: MediaQuery.of(context).size.height * 2.4 / 15,
                   margin: EdgeInsets.only(left: 25, right: 25, top: 20),
                   alignment: AlignmentDirectional.topStart,
                   decoration: new BoxDecoration(
@@ -775,8 +714,7 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                       shape: BoxShape.rectangle,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(30),
-                          topRight: Radius.circular(30))
-                  ),
+                          topRight: Radius.circular(30))),
                   child: Stack(
                     alignment: AlignmentDirectional.bottomStart,
                     children: <Widget>[
@@ -784,34 +722,28 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                           margin: EdgeInsets.only(left: 20, bottom: 25),
                           width: 150,
                           height: 10,
-                          decoration: BoxDecoration(
-
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Color(0xffF2ECD5),
-                                    offset: Offset(2, 2),
-                                    blurRadius: 17,
-                                    spreadRadius: 5
-                                )]
-                          )
-                      ),
+                          decoration: BoxDecoration(boxShadow: [
+                            BoxShadow(
+                                color: Color(0xffF2ECD5),
+                                offset: Offset(2, 2),
+                                blurRadius: 17,
+                                spreadRadius: 5)
+                          ])),
                       Container(
                         margin: EdgeInsets.only(left: 15, bottom: 20),
                         alignment: AlignmentDirectional.bottomStart,
-                        child: Text("Edit Category",
+                        child: Text(
+                          "Edit Category",
                           textAlign: TextAlign.start,
                           style: (TextStyle(
                               fontFamily: "Segoe UI",
-                              color:  Colors.white,
+                              color: Colors.white,
                               fontSize: 25,
-                              fontWeight: FontWeight.bold
-                          )
-                          ),
+                              fontWeight: FontWeight.bold)),
                         ),
                       ),
                     ],
                   ),
-
                 ),
                 Positioned(
                   right: 22,
@@ -821,20 +753,17 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                       CircleAvatar(
                         backgroundColor: Color(0xffFFCC00),
                         radius: 35,
-
                       ),
                       GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           setState(() {
                             Navigator.of(context).pop();
                           });
-
                         },
                         child: CircleAvatar(
-                          backgroundImage: AssetImage("assets/images/circle_close.png"),
-
+                          backgroundImage:
+                              AssetImage("assets/images/circle_close.png"),
                           radius: 28,
-
                         ),
                       ),
                     ],
@@ -847,27 +776,23 @@ class _CategoriesScreen extends State<CategoriesScreen> {
       ),
     );
   }
-
-
 }
-
 
 class Chevron extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-
     final Paint paint = new Paint();
     paint.color = Colors.white;
     paint.style = PaintingStyle.fill;
 
     Path path = Path();
-    path.moveTo(20, size.height/2);
-    path.lineTo(size.width/7,size.height);
-    path.lineTo(size.width*6.2/7 , size.height);
-    path.lineTo(size.width, size.height/2);
-    path.lineTo(size.width*6.2/7, 0);
-    path.lineTo(size.width/7, 0);
-    path.moveTo(size.width/2, size.height/2);
+    path.moveTo(20, size.height / 2);
+    path.lineTo(size.width / 7, size.height);
+    path.lineTo(size.width * 6.2 / 7, size.height);
+    path.lineTo(size.width, size.height / 2);
+    path.lineTo(size.width * 6.2 / 7, 0);
+    path.lineTo(size.width / 7, 0);
+    path.moveTo(size.width / 2, size.height / 2);
     path.close();
 
     canvas.drawPath(path, paint);
@@ -880,18 +805,17 @@ class Chevron extends CustomPainter {
 class Chevron1 extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-
     final Paint paint = new Paint();
     paint.color = Color(0xffDBC9FF);
     paint.style = PaintingStyle.fill;
 
     Path path = Path();
-    path.moveTo(size.width*-1, 0);
-    path.lineTo(size.width*-1,size.height);
-    path.lineTo(size.width*1.2/3 , size.height);
-    path.lineTo(size.width, size.height/2);
-    path.lineTo(size.width*1.2/3, 0);
-    path.lineTo(size.width/2, 0);
+    path.moveTo(size.width * -1, 0);
+    path.lineTo(size.width * -1, size.height);
+    path.lineTo(size.width * 1.2 / 3, size.height);
+    path.lineTo(size.width, size.height / 2);
+    path.lineTo(size.width * 1.2 / 3, 0);
+    path.lineTo(size.width / 2, 0);
     path.close();
 
     canvas.drawPath(path, paint);

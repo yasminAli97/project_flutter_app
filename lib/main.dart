@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-      home: Friends(),
+      home: HomeScreen(),
 //    routes: <String, WidgetBuilder>{
 //       HOME_SCREEN: (BuildContext context) => MyHomePage(),
 //
