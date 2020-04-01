@@ -38,7 +38,7 @@ class _HomeScreen extends State<HomeScreen> {
           Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            margin: EdgeInsets.only(bottom: 10),
+//            margin: EdgeInsets.only(bottom: 10),
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage("assets/images/background.png"),
@@ -84,12 +84,11 @@ class _HomeScreen extends State<HomeScreen> {
 //                                          width: 1.0,
 //                                        ),
 //                                      ),
-
                                   boxShadow: [
                                     BoxShadow(
                                       color: Color(0xffBBB4C9).withOpacity(.35),
                                       blurRadius: 15.0,
-                                      offset: const Offset(0.0, 10.0),
+                                      offset: const Offset(0.0, 10.0),//
                                     ),
                                   ],
                                 ),
@@ -240,6 +239,7 @@ class _HomeScreen extends State<HomeScreen> {
                             ),
                           ),
                           SizedBox(height: 20),
+// noor
                           GestureDetector(
                             onTap: () {
                               Navigator.push(context,
