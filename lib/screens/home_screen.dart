@@ -25,7 +25,7 @@ class _HomeScreen extends State<HomeScreen> {
 
   int score = 60;
 
-  int arrangment =5;
+  int arrangment = 5;
 
   int frinds = 10;
 
@@ -98,7 +98,7 @@ class _HomeScreen extends State<HomeScreen> {
                                   children: <Widget>[
                                     Container(
                                         child: SvgPicture.asset(
-                                            "assets/images/score.svg")),
+                                            "assets/images/champion.svg")),
                                     Column(
                                       children: <Widget>[
                                         Container(
@@ -111,15 +111,31 @@ class _HomeScreen extends State<HomeScreen> {
                                             ),
                                           ),
                                         ),
-                                        Container(
-                                          child: Text(
-                                            score.toString(),
-                                            style: TextStyle(
-                                              fontFamily: "Segoe UI",
-                                              fontSize: 20,
-                                              color: Color(0xffFFCC00),
+                                        Stack(
+                                          alignment: AlignmentDirectional.center,
+                                          children: <Widget>[
+                                            Container(
+                                                width: 30,
+                                                height: 5,
+                                                decoration: BoxDecoration(boxShadow: [
+                                                  BoxShadow(
+                                                      color: Color(0xffFFCC00),
+                                                      offset: Offset(0, 2),
+                                                      blurRadius: 17,
+                                                      spreadRadius: 1)
+                                                ])),
+                                            Container(
+                                              child: Text(
+                                                score.toString(),
+                                                style: TextStyle(
+                                                  fontFamily: "Segoe UI",
+                                                  fontSize: 20,
+                                                  color: Color(0xffFFCC00),
+                                                  fontWeight: FontWeight.bold
+                                                ),
+                                              ),
                                             ),
-                                          ),
+                                          ],
                                         ),
                                       ],
                                     )
@@ -152,8 +168,8 @@ class _HomeScreen extends State<HomeScreen> {
                             onTap: () {
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (context) {
-                                    return AddNewTaskScreen();
-                                  }));
+                                return AddNewTaskScreen();
+                              }));
                             },
                             child: Container(
                               width:
@@ -203,39 +219,49 @@ class _HomeScreen extends State<HomeScreen> {
                               border: Border.all(
                                   color: Color(0xFFD5D5D5), width: 1.5),
                             ),
-                            child: new TextField(
-                              controller: _searchQuery,
-                              textAlign: TextAlign.start,
-                              style: new TextStyle(
-                                color: Color(0xFFD5D5D5),
-                              ),
-                              cursorColor: Color(0xFFD5D5D5),
-                              decoration: InputDecoration(
-                                //   border: InputBorder(),
-                                hintText: "Search",
-                                hintStyle: TextStyle(
-                                  fontFamily: "segoepr",
-                                  fontSize: 12,
-                                  color: Color(0xFFD5D5D5),
-                                ),
-
-                                prefix: Icon(Icons.search,
-                                    color: Color(0xFFD5D5D5)),
-                                filled: true,
-                                fillColor: Colors.transparent,
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Colors.transparent),
-                                ),
-
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      color: Colors.transparent),
-                                  borderRadius: const BorderRadius.all(
-                                    const Radius.circular(30),
+                            child:  Stack(
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 20,top: 5),
+                                  child: Icon(Icons.search , color: Color(0xFFD5D5D5)
                                   ),
                                 ),
-                              ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 35,top: 16),
+                                  child: TextField(
+                                    controller: _searchQuery,
+                                    textAlign: TextAlign.start,
+                                    style: new TextStyle(
+                                      color: Color(0xFFD5D5D5),
+                                    ),
+                                    cursorColor: Color(0xFFD5D5D5),
+                                    decoration: InputDecoration(
+                                      //   border: InputBorder(),
+                                      hintText: "Search",
+                                      hintStyle: TextStyle(
+                                        fontFamily: "segoepr",
+                                        fontSize: 12,
+                                        color: Color(0xFFD5D5D5),
+                                      ),
+
+                                      filled: true,
+                                      fillColor: Colors.transparent,
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.transparent),
+                                      ),
+
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                            color: Colors.transparent),
+                                        borderRadius: const BorderRadius.all(
+                                          const Radius.circular(30),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                           SizedBox(height: 20),
@@ -258,13 +284,28 @@ class _HomeScreen extends State<HomeScreen> {
                                 children: <Widget>[
                                   SvgPicture.asset(
                                       "assets/images/ic_middle.svg"),
-                                  Center(
-                                    child: Text("Categories",
-                                        style: TextStyle(
-                                          fontFamily: "Segoe UI",
-                                          fontSize: 25,
-                                          color: Color(0xffFFCC00),
-                                        )),
+                                  Stack(
+                                    alignment: AlignmentDirectional.center,
+                                    children: <Widget>[
+                                      Container(
+                                          width: 130,
+                                          height: 5,
+                                          decoration: BoxDecoration(boxShadow: [
+                                            BoxShadow(
+                                                color: Color(0xffFFCC00),
+                                                offset: Offset(0, 2),
+                                                blurRadius: 17,
+                                                spreadRadius: 1)
+                                          ])),
+                                      Center(
+                                        child: Text("Categories",
+                                            style: TextStyle(
+                                              fontFamily: "Segoe UI",
+                                              fontSize: 25,
+                                              color: Color(0xffFFCC00),
+                                            )),
+                                      ),
+                                    ],
                                   )
                                 ],
                               ),
@@ -289,11 +330,12 @@ class _HomeScreen extends State<HomeScreen> {
                                     ),
                                     GestureDetector(
                                       onTap: () {
-                                            Navigator.push(context,
-                                            MaterialPageRoute(builder: (context) {
-                                            return Friends();
-                                            }));
-                                            },
+                                        Navigator.push(context,
+                                            MaterialPageRoute(
+                                                builder: (context) {
+                                          return Friends();
+                                        }));
+                                      },
                                       child: Container(
                                           width: MediaQuery.of(context)
                                                   .size
@@ -334,7 +376,6 @@ class _HomeScreen extends State<HomeScreen> {
     );
   }
 
-
   Widget scoreShape() {
     return Material(
       color: Colors.transparent,
@@ -368,15 +409,16 @@ class _HomeScreen extends State<HomeScreen> {
                         alignment: AlignmentDirectional.bottomCenter,
                         children: <Widget>[
                           Container(
-                            child:
-                                SvgPicture.asset("assets/images/score_stars.svg"),
+                            child: SvgPicture.asset(
+                                "assets/images/score_stars.svg"),
                           ),
                           Container(
                             margin: EdgeInsets.only(bottom: 25),
                             child: Stack(
                               alignment: AlignmentDirectional.center,
                               children: <Widget>[
-                                SvgPicture.asset("assets/images/score_value.svg"),
+                                SvgPicture.asset(
+                                    "assets/images/score_value.svg"),
                                 Container(
                                   margin: EdgeInsets.only(bottom: 5),
                                   child: Text(
@@ -401,14 +443,14 @@ class _HomeScreen extends State<HomeScreen> {
                           color: Colors.white,
                           shape: BoxShape.rectangle,
                           borderRadius: BorderRadius.circular(25),
-                          border: Border.all(color: Color(0xff9966FF), width: 4),
+                          border:
+                              Border.all(color: Color(0xff9966FF), width: 4),
                         ),
-
                         child: Row(
                           children: <Widget>[
                             Container(
-                              width: MediaQuery.of(context).size.width/4,
-                              margin: EdgeInsets.only(left: 5 , right: 5),
+                              width: MediaQuery.of(context).size.width / 4,
+                              margin: EdgeInsets.only(left: 5, right: 5),
                               child: Text(
                                 "Arrangement",
                                 textAlign: TextAlign.center,
@@ -418,16 +460,14 @@ class _HomeScreen extends State<HomeScreen> {
                                     color: Color(0xffFE5F5F)),
                               ),
                             ),
-
                             VerticalDivider(
                               width: 2,
                               thickness: 1.5,
-                              color:Color(0xffC3B8D9),
-
+                              color: Color(0xffC3B8D9),
                             ),
                             Container(
-                              width: MediaQuery.of(context).size.width/7,
-                              margin: EdgeInsets.only(left: 5 , right: 5),
+                              width: MediaQuery.of(context).size.width / 7,
+                              margin: EdgeInsets.only(left: 5, right: 5),
                               child: Text(
                                 "Tasks",
                                 textAlign: TextAlign.center,
@@ -437,16 +477,14 @@ class _HomeScreen extends State<HomeScreen> {
                                     color: Color(0xffFE5F5F)),
                               ),
                             ),
-
                             VerticalDivider(
                               width: 2,
                               thickness: 1.5,
-                              color:Color(0xffC3B8D9),
-
+                              color: Color(0xffC3B8D9),
                             ),
                             Container(
-                              width: MediaQuery.of(context).size.width/6,
-                              margin: EdgeInsets.only(left: 5 , right: 5),
+                              width: MediaQuery.of(context).size.width / 6,
+                              margin: EdgeInsets.only(left: 5, right: 5),
                               child: Text(
                                 "Frinds",
                                 textAlign: TextAlign.center,
@@ -456,9 +494,6 @@ class _HomeScreen extends State<HomeScreen> {
                                     color: Color(0xffFE5F5F)),
                               ),
                             ),
-
-
-
                           ],
                         ),
                       ),
@@ -466,15 +501,14 @@ class _HomeScreen extends State<HomeScreen> {
                         alignment: AlignmentDirectional.center,
                         children: <Widget>[
                           SvgPicture.asset("assets/images/sore_items.svg"),
-
                           Wrap(
                             children: <Widget>[
                               Container(
                                 decoration: new BoxDecoration(
-                                  color: Color(0xffBCAAE0).withOpacity(.35),
-                                  shape: BoxShape.circle,
-                                  border: Border.all(width: 2.5 , color: Color(0xffFFCC00))
-                                ),
+                                    color: Color(0xffBCAAE0).withOpacity(.35),
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                        width: 2.5, color: Color(0xffFFCC00))),
                                 child: CircleAvatar(
                                   backgroundColor: Colors.white,
                                   child: Text(
@@ -487,25 +521,23 @@ class _HomeScreen extends State<HomeScreen> {
                                   ),
                                 ),
                               ),
-
                               Container(
                                 width: 10,
                                 margin: EdgeInsets.only(top: 5, bottom: 5),
                                 child: VerticalDivider(
                                   width: 2,
                                   thickness: 1.5,
-                                  color:Color(0xffC3B8D9),
-
+                                  color: Color(0xffC3B8D9),
                                 ),
                               ),
                               Container(
                                 decoration: new BoxDecoration(
                                     color: Color(0xffBCAAE0).withOpacity(.35),
                                     shape: BoxShape.circle,
-                                    border: Border.all(width: 2.5 , color: Color(0xffFFCC00))
-                                ),
-                                width: MediaQuery.of(context).size.width/7,
-                                margin: EdgeInsets.only(left: 5 , right: 5),
+                                    border: Border.all(
+                                        width: 2.5, color: Color(0xffFFCC00))),
+                                width: MediaQuery.of(context).size.width / 7,
+                                margin: EdgeInsets.only(left: 5, right: 5),
                                 child: CircleAvatar(
                                   backgroundColor: Colors.white,
                                   child: Text(
@@ -518,21 +550,19 @@ class _HomeScreen extends State<HomeScreen> {
                                   ),
                                 ),
                               ),
-
                               VerticalDivider(
                                 width: 2,
                                 thickness: 1.5,
-                                color:Color(0xffC3B8D9),
-
+                                color: Color(0xffC3B8D9),
                               ),
                               Container(
                                 decoration: new BoxDecoration(
                                     color: Color(0xffBCAAE0).withOpacity(.35),
                                     shape: BoxShape.circle,
-                                    border: Border.all(width: 2.5 , color: Color(0xffFFCC00))
-                                ),
-                                width: MediaQuery.of(context).size.width/6,
-                                margin: EdgeInsets.only(left: 5 , right: 5),
+                                    border: Border.all(
+                                        width: 2.5, color: Color(0xffFFCC00))),
+                                width: MediaQuery.of(context).size.width / 6,
+                                margin: EdgeInsets.only(left: 5, right: 5),
                                 child: CircleAvatar(
                                   backgroundColor: Colors.white,
                                   child: Text(
@@ -545,9 +575,6 @@ class _HomeScreen extends State<HomeScreen> {
                                   ),
                                 ),
                               ),
-
-
-
                             ],
                           ),
                         ],

@@ -267,41 +267,56 @@ class _CategoryDetails extends State<CategoryDetails> {
                                             color: Color(0xFFD5D5D5),
                                             width: 1.5),
                                       ),
-                                      child: new TextField(
-                                        controller: _searchQuery,
-                                        textAlign: TextAlign.start,
-                                        style: new TextStyle(
-                                          color: Color(0xFFD5D5D5),
-                                        ),
-                                        cursorColor: Color(0xFFD5D5D5),
-                                        decoration: InputDecoration(
-                                          //   border: InputBorder(),
-                                          hintText: "Search",
-                                          hintStyle: TextStyle(
-                                            fontFamily: "segoepr",
-                                            fontSize: 12,
-                                            color: Color(0xFFD5D5D5),
+                                      child: Stack(
+                                        children: <Widget>[
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 20, top: 5),
+                                            child: Icon(Icons.search,
+                                                color: Color(0xFFD5D5D5)),
                                           ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 35, top: 16),
+                                            child: new TextField(
+                                              controller: _searchQuery,
+                                              textAlign: TextAlign.start,
+                                              style: new TextStyle(
+                                                color: Color(0xFFD5D5D5),
+                                              ),
+                                              cursorColor: Color(0xFFD5D5D5),
+                                              decoration: InputDecoration(
+                                                //   border: InputBorder(),
+                                                hintText: "Search",
+                                                hintStyle: TextStyle(
+                                                  fontFamily: "segoepr",
+                                                  fontSize: 12,
+                                                  color: Color(0xFFD5D5D5),
+                                                ),
 
-                                          prefix: Icon(Icons.search,
-                                              color: Color(0xFFD5D5D5)),
-                                          filled: true,
-                                          fillColor: Colors.transparent,
-                                          enabledBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent),
-                                          ),
+                                                filled: true,
+                                                fillColor: Colors.transparent,
+                                                enabledBorder:
+                                                    UnderlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                      color:
+                                                          Colors.transparent),
+                                                ),
 
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
-                                                color: Colors.transparent,
-                                                width: .5),
-                                            borderRadius:
-                                                const BorderRadius.all(
-                                              const Radius.circular(30),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: const BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: .5),
+                                                  borderRadius:
+                                                      const BorderRadius.all(
+                                                    const Radius.circular(30),
+                                                  ),
+                                                ),
+                                              ),
                                             ),
                                           ),
-                                        ),
+                                        ],
                                       ),
                                     ),
                                     SizedBox(height: 10),
@@ -351,6 +366,18 @@ class _CategoryDetails extends State<CategoryDetails> {
                                     ),
                                   ],
                                 ),
+                          SizedBox(height: 15),
+                          Container(
+                              margin: EdgeInsetsDirectional.only(start: 20),
+                              alignment: AlignmentDirectional.topStart,
+                              child: Text(
+                                "Tasks with Friends",
+                                style: TextStyle(
+                                    fontFamily: "segoepr",
+                                    fontSize: 22,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              )),
                         ],
                       ),
                     ),

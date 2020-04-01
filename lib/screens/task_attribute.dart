@@ -273,154 +273,157 @@ class _TaskAttribute extends State<TaskAttribute> {
   }
 
   Widget showAlert() {
-    return Center(
-      child: Stack(
-        alignment: AlignmentDirectional.topStart,
-        children: <Widget>[
+    return Material(
+      color: Colors.transparent,
+      child: Center(
+        child: Stack(
+          alignment: AlignmentDirectional.topStart,
+          children: <Widget>[
 
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height*2.1/5,
-            padding: EdgeInsets.only(top:10, bottom: 10, left: 15, right: 15,),
-            margin: EdgeInsets.only(left: 25, right: 25,top: 20),
-            decoration: new BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.circular(30),
-              boxShadow: [
-                BoxShadow(
-                  color: Color(0xff7DE82B),
-                  blurRadius: 15.0,
-                  offset: const Offset(0.0, 10.0),
-                ),
-              ],
-            ),
-            child: Column(
-              children: <Widget>[
-
-                Container(
-                  margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*2.6/15),
-                  alignment: AlignmentDirectional.center,
-                  child: Text(
-                      "Are you sure to delete this task ?",
-                      textAlign: TextAlign.start,
-                      style: (TextStyle(
-                          fontFamily: "Segoe UI",
-                          color:  Color(0xFF666666),
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold
-                      )
-                      )
-                  ),
-                ),
-                SizedBox(height: 30),
-                Container(
-                  alignment: AlignmentDirectional.bottomCenter,
-                  child: FlatButton(
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context){
-                        return AddNewTaskScreen();
-                      }));
-                      deleteTask(); // To close the dialog
-                    },
-                    child: Text("OK",
-                        textAlign: TextAlign.center,
-                        style: (TextStyle(
-                            fontFamily: "Segoe UI",
-                            color:  Color(0xFFE24C4B),
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold
-                        )
-                        )),
-
-
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Stack(
-            alignment: AlignmentDirectional.topEnd,
-            children: <Widget>[
-
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height*2.4/15,
-                margin: EdgeInsets.only(left: 25, right: 25, top: 20),
-                alignment: AlignmentDirectional.topStart,
-                decoration: new BoxDecoration(
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height*2.1/5,
+              padding: EdgeInsets.only(top:10, bottom: 10, left: 15, right: 15,),
+              margin: EdgeInsets.only(left: 25, right: 25,top: 20),
+              decoration: new BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(30),
+                boxShadow: [
+                  BoxShadow(
                     color: Color(0xff7DE82B),
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30))
-                ),
-                child: Stack(
-                  alignment: AlignmentDirectional.bottomStart,
-                  children: <Widget>[
-                    Container(
-                        margin: EdgeInsets.only(left: 20, bottom: 25),
-                        width: 55,
-                        height: 10,
-                        decoration: BoxDecoration(
+                    blurRadius: 15.0,
+                    offset: const Offset(0.0, 10.0),
+                  ),
+                ],
+              ),
+              child: Column(
+                children: <Widget>[
 
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Color(0xffF2ECD5),
-                                  offset: Offset(2, 2),
-                                  blurRadius: 17,
-                                  spreadRadius: 10
-                              )]
-                        )
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 15, bottom: 20),
-                      alignment: AlignmentDirectional.bottomStart,
-                      child: Text("Delete",
+                  Container(
+                    margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*2.6/15),
+                    alignment: AlignmentDirectional.center,
+                    child: Text(
+                        "Are you sure to delete this task ?",
                         textAlign: TextAlign.start,
                         style: (TextStyle(
                             fontFamily: "Segoe UI",
-                            color:  Colors.white,
-                            fontSize: 25,
+                            color:  Color(0xFF666666),
+                            fontSize: 18,
                             fontWeight: FontWeight.bold
                         )
+                        )
+                    ),
+                  ),
+                  SizedBox(height: 30),
+                  Container(
+                    alignment: AlignmentDirectional.bottomCenter,
+                    child: FlatButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                          return AddNewTaskScreen();
+                        }));
+                        deleteTask(); // To close the dialog
+                      },
+                      child: Text("OK",
+                          textAlign: TextAlign.center,
+                          style: (TextStyle(
+                              fontFamily: "Segoe UI",
+                              color:  Color(0xFFE24C4B),
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold
+                          )
+                          )),
+
+
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Stack(
+              alignment: AlignmentDirectional.topEnd,
+              children: <Widget>[
+
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height*2.4/15,
+                  margin: EdgeInsets.only(left: 25, right: 25, top: 20),
+                  alignment: AlignmentDirectional.topStart,
+                  decoration: new BoxDecoration(
+                      color: Color(0xff7DE82B),
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30))
+                  ),
+                  child: Stack(
+                    alignment: AlignmentDirectional.bottomStart,
+                    children: <Widget>[
+                      Container(
+                          margin: EdgeInsets.only(left: 20, bottom: 25),
+                          width: 55,
+                          height: 10,
+                          decoration: BoxDecoration(
+
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Color(0xffF2ECD5),
+                                    offset: Offset(2, 2),
+                                    blurRadius: 17,
+                                    spreadRadius: 10
+                                )]
+                          )
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 15, bottom: 20),
+                        alignment: AlignmentDirectional.bottomStart,
+                        child: Text("Delete",
+                          textAlign: TextAlign.start,
+                          style: (TextStyle(
+                              fontFamily: "Segoe UI",
+                              color:  Colors.white,
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold
+                          )
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
+
                 ),
-
-              ),
-              Positioned(
-                right: 22,
-                child: Stack(
-                  alignment: AlignmentDirectional.center,
-                  children: <Widget>[
-                    CircleAvatar(
-                      backgroundColor: Color(0xff7DE82B),
-                      radius: 35,
-
-                    ),
-                    GestureDetector(
-                      onTap: (){
-                        setState(() {
-                          Navigator.of(context).pop();
-                        });
-
-                      },
-                      child: CircleAvatar(
-                        backgroundImage: AssetImage("assets/images/circle_close.png"),
-
-                        radius: 28,
+                Positioned(
+                  right: 22,
+                  child: Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: <Widget>[
+                      CircleAvatar(
+                        backgroundColor: Color(0xff7DE82B),
+                        radius: 35,
 
                       ),
-                    ),
-                  ],
+                      GestureDetector(
+                        onTap: (){
+                          setState(() {
+                            Navigator.of(context).pop();
+                          });
+
+                        },
+                        child: CircleAvatar(
+                          backgroundImage: AssetImage("assets/images/circle_close.png"),
+
+                          radius: 28,
+
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
 
