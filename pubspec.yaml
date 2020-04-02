@@ -17,6 +17,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  curved_navigation_bar: ^0.3.2
   flutter:
     sdk: flutter
 
@@ -48,6 +49,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+   - assets/images/Icon_people.svg
+   - assets/images/Requests.svg
+   - assets/images/Icon_awesome_hackerrank.svg
    - assets/images/backgroung1noor.png
    - assets/images/background1noor.svg
    - assets/images/background.svg
@@ -142,6 +146,20 @@ flutter:
    - family: segoepr
      fonts:
        - asset: fonts/segoepr.ttf
+   - family: MyFlutterApp
+     fonts:
+       - asset: fonts/MyFlutterApp.ttf
+   - family: AwesomeIcon
+     fonts:
+       - asset: fonts/AwesomeIcon.ttf
+
+   - family: RequestsAndFriends
+     fonts:
+       - asset: fonts/RequestsAndFriends.ttf
+
+   - family: RequestsIcon
+     fonts:
+       - asset: fonts/RequestsIcon.ttf
 
 
   #   - family: Trajan Pro
