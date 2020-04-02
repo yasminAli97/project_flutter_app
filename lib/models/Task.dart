@@ -5,6 +5,7 @@ import 'package:projectflutterapp/models/Category.dart';
 
 class Task {
 
+  int _id;
   String _title;
   DateTime _time;
   List<String> _days;
@@ -17,11 +18,18 @@ class Task {
 
   Task();
 
-  Task.withallPar(this._title, this._time, this._days, this._notes,
+  Task.withallPar(this._id,this._title, this._time, this._days, this._notes,
       this._taskComplete, this._addAlert, this._hardness, this._category);
 
-  Task.withSomePar(this._title, this._time, this._days, this._taskComplete,
+  Task.withSomePar(this._id,this._title, this._time, this._days, this._taskComplete,
       this._category);
+
+
+  int get id => _id;
+
+  set id(int value) {
+    _id = value;
+  }
 
   Category get category => _category;
 
@@ -83,6 +91,7 @@ class Task {
 
     var map = Map<String , dynamic>();
 
+    map["_id"] = this._id ;
     map["_title"]= this._title;
     map["_time"]= this._time;
     map["_days"] =this._days;
@@ -99,6 +108,7 @@ class Task {
 
   Task.fromMap( Map<String , dynamic> map){
 
+    this._id =  map["_id"] ;
     this._title = map["_title"];
     this._time =map["_time"];
     this._days = map["_days"];

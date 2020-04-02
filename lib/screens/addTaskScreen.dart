@@ -51,12 +51,12 @@ class _AddNewTaskScreen extends State<AddNewTaskScreen> {
     super.initState();
 
     tasks.add(Task());
-    categories.add(Category.withSomePar("Default",tasks));//fromdatabase
-    categories.add(Category.withSomePar("Work",tasks));
-    categories.add(Category.withSomePar("Study",tasks));
-    categories.add(Category.withSomePar("Sport",tasks));
-    categories.add(Category.withSomePar("Reading",tasks));
-    categories.add(Category.withSomePar("Sport",tasks));
+    categories.add(Category.withSomePar(0,"Default"));//fromdatabase
+    categories.add(Category.withSomePar(1,"Work"));
+    categories.add(Category.withSomePar(2,"Study"));
+    categories.add(Category.withSomePar(3,"Sport"));
+    categories.add(Category.withSomePar(4,"Reading"));
+    categories.add(Category.withSomePar(5,"Sport"));
   }
 
   @override

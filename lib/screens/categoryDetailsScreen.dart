@@ -29,7 +29,7 @@ class _CategoryDetails extends State<CategoryDetails> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    isempty = category.tasks == null ? true : false;
+   /// isempty = category.tasks == null ? true : false;
   }
 
   @override
