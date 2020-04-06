@@ -1,19 +1,22 @@
 
 
 
-import 'package:projectflutterapp/models/Task.dart';
+import 'package:flutter/cupertino.dart';
 
 class Category {
 
   int _id;
   String _title;
-  String _description;
- // List<Task> _tasks;
+  String _description = "As you like ^_^";
+  bool isPress = false ;
 
   Category();
 
-  Category.withPar(this._id ,this._title, this._description);
-  Category.withSomePar(this._id,this._title);
+  Category.withPar(this._id ,this._title, this._description );
+  Category.withTitle(this._title );
+  Category.withSomePar(this._id,this._title );
+
+
 
 
   int get id => _id;
@@ -44,6 +47,7 @@ class Category {
   Map<String , dynamic> toMap(){
 
     var map = Map<String , dynamic>();
+
     map["_id"]= this._id;
     map["_title"]= this._title;
     map["_description"]= this._description;
@@ -55,9 +59,9 @@ class Category {
 
   Category.fromMap( Map<String , dynamic> map){
 
-    this._id =  map["_id"] ;
-    this._title = map["_title"];
-    this._description =map["_description"];
+    this._id =   map["_id"] ;
+    this._title =  map["_title"];
+    this._description = map["_description"];
    // this.tasks = map["tasks"];
   }
 

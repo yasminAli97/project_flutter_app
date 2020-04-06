@@ -7,6 +7,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:projectflutterapp/screens/categoryDetailsScreen.dart';
 import 'package:projectflutterapp/screens/task_attribute.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:projectflutterapp/utility/sql_helper.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class CategoriesScreen extends StatefulWidget {
   CategoriesScreen({Key key}) : super(key: key);
@@ -17,7 +20,9 @@ class CategoriesScreen extends StatefulWidget {
 
 class _CategoriesScreen extends State<CategoriesScreen> {
   List<Task> tasks = List<Task>();
-  List<Category> categories = List<Category>();
+  Category category = Category.withTitle("") ;
+
+  final dbHelper = SQL_Helper();
 
   List<String> colorImageCatg = [
     "assets/images/red_catg.svg",
@@ -43,12 +48,8 @@ class _CategoriesScreen extends State<CategoriesScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    categories.add(Category.withSomePar(0,"Default")); //fromdatabase
-    categories.add(Category.withSomePar(1,"Work"));
-    categories.add(Category.withSomePar(2,"Study"));
-    categories.add(Category.withSomePar(3,"Sport"));
-    categories.add(Category.withSomePar(4,"Reading"));
-    categories.add(Category.withSomePar(5,"Sport"));
+    category.title ="";
+
   }
 
   @override
@@ -56,6 +57,7 @@ class _CategoriesScreen extends State<CategoriesScreen> {
     return SafeArea(
       child: Scaffold(
           backgroundColor: Color(0xff9966FF),
+
           body: SingleChildScrollView(
             child: Container(
                 width: MediaQuery.of(context).size.width,
@@ -277,8 +279,6 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                                         color: Color(0xFFD5D5D5),
                                       ),
 
-//                                  prefix:
-//                                      Icon(Icons.search, color: Color(0xFFD5D5D5)),
                                       filled: true,
                                       fillColor: Colors.transparent,
                                       enabledBorder: UnderlineInputBorder(
@@ -299,76 +299,13 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                               ],
                             ),
                           ),
-                          ListView.builder(
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: categories.length,
-                              scrollDirection: Axis.vertical,
-                              shrinkWrap: true,
-                              itemBuilder: (context, index) {
-                                return GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(context,
-                                        MaterialPageRoute(builder: (context) {
-                                      return CategoryDetails(categories[index]);
-                                    }));
-                                  },
-                                  child: Center(
-                                    child: Slidable(
-                                      actionPane: SlidableDrawerActionPane(),
-                                      actionExtentRatio: 1 / 7,
-                                      secondaryActions: <Widget>[
-                                        IconSlideAction(
-                                          color: Colors.transparent,
-                                          onTap: () {
-                                            showDialog(
-                                                context: context,
-                                                builder: (_) => showEditAlert());
-                                          },
-                                          iconWidget: mySlider(),
-                                        )
-                                      ],
-                                      child: Stack(
-                                        alignment:
-                                            AlignmentDirectional.centerStart,
-                                        children: <Widget>[
-                                          Container(
-                                            height: 52,
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                4 /
-                                                5,
-                                            // margin: EdgeInsets.only(left: 30,right: 30),
-                                            child: CustomPaint(
-                                              painter: Chevron(),
-                                              child: Center(
-                                                child: Text(
-                                                  categories[index].title,
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                      fontFamily: "Segoe UI",
-                                                      fontSize: 20,
-                                                      color: colors[index % 5],
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Container(
-                                              margin: EdgeInsetsDirectional.only(
-                                                  top: 5),
-                                              child: SvgPicture.asset(
-                                                  colorImageCatg[index % 5])),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              }),
+
                         ],
                       ),
                     ),
+
+                    getCategories(),
+
                     Container(
                       margin: EdgeInsetsDirectional.only(start: 20),
                         alignment: AlignmentDirectional.topStart,
@@ -380,47 +317,97 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                               color: Colors.white,
                               fontWeight: FontWeight.bold),
                         )),
-                    ListView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: categories.length,
-                        scrollDirection: Axis.vertical,
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          return Center(
-                            child: Stack(
-                              alignment: AlignmentDirectional.centerStart,
-                              children: <Widget>[
-                                Container(
-                                  height: 52,
-                                  width:
-                                      MediaQuery.of(context).size.width * 4 / 5,
-                                  // margin: EdgeInsets.only(left: 30,right: 30),
-                                  child: CustomPaint(
-                                    painter: Chevron(),
-                                    child: Center(
-                                      child: Text(
-                                        categories[index].title,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontFamily: "Segoe UI",
-                                            fontSize: 20,
-                                            color: colors[index % 5],
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                    margin: EdgeInsetsDirectional.only(top: 5),
-                                    child: SvgPicture.asset(
-                                        colorImageCatg[index % 5])),
-                              ],
-                            ),
-                          );
-                        }),
+
                   ],
                 )),
           )),
+    );
+  }
+
+  Widget getCategories(){
+
+    return FutureBuilder<List<Category>>(
+
+        future: dbHelper.showCategories(),
+        builder: (BuildContext context, AsyncSnapshot<List<Category>> asyncSnapshot) {
+
+
+          if (asyncSnapshot.data == null) {
+            return  Center(child: CircularProgressIndicator());
+          }
+          else {
+            return ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: asyncSnapshot.data.length,
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return CategoryDetails(asyncSnapshot.data[index]);
+                          }));
+                    },
+                    child: Center(
+                      child: Slidable(
+                        actionPane: SlidableDrawerActionPane(),
+                        actionExtentRatio: 1 / 7,
+                        secondaryActions: <Widget>[
+                          IconSlideAction(
+                            color: Colors.transparent,
+                            onTap: () {
+                              setState(() {
+                                deleteCategory(category);
+                              });
+//                              showDialog(
+//                                  context: context,
+//                                  builder: (_) => showEditAlert());
+                            },
+                            iconWidget: mySlider(),
+                          )
+                        ],
+                        child: Stack(
+                          alignment:
+                          AlignmentDirectional.centerStart,
+                          children: <Widget>[
+                            Container(
+                              height: 52,
+                              width: MediaQuery.of(context)
+                                  .size
+                                  .width *
+                                  4 /
+                                  5,
+                              // margin: EdgeInsets.only(left: 30,right: 30),
+                              child: CustomPaint(
+                                painter: Chevron(),
+                                child: Center(
+                                  child: Text(
+                                    asyncSnapshot.data[index].title,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontFamily: "Segoe UI",
+                                        fontSize: 20,
+                                        color: colors[index % 5],
+                                        fontWeight:
+                                        FontWeight.bold),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Container(
+                                margin: EdgeInsetsDirectional.only(
+                                    top: 5),
+                                child: SvgPicture.asset(
+                                    colorImageCatg[index % 5])),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                });
+          }
+        }
     );
   }
 
@@ -485,14 +472,27 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                               color: Color(0xFF666666),
                               fontFamily: "Segoe UI",
                               fontSize: 20),
-                        )),
+                        ),
+                      onSubmitted: (text){
+                          setState(() {
+                            category.title = text;
+
+
+                          });
+
+                      },
+                    ),
                   ),
                   SizedBox(height: 10),
                   Container(
                     alignment: AlignmentDirectional.bottomCenter,
                     child: FlatButton(
                       onPressed: () {
-                        addCategory(); // To close the dialog
+                        setState(() {
+                          addCategory(category);
+                        });
+
+                        // To close the dialog
                       },
                       child: Text("OK",
                           textAlign: TextAlign.center,
@@ -582,7 +582,101 @@ class _CategoriesScreen extends State<CategoriesScreen> {
     );
   }
 
-  void addCategory() {}
+  void addCategory(Category category) async{
+
+    int result = await dbHelper.insertCategory(category);
+
+    if (result == 0) {
+      Fluttertoast.showToast(
+          msg: "Category not saved",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+    } else {
+
+      Navigator.of(context).pop();
+      Fluttertoast.showToast(
+          msg: "Category has been saved successfully",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.grey,
+          textColor: Colors.black,
+          fontSize: 16.0
+      );
+
+    }
+
+  }
+
+
+  void updateCategoryTitle(Category category) async{
+
+    int result = await dbHelper.updateCategory(category);
+
+    if (result == 0) {
+      Fluttertoast.showToast(
+          msg: "Category not edit",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+    } else {
+
+      Navigator.of(context).pop();
+      Fluttertoast.showToast(
+          msg: "Category has been edited successfully",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.grey,
+          textColor: Colors.black,
+          fontSize: 16.0
+      );
+
+    }
+
+  }
+
+  void deleteCategory(Category category) async{
+
+    int result = await dbHelper.deleteCategory(category.id);
+
+    if (result == 0) {
+      Fluttertoast.showToast(
+          msg: "Category not deleted",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+    } else {
+
+      Navigator.of(context).pop();
+      Fluttertoast.showToast(
+          msg: "Category has been deleted successfully",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.grey,
+          textColor: Colors.black,
+          fontSize: 16.0
+      );
+
+    }
+
+  }
+
+
 
   Widget mySlider() {
     return Container(
@@ -663,7 +757,13 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                               color: Color(0xFF666666),
                               fontFamily: "Segoe UI",
                               fontSize: 20),
-                        )),
+                        ),
+                      onSubmitted: (text){
+                          setState(() {
+                            category.title = text;
+                          });
+                      },
+                    ),
                   ),
                   SizedBox(height: 10),
                   Container(
@@ -673,7 +773,10 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                       children: <Widget>[
                         FlatButton(
                           onPressed: () {
-                            addCategory(); // To close the dialog
+                            setState(() {
+                              deleteCategory(category);
+                            });
+
                           },
                           child: Text("Delete Category",
                               textAlign: TextAlign.center,
@@ -685,7 +788,10 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                         ),
                         FlatButton(
                           onPressed: () {
-                            addCategory(); // To close the dialog
+                            setState(() {
+                              updateCategoryTitle(category);
+                            });
+
                           },
                           child: Text("Save",
                               textAlign: TextAlign.center,

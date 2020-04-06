@@ -8,21 +8,24 @@ class Task {
   int _id;
   String _title;
   DateTime _time;
-  List<String> _days;
+  //List<String> _days;
+  String _timeInterval;
   String _notes;
   bool _taskComplete;
-  String _addAlert;
-  int _hardness;
-  Category _category;
+  bool _addAlert = true;
+  int _hardness = 1;
+  int _categoryId;
   String _image;
 
   Task();
 
-  Task.withallPar(this._id,this._title, this._time, this._days, this._notes,
-      this._taskComplete, this._addAlert, this._hardness, this._category);
+  Task.withallPar(this._id,this._title, this._time,  this._notes,
+      this._taskComplete, this._addAlert, this._hardness, this._categoryId);
 
-  Task.withSomePar(this._id,this._title, this._time, this._days, this._taskComplete,
-      this._category);
+  Task.withTitle(this._title);
+
+  Task.withSomePar(this._title, this._time, this._taskComplete,
+      this._categoryId);
 
 
   int get id => _id;
@@ -31,10 +34,10 @@ class Task {
     _id = value;
   }
 
-  Category get category => _category;
+  int get categoryId => _categoryId;
 
-  set category(Category value) {
-    _category = value;
+  set categoryId(int value) {
+    _categoryId = value;
   }
 
   int get hardness => _hardness;
@@ -49,9 +52,9 @@ class Task {
     _image = value;
   }
 
-  String get addAlert => _addAlert;
+  bool get addAlert => _addAlert;
 
-  set addAlert(String value) {
+  set addAlert(bool value) {
     _addAlert = value;
   }
 
@@ -67,11 +70,15 @@ class Task {
     _notes = value;
   }
 
-  List<String> get days => _days;
+  String get timeInterval => _timeInterval;
 
-  set days(List<String> value) {
-    _days = value;
-  }
+  set timeInterval(String value) {
+    _timeInterval = value;
+  } //  List<String> get days => _days;
+//
+//  set days(List<String> value) {
+//    _days = value;
+//  }
 
   DateTime get time => _time;
 
@@ -94,12 +101,13 @@ class Task {
     map["_id"] = this._id ;
     map["_title"]= this._title;
     map["_time"]= this._time;
-    map["_days"] =this._days;
+  //  map["_days"] =this._days;
     map["_notes"] =this._notes;
     map["_taskComplete"] =this._taskComplete;
-    map["_addAlert"] =this._addAlert;
+
+    map["_addAlert"] =this._addAlert == true ? 1:0;
     map["_hardness"] =this._hardness;
-    map["_category"] =this._category;
+    map["_category"] =this._categoryId;
 
 
     return map;
@@ -111,12 +119,12 @@ class Task {
     this._id =  map["_id"] ;
     this._title = map["_title"];
     this._time =map["_time"];
-    this._days = map["_days"];
+   // this._days = map["_days"];
     this._notes= map["_notes"] ;
     this._taskComplete= map["_taskComplete"] ;
-    this._addAlert=  map["_addAlert"];
+    this._addAlert=  map["_addAlert"]==0? false: true;
     this._hardness= map["_hardness"] ;
-    this._category = map["_category"];
+    this._categoryId = map["_category"];
 
   }
 
