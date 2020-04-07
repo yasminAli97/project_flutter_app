@@ -1,20 +1,39 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:projectflutterapp/models/Task.dart';
 import 'package:projectflutterapp/screens/addTaskScreen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:projectflutterapp/utility/sql_helper.dart';
 
 class TaskAttribute extends StatefulWidget {
-  TaskAttribute({Key key}) : super(key: key);
+  int taskId;
+
+  TaskAttribute(task);
 
   @override
-  _TaskAttribute createState() => _TaskAttribute();
+  _TaskAttribute createState() => _TaskAttribute(taskId);
 }
 
 class _TaskAttribute extends State<TaskAttribute> {
+  int taskId;
+
+  Task myTask = Task();
+
+  _TaskAttribute(taskId);
+
+  final dbHelper = SQL_Helper();
+
+  Future<Task> task ;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    task = dbHelper.getTask(taskId);
+  }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
 
         backgroundColor: Color(0xff9966FF),
@@ -31,7 +50,7 @@ class _TaskAttribute extends State<TaskAttribute> {
                     .size
                     .width,
 
-                margin: EdgeInsets.only(  bottom: 10),
+                margin: EdgeInsets.only(bottom: 10),
 
                 decoration: BoxDecoration(
                   image: DecorationImage(
@@ -39,7 +58,7 @@ class _TaskAttribute extends State<TaskAttribute> {
                     fit: BoxFit.fill,
                   ),
                 ),
-                child:Column(
+                child: Column(
                   children: <Widget>[
                     Container(
                       alignment: AlignmentDirectional.topStart,
@@ -52,7 +71,10 @@ class _TaskAttribute extends State<TaskAttribute> {
                                 alignment: AlignmentDirectional.center,
                                 children: <Widget>[
                                   Container(
-                                    width: MediaQuery.of(context).size.width*1.6/4,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width * 1.6 / 4,
                                     height: 75,
                                     decoration: new BoxDecoration(
                                       color: Color(0xffA57DF4),
@@ -78,7 +100,8 @@ class _TaskAttribute extends State<TaskAttribute> {
 
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Color(0xffBBB4C9).withOpacity(.35),
+                                          color: Color(0xffBBB4C9).withOpacity(
+                                              .35),
                                           blurRadius: 15.0,
                                           offset: const Offset(0.0, 10.0),
                                         ),
@@ -88,19 +111,24 @@ class _TaskAttribute extends State<TaskAttribute> {
 
                                   ),
                                   GestureDetector(
-                                    onTap: (){
+                                    onTap: () {
                                       Navigator.of(context).pop();
                                     },
                                     child: Container(
-                                        width: MediaQuery.of(context).size.width*1.2/4,
+                                        width: MediaQuery
+                                            .of(context)
+                                            .size
+                                            .width * 1.2 / 4,
                                         height: 50,
                                         decoration: new BoxDecoration(
                                           color: Color(0xffAB85F6),
                                           shape: BoxShape.rectangle,
-                                          borderRadius: BorderRadius.only(bottomRight: Radius.circular(30)),
+                                          borderRadius: BorderRadius.only(
+                                              bottomRight: Radius.circular(30)),
 
                                         ),
-                                        child: SvgPicture.asset("assets/images/ic_back_arrow.svg")
+                                        child: SvgPicture.asset(
+                                            "assets/images/ic_back_arrow.svg")
                                     ),
                                   ),
                                 ],
@@ -109,7 +137,7 @@ class _TaskAttribute extends State<TaskAttribute> {
                                   width: 60,
                                   height: 50,
                                   alignment: AlignmentDirectional.topCenter,
-                                  child: Text("5 points",
+                                  child: Text("5 points",//task.hardness*5
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontFamily: "Segoe UI",
@@ -119,7 +147,10 @@ class _TaskAttribute extends State<TaskAttribute> {
                               ),
 
                               Container(
-                                width: MediaQuery.of(context).size.width*1.6/4,
+                                width: MediaQuery
+                                    .of(context)
+                                    .size
+                                    .width * 1.6 / 4,
                                 height: 75,
                                 decoration: new BoxDecoration(
                                   color: Color(0xffBCAAE0).withOpacity(.35),
@@ -141,7 +172,10 @@ class _TaskAttribute extends State<TaskAttribute> {
 
                                 ),
                                 child: Container(
-                                  width: MediaQuery.of(context).size.width*1.6/4,
+                                  width: MediaQuery
+                                      .of(context)
+                                      .size
+                                      .width * 1.6 / 4,
                                   height: 75,
                                   decoration: new BoxDecoration(
                                     color: Color(0xffBCAAE0).withOpacity(.35),
@@ -166,7 +200,7 @@ class _TaskAttribute extends State<TaskAttribute> {
                                     ),
                                   ),
 
-                                ) ,
+                                ),
 
                               ),
                             ],
@@ -185,7 +219,8 @@ class _TaskAttribute extends State<TaskAttribute> {
                                               offset: Offset(0, 2),
                                               blurRadius: 17,
                                               spreadRadius: 1
-                                          )]
+                                          )
+                                        ]
                                     )
                                 ),
 
@@ -193,7 +228,7 @@ class _TaskAttribute extends State<TaskAttribute> {
                                     width: 60,
                                     height: 50,
                                     alignment: AlignmentDirectional.topCenter,
-                                    child: Text("Study",
+                                    child: Text(myTask.title,
                                       style: TextStyle(
                                           fontFamily: "Segoe UI",
                                           fontSize: 22,
@@ -208,18 +243,19 @@ class _TaskAttribute extends State<TaskAttribute> {
 
                           Container(
                               alignment: AlignmentDirectional.topStart,
-                              margin: EdgeInsets.only(left: 40,right: 20),
+                              margin: EdgeInsets.only(left: 40, right: 20),
                               child: Column(
                                 children: <Widget>[
                                   Container(
                                       alignment: AlignmentDirectional.topStart,
-                                      child: SvgPicture.asset("assets/images/ic_task.svg")
+                                      child: SvgPicture.asset(
+                                          "assets/images/ic_task.svg")
                                   ),
 
                                   SizedBox(height: 10),
                                   Row(
                                     children: <Widget>[
-                                      Text("Study",
+                                      Text(myTask.title,
                                         style: TextStyle(
                                             fontFamily: "Segoe UI",
                                             fontSize: 35,
@@ -228,7 +264,8 @@ class _TaskAttribute extends State<TaskAttribute> {
                                       SizedBox(width: 30),
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: SvgPicture.asset("assets/images/ic_check.svg"),
+                                        child: SvgPicture.asset(
+                                            "assets/images/ic_check.svg"),
                                       )
                                     ],
                                   ),
@@ -243,11 +280,12 @@ class _TaskAttribute extends State<TaskAttribute> {
                             children: <Widget>[
                               SvgPicture.asset("assets/images/edit.svg"),
                               GestureDetector(
-                                  onTap: (){
+                                  onTap: () {
                                     showDialog(context: context,
                                         builder: (_) => showAlert());
                                   },
-                                  child: SvgPicture.asset("assets/images/close.svg")),
+                                  child: SvgPicture.asset(
+                                      "assets/images/close.svg")),
                             ],
                           ),
                           SizedBox(height: 10),
@@ -257,7 +295,6 @@ class _TaskAttribute extends State<TaskAttribute> {
                           )
 
                         ],
-
 
 
                       ),
@@ -281,10 +318,17 @@ class _TaskAttribute extends State<TaskAttribute> {
           children: <Widget>[
 
             Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height*2.1/5,
-              padding: EdgeInsets.only(top:10, bottom: 10, left: 15, right: 15,),
-              margin: EdgeInsets.only(left: 25, right: 25,top: 20),
+              width: MediaQuery
+                  .of(context)
+                  .size
+                  .width,
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .height * 2.1 / 5,
+              padding: EdgeInsets.only(
+                top: 10, bottom: 10, left: 15, right: 15,),
+              margin: EdgeInsets.only(left: 25, right: 25, top: 20),
               decoration: new BoxDecoration(
                 color: Colors.white,
                 shape: BoxShape.rectangle,
@@ -301,14 +345,17 @@ class _TaskAttribute extends State<TaskAttribute> {
                 children: <Widget>[
 
                   Container(
-                    margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*2.6/15),
+                    margin: EdgeInsets.only(top: MediaQuery
+                        .of(context)
+                        .size
+                        .height * 2.6 / 15),
                     alignment: AlignmentDirectional.center,
                     child: Text(
                         "Are you sure to delete this task ?",
                         textAlign: TextAlign.start,
                         style: (TextStyle(
                             fontFamily: "Segoe UI",
-                            color:  Color(0xFF666666),
+                            color: Color(0xFF666666),
                             fontSize: 18,
                             fontWeight: FontWeight.bold
                         )
@@ -320,7 +367,8 @@ class _TaskAttribute extends State<TaskAttribute> {
                     alignment: AlignmentDirectional.bottomCenter,
                     child: FlatButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                        Navigator.push(context, MaterialPageRoute(builder: (
+                            context) {
                           return AddNewTaskScreen();
                         }));
                         deleteTask(); // To close the dialog
@@ -329,7 +377,7 @@ class _TaskAttribute extends State<TaskAttribute> {
                           textAlign: TextAlign.center,
                           style: (TextStyle(
                               fontFamily: "Segoe UI",
-                              color:  Color(0xFFE24C4B),
+                              color: Color(0xFFE24C4B),
                               fontSize: 25,
                               fontWeight: FontWeight.bold
                           )
@@ -346,8 +394,14 @@ class _TaskAttribute extends State<TaskAttribute> {
               children: <Widget>[
 
                 Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height*2.4/15,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
+                  height: MediaQuery
+                      .of(context)
+                      .size
+                      .height * 2.4 / 15,
                   margin: EdgeInsets.only(left: 25, right: 25, top: 20),
                   alignment: AlignmentDirectional.topStart,
                   decoration: new BoxDecoration(
@@ -372,7 +426,8 @@ class _TaskAttribute extends State<TaskAttribute> {
                                     offset: Offset(2, 2),
                                     blurRadius: 17,
                                     spreadRadius: 10
-                                )]
+                                )
+                              ]
                           )
                       ),
                       Container(
@@ -382,7 +437,7 @@ class _TaskAttribute extends State<TaskAttribute> {
                           textAlign: TextAlign.start,
                           style: (TextStyle(
                               fontFamily: "Segoe UI",
-                              color:  Colors.white,
+                              color: Colors.white,
                               fontSize: 25,
                               fontWeight: FontWeight.bold
                           )
@@ -404,14 +459,14 @@ class _TaskAttribute extends State<TaskAttribute> {
 
                       ),
                       GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           setState(() {
                             Navigator.of(context).pop();
                           });
-
                         },
                         child: CircleAvatar(
-                          backgroundImage: AssetImage("assets/images/circle_close.png"),
+                          backgroundImage: AssetImage(
+                              "assets/images/circle_close.png"),
 
                           radius: 28,
 
@@ -426,12 +481,21 @@ class _TaskAttribute extends State<TaskAttribute> {
         ),
       ),
     );
-
-
   }
 
+  void getTask() {
+    FutureBuilder(
+      future: task,
+      builder: (context, snapshot) {
+        if (snapshot.data == null || !snapshot.hasData) {
+          return Center(child: CircularProgressIndicator());
+        }
+        else
+          myTask = snapshot.data;
+  }
+    );
+  }
   void deleteTask() {}
-
 
 
 }
