@@ -33,6 +33,7 @@ class _CategoryDetails extends State<CategoryDetails> {
     // TODO: implement initState
     super.initState();
     tasks = dbHelper.tasksOfCategory(category.id);
+
   }
 
   @override
@@ -270,8 +271,8 @@ class _CategoryDetails extends State<CategoryDetails> {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
 
-                            int i =asyncSnapshot.data[index].id;
-                        return TaskAttribute(i);
+
+                        return TaskAttribute(asyncSnapshot.data[index]);
                       }));
                     },
                     child: Container(

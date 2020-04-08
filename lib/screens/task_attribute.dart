@@ -4,33 +4,23 @@ import 'package:projectflutterapp/models/Task.dart';
 import 'package:projectflutterapp/screens/addTaskScreen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:projectflutterapp/utility/sql_helper.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class TaskAttribute extends StatefulWidget {
-  int taskId;
+  Task task ;
 
-  TaskAttribute(task);
+  TaskAttribute(this.task);
 
   @override
-  _TaskAttribute createState() => _TaskAttribute(taskId);
+  _TaskAttribute createState() => _TaskAttribute(task);
 }
 
 class _TaskAttribute extends State<TaskAttribute> {
-  int taskId;
+  Task task ;
 
-  Task myTask = Task();
-
-  _TaskAttribute(taskId);
-
+  _TaskAttribute(this.task);
   final dbHelper = SQL_Helper();
 
-  Future<Task> task ;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    task = dbHelper.getTask(taskId);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,17 +76,17 @@ class _TaskAttribute extends State<TaskAttribute> {
                                           topRight: Radius.circular(0)
 
                                       ),
-                                      border: Border(
-                                        right: BorderSide(
-                                          color: Colors.white,
-                                          width: 1.0,
-
-                                        ),
-                                        top: BorderSide(
-                                          color: Colors.white,
-                                          width: 1.0,
-                                        ),
-                                      ),
+//                                      border: Border(
+//                                        right: BorderSide(
+//                                          color: Colors.white,
+//                                          width: 1.0,
+//
+//                                        ),
+//                                        top: BorderSide(
+//                                          color: Colors.white,
+//                                          width: 1.0,
+//                                        ),
+//                                      ),
 
                                       boxShadow: [
                                         BoxShadow(
@@ -187,17 +177,17 @@ class _TaskAttribute extends State<TaskAttribute> {
                                         topRight: Radius.circular(0)
 
                                     ),
-                                    border: Border(
-                                      right: BorderSide(
-                                        color: Colors.white,
-                                        width: 1.0,
-
-                                      ),
-                                      top: BorderSide(
-                                        color: Colors.white,
-                                        width: 1.0,
-                                      ),
-                                    ),
+//                                    border: Border(
+//                                      right: BorderSide(
+//                                        color: Colors.white,
+//                                        width: 1.0,
+//
+//                                      ),
+//                                      top: BorderSide(
+//                                        color: Colors.white,
+//                                        width: 1.0,
+//                                      ),
+//                                    ),
                                   ),
 
                                 ),
@@ -228,7 +218,7 @@ class _TaskAttribute extends State<TaskAttribute> {
                                     width: 60,
                                     height: 50,
                                     alignment: AlignmentDirectional.topCenter,
-                                    child: Text(myTask.title,
+                                    child: Text(task.title,
                                       style: TextStyle(
                                           fontFamily: "Segoe UI",
                                           fontSize: 22,
@@ -255,7 +245,7 @@ class _TaskAttribute extends State<TaskAttribute> {
                                   SizedBox(height: 10),
                                   Row(
                                     children: <Widget>[
-                                      Text(myTask.title,
+                                      Text(task.title,
                                         style: TextStyle(
                                             fontFamily: "Segoe UI",
                                             fontSize: 35,
@@ -367,11 +357,10 @@ class _TaskAttribute extends State<TaskAttribute> {
                     alignment: AlignmentDirectional.bottomCenter,
                     child: FlatButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (
-                            context) {
-                          return AddNewTaskScreen();
-                        }));
-                        deleteTask(); // To close the dialog
+                        setState(() {
+                          deleteTask(task);
+                        });
+                        // To close the dialog
                       },
                       child: Text("OK",
                           textAlign: TextAlign.center,
@@ -483,19 +472,39 @@ class _TaskAttribute extends State<TaskAttribute> {
     );
   }
 
-  void getTask() {
-    FutureBuilder(
-      future: task,
-      builder: (context, snapshot) {
-        if (snapshot.data == null || !snapshot.hasData) {
-          return Center(child: CircularProgressIndicator());
-        }
-        else
-          myTask = snapshot.data;
+
+
+    void deleteTask(Task task) async{
+
+      int result = await dbHelper.deleteTask(task.id);
+
+      if (result == 0) {
+        Fluttertoast.showToast(
+            msg: "Task not deleted",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.0
+        );
+      } else {
+
+        Navigator.of(context).pop();
+        Fluttertoast.showToast(
+            msg: "Task has been deleted successfully",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.grey,
+            textColor: Colors.black,
+            fontSize: 16.0
+        );
+        Navigator.of(context).pop();
+
+
+    }
   }
-    );
-  }
-  void deleteTask() {}
 
 
 }

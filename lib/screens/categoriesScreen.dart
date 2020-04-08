@@ -20,7 +20,7 @@ class CategoriesScreen extends StatefulWidget {
 
 class _CategoriesScreen extends State<CategoriesScreen> {
   List<Task> tasks = List<Task>();
-  Category category = Category.withTitle("") ;
+  Category category = Category() ;
 
   final dbHelper = SQL_Helper();
 
@@ -44,13 +44,6 @@ class _CategoriesScreen extends State<CategoriesScreen> {
 
   TextEditingController _searchQuery = TextEditingController();
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    category.title ="";
-
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -358,7 +351,7 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                             color: Colors.transparent,
                             onTap: () {
                               setState(() {
-                                deleteCategory(category);
+                                deleteCategory(asyncSnapshot.data[index]);
                               });
 //                              showDialog(
 //                                  context: context,

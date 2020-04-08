@@ -189,7 +189,7 @@ class SQL_Helper{
 
 
 
-  Future<int> deleteTasks(int id) async {
+  Future<int> deleteTask(int id) async {
     Database db = await sql_helper.database;
     return await db.delete(tasksTable, where: '$_taskId = ?', whereArgs: [id]);
   }
