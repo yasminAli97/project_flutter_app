@@ -38,47 +38,48 @@ class _CategoryDetails extends State<CategoryDetails> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        key: scaffoldKey,
-        backgroundColor: Color(0xff9966FF),
-        body: SingleChildScrollView(
-          child: Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.only(bottom: 10),
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/background.png"),
-                  fit: BoxFit.fill,
+    return SafeArea(
+      child: Scaffold(
+          key: scaffoldKey,
+          backgroundColor: Color(0xff9966FF),
+          body: SingleChildScrollView(
+            child: Container(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.only(bottom: 10),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/background.png"),
+                    fit: BoxFit.fill,
+                  ),
                 ),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Container(
-                    alignment: AlignmentDirectional.topStart,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: <Widget>[
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Stack(
-                              alignment: AlignmentDirectional.center,
-                              children: <Widget>[
-                                Container(
-                                  width: MediaQuery.of(context).size.width *
-                                      1.4 /
-                                      4,
-                                  height: 80,
-                                  decoration: new BoxDecoration(
-                                    color: Color(0xffA57DF4),
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.only(
-                                        bottomRight: Radius.circular(50),
-                                        bottomLeft: Radius.circular(0),
-                                        topLeft: Radius.circular(0),
-                                        topRight: Radius.circular(0)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    Container(
+                      alignment: AlignmentDirectional.topStart,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Stack(
+                                alignment: AlignmentDirectional.center,
+                                children: <Widget>[
+                                  Container(
+                                    width: MediaQuery.of(context).size.width *
+                                        1.4 /
+                                        4,
+                                    height: 80,
+                                    decoration: new BoxDecoration(
+                                      color: Color(0xffA57DF4),
+                                      shape: BoxShape.rectangle,
+                                      borderRadius: BorderRadius.only(
+                                          bottomRight: Radius.circular(50),
+                                          bottomLeft: Radius.circular(0),
+                                          topLeft: Radius.circular(0),
+                                          topRight: Radius.circular(0)),
 //                                      border: Border(
 //                                        right: BorderSide(
 //                                          color: Colors.white,
@@ -91,94 +92,100 @@ class _CategoryDetails extends State<CategoryDetails> {
 //                                        ),
 //                                      ),
 
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Color(0xffBBB4C9)
-                                            .withOpacity(.35),
-                                        blurRadius: 15.0,
-                                        offset: const Offset(0.0, 10.0),
-                                      ),
-                                    ],
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Color(0xffBBB4C9)
+                                              .withOpacity(.35),
+                                          blurRadius: 15.0,
+                                          offset: const Offset(0.0, 10.0),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: Container(
-                                      width:
-                                          MediaQuery.of(context).size.width *
-                                              1.1 /
-                                              4,
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                1.1 /
+                                                4,
+                                        height: 50,
+                                        decoration: new BoxDecoration(
+                                          color: Color(0xffAB85F6),
+                                          shape: BoxShape.rectangle,
+                                          borderRadius: BorderRadius.only(
+                                              bottomRight: Radius.circular(30)),
+                                        ),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                          children: <Widget>[
+                                            SvgPicture.asset(
+                                                "assets/images/ic_back_arrow.svg"),
+                                          ],
+                                        )),
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: <Widget>[
+                                  Container(
+                                      width: 100,
                                       height: 50,
-                                      decoration: new BoxDecoration(
-                                        color: Color(0xffAB85F6),
-                                        shape: BoxShape.rectangle,
-                                        borderRadius: BorderRadius.only(
-                                            bottomRight: Radius.circular(30)),
-                                      ),
-                                      child: SvgPicture.asset(
-                                          "assets/images/ic_back_arrow.svg")),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceEvenly,
-                              children: <Widget>[
-                                Container(
-                                    width: 100,
-                                    height: 50,
-                                    alignment: AlignmentDirectional.topCenter,
-                                    child: Text(
-                                      "Choose Topic",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontFamily: "Segoe UI",
-                                          fontSize: 15,
-                                          color: Color(0xffFFCC00)),
-                                    )),
-                                Stack(
-                                    alignment: AlignmentDirectional.center,
-                                    children: <Widget>[
-                                      Container(
-                                          width: 55,
-                                          height: 5,
-                                          decoration:
-                                              BoxDecoration(boxShadow: [
-                                            BoxShadow(
-                                                color: Color(0xffFFCC00),
-                                                offset: Offset(0, 2),
-                                                blurRadius: 17,
-                                                spreadRadius: 1)
-                                          ])),
-                                      Wrap(
-                                        children: <Widget>[
-                                          Text(
-                                            category.title,
-                                            style: TextStyle(
-                                                fontFamily: "Segoe UI",
-                                                fontSize: 22,
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ],
-                                      )
-                                    ]),
-                              ],
-                            ),
-                            Container(
-                              width:
-                                  MediaQuery.of(context).size.width * 1.4 / 4,
-                              height: 75,
-                              decoration: new BoxDecoration(
-                                color: Color(0xffBCAAE0).withOpacity(.35),
-                                shape: BoxShape.rectangle,
-                                borderRadius: BorderRadius.only(
-                                    bottomRight: Radius.circular(0),
-                                    bottomLeft: Radius.circular(50),
-                                    topLeft: Radius.circular(0),
-                                    topRight: Radius.circular(0)),
+                                      alignment: AlignmentDirectional.topCenter,
+                                      child: Text(
+                                        "Choose Topic",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontFamily: "Segoe UI",
+                                            fontSize: 15,
+                                            color: Color(0xffFFCC00)),
+                                      )),
+                                  Stack(
+                                      alignment: AlignmentDirectional.center,
+                                      children: <Widget>[
+                                        Container(
+                                            width: 55,
+                                            height: 5,
+                                            decoration:
+                                                BoxDecoration(boxShadow: [
+                                              BoxShadow(
+                                                  color: Color(0xffFFCC00),
+                                                  offset: Offset(0, 2),
+                                                  blurRadius: 17,
+                                                  spreadRadius: 1)
+                                            ])),
+                                        Wrap(
+                                          children: <Widget>[
+                                            Text(
+                                              category.title,
+                                              style: TextStyle(
+                                                  fontFamily: "Segoe UI",
+                                                  fontSize: 22,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
+                                        )
+                                      ]),
+                                ],
+                              ),
+                              Container(
+                                width:
+                                    MediaQuery.of(context).size.width * 1.4 / 4,
+                                height: 75,
+                                decoration: new BoxDecoration(
+                                  color: Color(0xffBCAAE0).withOpacity(.35),
+                                  shape: BoxShape.rectangle,
+                                  borderRadius: BorderRadius.only(
+                                      bottomRight: Radius.circular(0),
+                                      bottomLeft: Radius.circular(50),
+                                      topLeft: Radius.circular(0),
+                                      topRight: Radius.circular(0)),
 //                              boxShadow: [
 //                                BoxShadow(
 //                                  color: Color(0xffBBB4C9).withOpacity(.35),
@@ -186,27 +193,27 @@ class _CategoryDetails extends State<CategoryDetails> {
 //                                  offset: const Offset(0.0, 10.0),
 //                                ),
 //                              ],
-                              ),
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) {
-                                    return AddNewTaskScreen();
-                                  }));
-                                },
-                                child: Container(
-                                  width: MediaQuery.of(context).size.width *
-                                      1.6 /
-                                      4,
-                                  height: 80,
-                                  decoration: new BoxDecoration(
-                                    color: Color(0xffBCAAE0).withOpacity(.35),
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.only(
-                                        bottomRight: Radius.circular(0),
-                                        bottomLeft: Radius.circular(50),
-                                        topLeft: Radius.circular(0),
-                                        topRight: Radius.circular(0)),
+                                ),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) {
+                                      return AddNewTaskScreen();
+                                    }));
+                                  },
+                                  child: Container(
+                                    width: MediaQuery.of(context).size.width *
+                                        1.6 /
+                                        4,
+                                    height: 80,
+                                    decoration: new BoxDecoration(
+                                      color: Color(0xffBCAAE0).withOpacity(.35),
+                                      shape: BoxShape.rectangle,
+                                      borderRadius: BorderRadius.only(
+                                          bottomRight: Radius.circular(0),
+                                          bottomLeft: Radius.circular(50),
+                                          topLeft: Radius.circular(0),
+                                          topRight: Radius.circular(0)),
 //                                      border: Border(
 //                                        right: BorderSide(
 //                                          color: Colors.white,
@@ -219,28 +226,33 @@ class _CategoryDetails extends State<CategoryDetails> {
 //                                        ),
 //
 //                                      ),
-                                  ),
-                                  child: SvgPicture.asset(
-                                    "assets/images/ic_plus.svg",
-                                    height: 10,
-                                    width: 10,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                      children: <Widget>[
+                                        SvgPicture.asset(
+                                          "assets/images/ic_plus.svg",
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 20),
-                        isempty
-                            ? myEmptyScreen()
-                            :  myFullScreen(),
-                        SizedBox(height: 15),
-                      ],
+                            ],
+                          ),
+                          SizedBox(height: 20),
+                          isempty
+                              ? myEmptyScreen()
+                              :  myFullScreen(),
+                          SizedBox(height: 15),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              )),
-        ));
+                  ],
+                )),
+          )),
+    );
   }
 
   Widget getTasks() {

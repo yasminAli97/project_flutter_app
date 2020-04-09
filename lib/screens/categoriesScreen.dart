@@ -123,8 +123,14 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                                           borderRadius: BorderRadius.only(
                                               bottomRight: Radius.circular(30)),
                                         ),
-                                        child: SvgPicture.asset(
-                                            "assets/images/ic_back_arrow.svg")),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                          children: <Widget>[
+                                            SvgPicture.asset(
+                                                "assets/images/ic_back_arrow.svg"),
+                                          ],
+                                        )),
                                   ),
                                 ],
                               ),
@@ -227,10 +233,14 @@ class _CategoriesScreen extends State<CategoriesScreen> {
 //
 //                                      ),
                                     ),
-                                    child: SvgPicture.asset(
-                                      "assets/images/ic_plus.svg",
-                                      height: 10,
-                                      width: 10,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                      children: <Widget>[
+                                        SvgPicture.asset(
+                                          "assets/images/ic_plus.svg",
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
@@ -674,17 +684,18 @@ class _CategoriesScreen extends State<CategoriesScreen> {
   Widget mySlider() {
     return Container(
         height: 53,
-        width: MediaQuery.of(context).size.width * 2 / 5,
+        width: MediaQuery.of(context).size.width * 2.1 / 5,
+        margin: EdgeInsets.only(left: 5),
         child: CustomPaint(
           painter: Chevron1(),
-          child: Container(
-            width: 5,
-            height: 5,
-            child: SvgPicture.asset(
-              "assets/images/ic_pen_edit.svg",
-              width: 5,
-              height: 5,
-            ),
+          child: Row(
+            mainAxisAlignment:
+            MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              SvgPicture.asset(
+                "assets/images/ic_pen_edit.svg",
+              ),
+            ],
           ),
         ));
   }
