@@ -8,7 +8,9 @@ class Category {
   int _id;
   String _title;
   String _description = "As you like ^_^";
-  bool isPress = false ;
+
+
+ bool isPress = false ;
 
   Category();
 

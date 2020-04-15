@@ -20,7 +20,7 @@ class CategoriesScreen extends StatefulWidget {
 
 class _CategoriesScreen extends State<CategoriesScreen> {
   List<Task> tasks = List<Task>();
-  Category category = Category() ;
+  Category category = Category();
 
   final dbHelper = SQL_Helper();
 
@@ -44,17 +44,15 @@ class _CategoriesScreen extends State<CategoriesScreen> {
 
   TextEditingController _searchQuery = TextEditingController();
 
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
           backgroundColor: Color(0xff9966FF),
-
           body: SingleChildScrollView(
             child: Container(
                 width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.only(bottom: 10),
+                //height:  MediaQuery.of(context).size.height,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage("assets/images/background.png"),
@@ -75,8 +73,9 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                                 alignment: AlignmentDirectional.center,
                                 children: <Widget>[
                                   Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * 1 / 4,
+                                    width: MediaQuery.of(context).size.width *
+                                        1 /
+                                        4,
                                     height: 80,
                                     decoration: new BoxDecoration(
                                       color: Color(0xffA57DF4),
@@ -100,8 +99,8 @@ class _CategoriesScreen extends State<CategoriesScreen> {
 
                                       boxShadow: [
                                         BoxShadow(
-                                          color:
-                                              Color(0xffBBB4C9).withOpacity(.35),
+                                          color: Color(0xffBBB4C9)
+                                              .withOpacity(.35),
                                           blurRadius: 15.0,
                                           offset: const Offset(0.0, 10.0),
                                         ),
@@ -113,9 +112,9 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                                       Navigator.of(context).pop();
                                     },
                                     child: Container(
-                                        width: MediaQuery.of(context).size.width *
-                                            1 /
-                                            4,
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                4,
                                         height: 50,
                                         decoration: new BoxDecoration(
                                           color: Color(0xffAB85F6),
@@ -125,7 +124,7 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                                         ),
                                         child: Row(
                                           mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
+                                              MainAxisAlignment.spaceEvenly,
                                           children: <Widget>[
                                             SvgPicture.asset(
                                                 "assets/images/ic_back_arrow.svg"),
@@ -135,7 +134,8 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                                 ],
                               ),
                               Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: <Widget>[
                                   Container(
                                       width: 100,
@@ -155,7 +155,8 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                                         Container(
                                             width: 130,
                                             height: 5,
-                                            decoration: BoxDecoration(boxShadow: [
+                                            decoration:
+                                                BoxDecoration(boxShadow: [
                                               BoxShadow(
                                                   color: Color(0xffFFCC00),
                                                   offset: Offset(0, 2),
@@ -235,7 +236,7 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                                     ),
                                     child: Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                                          MainAxisAlignment.spaceEvenly,
                                       children: <Widget>[
                                         SvgPicture.asset(
                                           "assets/images/ic_plus.svg",
@@ -260,13 +261,15 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                             child: Stack(
                               children: <Widget>[
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 20,top: 5),
-                                  child: Icon(Icons.search , color: Color(0xFFD5D5D5)
-                                  ),
+                                  padding:
+                                      const EdgeInsets.only(left: 20, top: 5),
+                                  child: Icon(Icons.search,
+                                      color: Color(0xFFD5D5D5)),
                                 ),
-                                 Padding(
-                                   padding: const EdgeInsets.only(left: 35,top: 16),
-                                   child: TextField(
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(left: 35, top: 16),
+                                  child: TextField(
                                     controller: _searchQuery,
                                     textAlign: TextAlign.start,
                                     style: new TextStyle(
@@ -285,60 +288,41 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                                       filled: true,
                                       fillColor: Colors.transparent,
                                       enabledBorder: UnderlineInputBorder(
-                                        borderSide:
-                                            BorderSide(color: Colors.transparent),
+                                        borderSide: BorderSide(
+                                            color: Colors.transparent),
                                       ),
 
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide:
-                                            const BorderSide(color: Colors.transparent),
+                                        borderSide: const BorderSide(
+                                            color: Colors.transparent),
                                         borderRadius: const BorderRadius.all(
                                           const Radius.circular(30),
                                         ),
                                       ),
                                     ),
+                                  ),
                                 ),
-                                 ),
                               ],
                             ),
                           ),
-
                         ],
                       ),
                     ),
-
                     getCategories(),
-
-                    Container(
-                      margin: EdgeInsetsDirectional.only(start: 20),
-                        alignment: AlignmentDirectional.topStart,
-                        child: Text(
-                          "Categories with Friends",
-                          style: TextStyle(
-                              fontFamily: "segoepr",
-                              fontSize: 22,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
-                        )),
-
                   ],
                 )),
           )),
     );
   }
 
-  Widget getCategories(){
-
+  Widget getCategories() {
     return FutureBuilder<List<Category>>(
-
         future: dbHelper.showCategories(),
-        builder: (BuildContext context, AsyncSnapshot<List<Category>> asyncSnapshot) {
-
-
+        builder: (BuildContext context,
+            AsyncSnapshot<List<Category>> asyncSnapshot) {
           if (asyncSnapshot.data == null) {
-            return  Center(child: CircularProgressIndicator());
-          }
-          else {
+            return Center(child: CircularProgressIndicator());
+          } else {
             return ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: asyncSnapshot.data.length,
@@ -349,8 +333,9 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                     onTap: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                            return CategoryDetails(asyncSnapshot.data[index]);
-                          }));
+                        return CategoryDetails(asyncSnapshot.data[index],
+                            getTasks(asyncSnapshot.data[index].id));
+                      }));
                     },
                     child: Center(
                       child: Slidable(
@@ -371,16 +356,11 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                           )
                         ],
                         child: Stack(
-                          alignment:
-                          AlignmentDirectional.centerStart,
+                          alignment: AlignmentDirectional.centerStart,
                           children: <Widget>[
                             Container(
                               height: 52,
-                              width: MediaQuery.of(context)
-                                  .size
-                                  .width *
-                                  4 /
-                                  5,
+                              width: MediaQuery.of(context).size.width * 4 / 5,
                               // margin: EdgeInsets.only(left: 30,right: 30),
                               child: CustomPaint(
                                 painter: Chevron(),
@@ -392,15 +372,13 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                                         fontFamily: "Segoe UI",
                                         fontSize: 20,
                                         color: colors[index % 5],
-                                        fontWeight:
-                                        FontWeight.bold),
+                                        fontWeight: FontWeight.bold),
                                   ),
                                 ),
                               ),
                             ),
                             Container(
-                                margin: EdgeInsetsDirectional.only(
-                                    top: 5),
+                                margin: EdgeInsetsDirectional.only(top: 5),
                                 child: SvgPicture.asset(
                                     colorImageCatg[index % 5])),
                           ],
@@ -410,8 +388,7 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                   );
                 });
           }
-        }
-    );
+        });
   }
 
   Widget showAlert() {
@@ -461,28 +438,25 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                     elevation: 0,
                     margin: EdgeInsets.only(left: 20, right: 20),
                     child: TextField(
-                        controller: controller,
-                        cursorColor: Color(0xFFFFCC00),
-                        textAlignVertical: TextAlignVertical.bottom,
-                        style: TextStyle(
+                      controller: controller,
+                      cursorColor: Color(0xFFFFCC00),
+                      textAlignVertical: TextAlignVertical.bottom,
+                      style: TextStyle(
+                          color: Color(0xFF666666),
+                          fontFamily: "Segoe UI",
+                          fontSize: 20),
+                      decoration: InputDecoration(
+                        filled: false,
+                        hintText: "new category",
+                        hintStyle: TextStyle(
                             color: Color(0xFF666666),
                             fontFamily: "Segoe UI",
                             fontSize: 20),
-                        decoration: InputDecoration(
-                          filled: false,
-                          hintText: "new category",
-                          hintStyle: TextStyle(
-                              color: Color(0xFF666666),
-                              fontFamily: "Segoe UI",
-                              fontSize: 20),
-                        ),
-                      onSubmitted: (text){
-                          setState(() {
-                            category.title = text;
-
-
-                          });
-
+                      ),
+                      onSubmitted: (text) {
+                        setState(() {
+                          category.title = text;
+                        });
                       },
                     ),
                   ),
@@ -585,8 +559,7 @@ class _CategoriesScreen extends State<CategoriesScreen> {
     );
   }
 
-  void addCategory(Category category) async{
-
+  void addCategory(Category category) async {
     int result = await dbHelper.insertCategory(category);
 
     if (result == 0) {
@@ -597,10 +570,8 @@ class _CategoriesScreen extends State<CategoriesScreen> {
           timeInSecForIosWeb: 1,
           backgroundColor: Colors.red,
           textColor: Colors.white,
-          fontSize: 16.0
-      );
+          fontSize: 16.0);
     } else {
-
       Navigator.of(context).pop();
       Fluttertoast.showToast(
           msg: "Category has been saved successfully",
@@ -609,16 +580,11 @@ class _CategoriesScreen extends State<CategoriesScreen> {
           timeInSecForIosWeb: 1,
           backgroundColor: Colors.grey,
           textColor: Colors.black,
-          fontSize: 16.0
-      );
-
+          fontSize: 16.0);
     }
-
   }
 
-
-  void updateCategoryTitle(Category category) async{
-
+  void updateCategoryTitle(Category category) async {
     int result = await dbHelper.updateCategory(category);
 
     if (result == 0) {
@@ -629,10 +595,8 @@ class _CategoriesScreen extends State<CategoriesScreen> {
           timeInSecForIosWeb: 1,
           backgroundColor: Colors.red,
           textColor: Colors.white,
-          fontSize: 16.0
-      );
+          fontSize: 16.0);
     } else {
-
       Navigator.of(context).pop();
       Fluttertoast.showToast(
           msg: "Category has been edited successfully",
@@ -641,15 +605,11 @@ class _CategoriesScreen extends State<CategoriesScreen> {
           timeInSecForIosWeb: 1,
           backgroundColor: Colors.grey,
           textColor: Colors.black,
-          fontSize: 16.0
-      );
-
+          fontSize: 16.0);
     }
-
   }
 
-  void deleteCategory(Category category) async{
-
+  void deleteCategory(Category category) async {
     int result = await dbHelper.deleteCategory(category.id);
 
     if (result == 0) {
@@ -660,10 +620,8 @@ class _CategoriesScreen extends State<CategoriesScreen> {
           timeInSecForIosWeb: 1,
           backgroundColor: Colors.red,
           textColor: Colors.white,
-          fontSize: 16.0
-      );
+          fontSize: 16.0);
     } else {
-
       Navigator.of(context).pop();
       Fluttertoast.showToast(
           msg: "Category has been deleted successfully",
@@ -672,14 +630,9 @@ class _CategoriesScreen extends State<CategoriesScreen> {
           timeInSecForIosWeb: 1,
           backgroundColor: Colors.grey,
           textColor: Colors.black,
-          fontSize: 16.0
-      );
-
+          fontSize: 16.0);
     }
-
   }
-
-
 
   Widget mySlider() {
     return Container(
@@ -689,8 +642,7 @@ class _CategoriesScreen extends State<CategoriesScreen> {
         child: CustomPaint(
           painter: Chevron1(),
           child: Row(
-            mainAxisAlignment:
-            MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               SvgPicture.asset(
                 "assets/images/ic_pen_edit.svg",
@@ -747,25 +699,25 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                     elevation: 0,
                     margin: EdgeInsets.only(left: 20, right: 20),
                     child: TextField(
-                        controller: controller,
-                        cursorColor: Color(0xFFFFCC00),
-                        textAlignVertical: TextAlignVertical.bottom,
-                        style: TextStyle(
+                      controller: controller,
+                      cursorColor: Color(0xFFFFCC00),
+                      textAlignVertical: TextAlignVertical.bottom,
+                      style: TextStyle(
+                          color: Color(0xFF666666),
+                          fontFamily: "Segoe UI",
+                          fontSize: 20),
+                      decoration: InputDecoration(
+                        filled: false,
+                        hintText: "new category",
+                        hintStyle: TextStyle(
                             color: Color(0xFF666666),
                             fontFamily: "Segoe UI",
                             fontSize: 20),
-                        decoration: InputDecoration(
-                          filled: false,
-                          hintText: "new category",
-                          hintStyle: TextStyle(
-                              color: Color(0xFF666666),
-                              fontFamily: "Segoe UI",
-                              fontSize: 20),
-                        ),
-                      onSubmitted: (text){
-                          setState(() {
-                            category.title = text;
-                          });
+                      ),
+                      onSubmitted: (text) {
+                        setState(() {
+                          category.title = text;
+                        });
                       },
                     ),
                   ),
@@ -780,7 +732,6 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                             setState(() {
                               deleteCategory(category);
                             });
-
                           },
                           child: Text("Delete Category",
                               textAlign: TextAlign.center,
@@ -795,7 +746,6 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                             setState(() {
                               updateCategoryTitle(category);
                             });
-
                           },
                           child: Text("Save",
                               textAlign: TextAlign.center,
@@ -885,6 +835,25 @@ class _CategoriesScreen extends State<CategoriesScreen> {
         ),
       ),
     );
+  }
+
+  bool getTasks(int id) {
+    bool isEmpty;
+    FutureBuilder<List<Task>>(
+        future: dbHelper.tasksOfCategory(id),
+        builder:
+            (BuildContext context, AsyncSnapshot<List<Task>> asyncSnapshot) {
+          if (asyncSnapshot.data.length == 0) {
+
+              isEmpty = true;
+
+          } else {
+
+              isEmpty = false;
+
+          }
+        });
+    return isEmpty;
   }
 }
 

@@ -8,6 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:projectflutterapp/screens/categoriesScreen.dart';
 import 'package:projectflutterapp/screens/friends.dart';
 import 'package:projectflutterapp/screens/task_attribute.dart';
+import 'package:projectflutterapp/utility/score_shape.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -17,18 +18,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreen extends State<HomeScreen> {
-  List<Task> tasks = List<Task>();
-  List<Category> categories = List<Category>();
-
-  TextEditingController controller = TextEditingController();
-
-  TextEditingController _searchQuery = TextEditingController();
 
   int score = 60;
 
-  int arrangment = 5;
-
-  int frinds = 10;
+  TextEditingController _searchQuery = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -64,8 +57,9 @@ class _HomeScreen extends State<HomeScreen> {
                               alignment: AlignmentDirectional.center,
                               children: <Widget>[
                                 Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 1.4 / 4,
+                                  width: MediaQuery.of(context).size.width *
+                                      1.4 /
+                                      4,
                                   height: 80,
                                   decoration: new BoxDecoration(
                                     color: Color(0xffA57DF4),
@@ -88,9 +82,10 @@ class _HomeScreen extends State<HomeScreen> {
 //                                      ),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Color(0xffBBB4C9).withOpacity(.35),
+                                        color:
+                                            Color(0xffBBB4C9).withOpacity(.35),
                                         blurRadius: 15.0,
-                                        offset: const Offset(0.0, 10.0),//
+                                        offset: const Offset(0.0, 10.0), //
                                       ),
                                     ],
                                   ),
@@ -115,14 +110,17 @@ class _HomeScreen extends State<HomeScreen> {
                                             ),
                                           ),
                                           Stack(
-                                            alignment: AlignmentDirectional.center,
+                                            alignment:
+                                                AlignmentDirectional.center,
                                             children: <Widget>[
                                               Container(
                                                   width: 30,
                                                   height: 5,
-                                                  decoration: BoxDecoration(boxShadow: [
+                                                  decoration:
+                                                      BoxDecoration(boxShadow: [
                                                     BoxShadow(
-                                                        color: Color(0xffFFCC00),
+                                                        color:
+                                                            Color(0xffFFCC00),
                                                         offset: Offset(0, 2),
                                                         blurRadius: 17,
                                                         spreadRadius: 1)
@@ -131,11 +129,11 @@ class _HomeScreen extends State<HomeScreen> {
                                                 child: Text(
                                                   score.toString(),
                                                   style: TextStyle(
-                                                    fontFamily: "Segoe UI",
-                                                    fontSize: 20,
-                                                    color: Color(0xffFFCC00),
-                                                    fontWeight: FontWeight.bold
-                                                  ),
+                                                      fontFamily: "Segoe UI",
+                                                      fontSize: 20,
+                                                      color: Color(0xffFFCC00),
+                                                      fontWeight:
+                                                          FontWeight.bold),
                                                 ),
                                               ),
                                             ],
@@ -198,11 +196,10 @@ class _HomeScreen extends State<HomeScreen> {
                                 ),
                                 child: Row(
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceEvenly,
+                                      MainAxisAlignment.spaceEvenly,
                                   children: <Widget>[
                                     SvgPicture.asset(
                                       "assets/images/ic_plus.svg",
-
                                     ),
                                   ],
                                 ),
@@ -224,15 +221,17 @@ class _HomeScreen extends State<HomeScreen> {
                                 border: Border.all(
                                     color: Color(0xFFD5D5D5), width: 1.5),
                               ),
-                              child:  Stack(
+                              child: Stack(
                                 children: <Widget>[
                                   Padding(
-                                    padding: const EdgeInsets.only(left: 20,top: 5),
-                                    child: Icon(Icons.search , color: Color(0xFFD5D5D5)
-                                    ),
+                                    padding:
+                                        const EdgeInsets.only(left: 20, top: 5),
+                                    child: Icon(Icons.search,
+                                        color: Color(0xFFD5D5D5)),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(left: 35,top: 16),
+                                    padding: const EdgeInsets.only(
+                                        left: 35, top: 16),
                                     child: TextField(
                                       controller: _searchQuery,
                                       textAlign: TextAlign.start,
@@ -252,8 +251,8 @@ class _HomeScreen extends State<HomeScreen> {
                                         filled: true,
                                         fillColor: Colors.transparent,
                                         enabledBorder: UnderlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.transparent),
+                                          borderSide: BorderSide(
+                                              color: Colors.transparent),
                                         ),
 
                                         focusedBorder: OutlineInputBorder(
@@ -273,7 +272,8 @@ class _HomeScreen extends State<HomeScreen> {
 // noor
                             GestureDetector(
                               onTap: () {
-                                Navigator.of(context).pushNamed(CATEGORIES_SCREEN);
+                                Navigator.of(context)
+                                    .pushNamed(CATEGORIES_SCREEN);
                               },
                               child: Container(
                                 alignment: AlignmentDirectional.center,
@@ -292,7 +292,8 @@ class _HomeScreen extends State<HomeScreen> {
                                         Container(
                                             width: 130,
                                             height: 5,
-                                            decoration: BoxDecoration(boxShadow: [
+                                            decoration:
+                                                BoxDecoration(boxShadow: [
                                               BoxShadow(
                                                   color: Color(0xffFFCC00),
                                                   offset: Offset(0, 2),
@@ -349,10 +350,11 @@ class _HomeScreen extends State<HomeScreen> {
                                       ),
                                       GestureDetector(
                                         child: Container(
-                                          width:
-                                              MediaQuery.of(context).size.width *
-                                                  1.2 /
-                                                  5,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              1.2 /
+                                              5,
                                           child: SvgPicture.asset(
                                               "assets/images/circle_share.svg"),
                                         ),
@@ -360,10 +362,11 @@ class _HomeScreen extends State<HomeScreen> {
                                       GestureDetector(
                                         onTap: () {},
                                         child: Container(
-                                          width:
-                                              MediaQuery.of(context).size.width *
-                                                  1.2 /
-                                                  5,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              1.2 /
+                                              5,
                                           child: SvgPicture.asset(
                                               "assets/images/ic_more.svg"),
                                         ),
@@ -378,270 +381,6 @@ class _HomeScreen extends State<HomeScreen> {
       ),
     );
   }
-
-  Widget scoreShape() {
-    return Material(
-      color: Colors.transparent,
-      child: Stack(
-        alignment: AlignmentDirectional.topCenter,
-        children: <Widget>[
-          Stack(
-            alignment: AlignmentDirectional.center,
-            children: <Widget>[
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 2 + 30,
-                margin: EdgeInsets.only(top: 30, left: 15, right: 15),
-                decoration: new BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(90),
-                  border: Border.all(color: Color(0xffFFCC00), width: 4),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.white,
-                      blurRadius: 15.0,
-                      offset: const Offset(0.0, 10.0),
-                    ),
-                  ],
-                ),
-                child: Center(
-                  child: Wrap(
-                    children: <Widget>[
-                      Stack(
-                        alignment: AlignmentDirectional.bottomCenter,
-                        children: <Widget>[
-                          Container(
-                            child: SvgPicture.asset(
-                                "assets/images/score_stars.svg"),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(bottom: 25),
-                            child: Stack(
-                              alignment: AlignmentDirectional.center,
-                              children: <Widget>[
-                                SvgPicture.asset(
-                                    "assets/images/score_value.svg"),
-                                Container(
-                                  margin: EdgeInsets.only(bottom: 5),
-                                  child: Text(
-                                    score.toString(),
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontFamily: "Segoe UI",
-                                        fontSize: 20,
-                                        color: Color(0xffFE5F5F)),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.only(left: 25, right: 25),
-                        height: 55,
-                        decoration: new BoxDecoration(
-                          color: Colors.white,
-                          shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.circular(25),
-                          border:
-                              Border.all(color: Color(0xff9966FF), width: 4),
-                        ),
-                        child: Row(
-                          children: <Widget>[
-                            Container(
-                              width: MediaQuery.of(context).size.width / 4,
-                              margin: EdgeInsets.only(left: 5, right: 5),
-                              child: Text(
-                                "Arrangement",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontFamily: "Segoe UI",
-                                    fontSize: 12,
-                                    color: Color(0xffFE5F5F)),
-                              ),
-                            ),
-                            VerticalDivider(
-                              width: 2,
-                              thickness: 1.5,
-                              color: Color(0xffC3B8D9),
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width / 7,
-                              margin: EdgeInsets.only(left: 5, right: 5),
-                              child: Text(
-                                "Tasks",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontFamily: "Segoe UI",
-                                    fontSize: 12,
-                                    color: Color(0xffFE5F5F)),
-                              ),
-                            ),
-                            VerticalDivider(
-                              width: 2,
-                              thickness: 1.5,
-                              color: Color(0xffC3B8D9),
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width / 6,
-                              margin: EdgeInsets.only(left: 5, right: 5),
-                              child: Text(
-                                "Frinds",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontFamily: "Segoe UI",
-                                    fontSize: 12,
-                                    color: Color(0xffFE5F5F)),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Stack(
-                        alignment: AlignmentDirectional.center,
-                        children: <Widget>[
-                          SvgPicture.asset("assets/images/sore_items.svg"),
-                          Wrap(
-                            children: <Widget>[
-                              Container(
-                                decoration: new BoxDecoration(
-                                    color: Color(0xffBCAAE0).withOpacity(.35),
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                        width: 2.5, color: Color(0xffFFCC00))),
-                                child: CircleAvatar(
-                                  backgroundColor: Colors.white,
-                                  child: Text(
-                                    arrangment.toString(),
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontFamily: "Segoe UI",
-                                        fontSize: 20,
-                                        color: Color(0xffFE5F5F)),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                width: 10,
-                                margin: EdgeInsets.only(top: 5, bottom: 5),
-                                child: VerticalDivider(
-                                  width: 2,
-                                  thickness: 1.5,
-                                  color: Color(0xffC3B8D9),
-                                ),
-                              ),
-                              Container(
-                                decoration: new BoxDecoration(
-                                    color: Color(0xffBCAAE0).withOpacity(.35),
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                        width: 2.5, color: Color(0xffFFCC00))),
-                                width: MediaQuery.of(context).size.width / 7,
-                                margin: EdgeInsets.only(left: 5, right: 5),
-                                child: CircleAvatar(
-                                  backgroundColor: Colors.white,
-                                  child: Text(
-                                    tasks.length.toString(),
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontFamily: "Segoe UI",
-                                        fontSize: 20,
-                                        color: Color(0xffFE5F5F)),
-                                  ),
-                                ),
-                              ),
-                              VerticalDivider(
-                                width: 2,
-                                thickness: 1.5,
-                                color: Color(0xffC3B8D9),
-                              ),
-                              Container(
-                                decoration: new BoxDecoration(
-                                    color: Color(0xffBCAAE0).withOpacity(.35),
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                        width: 2.5, color: Color(0xffFFCC00))),
-                                width: MediaQuery.of(context).size.width / 6,
-                                margin: EdgeInsets.only(left: 5, right: 5),
-                                child: CircleAvatar(
-                                  backgroundColor: Colors.white,
-                                  child: Text(
-                                    frinds.toString(),
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontFamily: "Segoe UI",
-                                        fontSize: 20,
-                                        color: Color(0xffFE5F5F)),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Container(
-            width: MediaQuery.of(context).size.width / 2,
-            height: 65,
-            decoration: new BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.circular(25),
-              border: Border.all(color: Color(0xff9966FF), width: 4),
-              boxShadow: [
-                BoxShadow(
-                  color: Color(0xff9966FF),
-                  blurRadius: 10.0,
-                  offset: const Offset(0.0, 3.0),
-                ),
-              ],
-            ),
-            child: Center(
-              child: Text(
-                "Score",
-                style: TextStyle(
-                    fontFamily: "Segoe UI",
-                    fontSize: 30,
-                    color: Color(0xffFE5F5F)),
-              ),
-            ),
-          )
-        ],
-      ),
-    );
-  }
 }
 
 
-
-class Chevron extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final Paint paint = new Paint();
-    paint.color = Colors.white;
-    paint.style = PaintingStyle.fill;
-
-    Path path = Path();
-    path.moveTo(0, size.height / 2);
-    path.lineTo(size.width / 7, size.height);
-    path.lineTo(size.width * 6 / 7, size.height);
-    path.lineTo(size.width, size.height / 2);
-    path.lineTo(size.width * 6 / 7, 0);
-    path.lineTo(size.width / 7, 0);
-    path.moveTo(size.width / 2, size.height / 2);
-    path.close();
-
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => false;
-}

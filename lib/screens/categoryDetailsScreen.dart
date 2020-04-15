@@ -9,20 +9,21 @@ import 'package:projectflutterapp/utility/sql_helper.dart';
 
 class CategoryDetails extends StatefulWidget {
   Category category;
+  bool isempty ;
 
-  CategoryDetails(this.category);
+  CategoryDetails(this.category ,this.isempty);
 
   @override
-  _CategoryDetails createState() => _CategoryDetails(category);
+  _CategoryDetails createState() => _CategoryDetails(category , isempty);
 }
 
 class _CategoryDetails extends State<CategoryDetails> {
   Category category;
-  bool isempty = false;
+  bool isempty ;
 
   TextEditingController _searchQuery = TextEditingController();
 
-  _CategoryDetails(this.category);
+  _CategoryDetails(this.category , this.isempty);
 
   final dbHelper = SQL_Helper();
   Future<List<Task>> tasks;
@@ -44,7 +45,7 @@ class _CategoryDetails extends State<CategoryDetails> {
           backgroundColor: Color(0xff9966FF),
           body: SingleChildScrollView(
             child: Container(
-                height: MediaQuery.of(context).size.height,
+              //  height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
                 margin: EdgeInsets.only(bottom: 10),
                 decoration: BoxDecoration(
@@ -261,14 +262,10 @@ class _CategoryDetails extends State<CategoryDetails> {
         builder:
             (BuildContext context, AsyncSnapshot<List<Task>> asyncSnapshot) {
           if (asyncSnapshot.data == null || !asyncSnapshot.hasData) {
+
             return Center(child: CircularProgressIndicator());
-          } else if (asyncSnapshot.data.length == 0) {
+          }  else {
 
-            setState(() {
-              isempty = true;
-            });
-
-          } else {
             return GridView.builder(
                 gridDelegate:
                 SliverGridDelegateWithFixedCrossAxisCount(
@@ -420,7 +417,11 @@ class _CategoryDetails extends State<CategoryDetails> {
           ),
         ),
         SizedBox(height: 10),
+
+
         getTasks(),
+
+
         Container(
             margin: EdgeInsetsDirectional.only(
                 start: 20),

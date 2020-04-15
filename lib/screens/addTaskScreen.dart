@@ -10,6 +10,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:projectflutterapp/utility/sql_helper.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+final dbHelper = SQL_Helper();
+Task task = Task();
+
 class AddNewTaskScreen extends StatefulWidget {
   AddNewTaskScreen({Key key}) : super(key: key);
 
@@ -18,26 +21,15 @@ class AddNewTaskScreen extends StatefulWidget {
 }
 
 class _AddNewTaskScreen extends State<AddNewTaskScreen> {
-  Task task = Task();
-
   File imageFile = null;
   String imageToSave = "";
   String imgString = "";
-
-  final dbHelper = SQL_Helper();
 
   TextEditingController controller = TextEditingController();
 
   List<String> timeInterval = ["Daily", "Weekly", "Monthly", "Never"];
   List<bool> isPressTime = [false, false, false, false];
   List<Task> tasks = List<Task>();
-  List<String> colorsImages = [
-    "assets/images/ic_red.svg",
-    "assets/images/ic_blue.svg",
-    "assets/images/ic_green.svg",
-    "assets/images/ic_yellow.svg",
-    "assets/images/ic_orange.svg"
-  ];
 
   List<String> colorsBlankImages = [
     "assets/images/ic_redd.svg",
@@ -191,7 +183,7 @@ class _AddNewTaskScreen extends State<AddNewTaskScreen> {
                               ),
                               child: Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceEvenly,
+                                    MainAxisAlignment.spaceEvenly,
                                 children: <Widget>[
                                   SvgPicture.asset(
                                       "assets/images/ic_check_btn.svg"),
@@ -213,7 +205,7 @@ class _AddNewTaskScreen extends State<AddNewTaskScreen> {
                               color: Colors.white,
                               fontWeight: FontWeight.bold),
                         )),
-                    SizedBox(height: 10),
+                    SizedBox(height: 15),
                     Row(
                       children: <Widget>[
                         Container(
@@ -247,106 +239,81 @@ class _AddNewTaskScreen extends State<AddNewTaskScreen> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: 15),
                     Row(
                       children: <Widget>[
-                        Stack(
-                            alignment: AlignmentDirectional.centerStart,
-                            children: <Widget>[
-                              Container(
-                                  width: 130,
-                                  margin: EdgeInsets.only(left: 20),
-                                  decoration: BoxDecoration(boxShadow: [
-                                    BoxShadow(
-                                        color: Color(0xffFFCC00),
-                                        offset: Offset(0, 2),
-                                        blurRadius: 17,
-                                        spreadRadius: 2)
-                                  ])),
-                              Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 3 / 4,
-                                  margin: EdgeInsets.only(left: 20),
-                                  alignment: AlignmentDirectional.centerStart,
-                                  child: Text(
-                                    "Add to the list : ",
-                                    style: TextStyle(
-                                        fontFamily: "Segoe UI",
-                                        fontSize: 20,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  ))
-                            ]),
                         Container(
-                            //  alignment: AlignmentDirectional.topStart,
-                            child: SvgPicture.asset(
-                                "assets/images/ic_addtolist.svg")),
+                            width: MediaQuery.of(context).size.width * 3 / 4,
+                            margin: EdgeInsets.only(left: 20),
+                            alignment: AlignmentDirectional.centerStart,
+                            child: Text(
+                              "Add to the list : ",
+                              style: TextStyle(
+                                  fontFamily: "Segoe UI",
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            )),
+                        Container(
+                          //  alignment: AlignmentDirectional.topStart,
+                          child: SvgPicture.asset(
+                            "assets/images/ic_addtolist.svg",
+                            width: 17,
+                            height: 17,
+                          ),
+                        ),
                       ],
                     ),
                     Container(
                       height: 90,
-                      child: getCategories(), //////
+                      child: FutureBuilder<List<Category>>(
+                          future: dbHelper.showCategories(),
+                          builder: (BuildContext context,
+                              AsyncSnapshot<List<Category>> asyncSnapshot) {
+                            if (asyncSnapshot.data == null) {
+                              return Center(child: CircularProgressIndicator());
+                            } else {
+                              return ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: asyncSnapshot.data.length,
+                                  itemBuilder: (context, index) {
+                                    return getCategories(
+                                        asyncSnapshot.data[index]);
+                                  });
+                            }
+                          }),
                     ),
                     Row(
                       children: <Widget>[
-                        Stack(
+                        Container(
+                            margin: EdgeInsets.only(left: 20),
                             alignment: AlignmentDirectional.centerStart,
-                            children: <Widget>[
-                              Container(
-                                  width: 130,
-                                  margin: EdgeInsets.only(left: 20),
-                                  decoration: BoxDecoration(boxShadow: [
-                                    BoxShadow(
-                                        color: Color(0xffFFCC00),
-                                        offset: Offset(0, 2),
-                                        blurRadius: 17,
-                                        spreadRadius: 2)
-                                  ])),
-                              Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 3 / 4,
-                                  margin: EdgeInsets.only(left: 20),
-                                  alignment: AlignmentDirectional.centerStart,
-                                  child: Text(
-                                    "Time Interval : ",
-                                    style: TextStyle(
-                                        fontFamily: "Segoe UI",
-                                        fontSize: 20,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  ))
-                            ]),
+                            child: Text(
+                              "Time Interval : ",
+                              style: TextStyle(
+                                  fontFamily: "Segoe UI",
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            )),
                       ],
                     ),
                     timeIntervalWidget(),
+
                     Row(
                       children: <Widget>[
-                        Stack(
+                        Container(
+                            width: MediaQuery.of(context).size.width / 2,
+                            margin: EdgeInsets.only(left: 20),
                             alignment: AlignmentDirectional.centerStart,
-                            children: <Widget>[
-                              Container(
-                                  width: 130,
-                                  margin: EdgeInsets.only(left: 20),
-                                  decoration: BoxDecoration(boxShadow: [
-                                    BoxShadow(
-                                        color: Color(0xffFFCC00),
-                                        offset: Offset(0, 2),
-                                        blurRadius: 17,
-                                        spreadRadius: 2)
-                                  ])),
-                              Container(
-                                  width: MediaQuery.of(context).size.width / 2,
-                                  margin: EdgeInsets.only(left: 20),
-                                  alignment: AlignmentDirectional.centerStart,
-                                  child: Text(
-                                    "Choose Image ",
-                                    style: TextStyle(
-                                        fontFamily: "Segoe UI",
-                                        fontSize: 20,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  )),
-                            ]),
+                            child: Text(
+                              "Choose Image ",
+                              style: TextStyle(
+                                  fontFamily: "Segoe UI",
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            )),
                         SizedBox(width: 20),
                         GestureDetector(
                           onTap: () {
@@ -360,32 +327,18 @@ class _AddNewTaskScreen extends State<AddNewTaskScreen> {
                     SizedBox(height: 20),
                     Row(
                       children: <Widget>[
-                        Stack(
+                        Container(
+                            width: MediaQuery.of(context).size.width / 2,
+                            margin: EdgeInsets.only(left: 20),
                             alignment: AlignmentDirectional.centerStart,
-                            children: <Widget>[
-                              Container(
-                                  width: 130,
-                                  margin: EdgeInsets.only(left: 20),
-                                  decoration: BoxDecoration(boxShadow: [
-                                    BoxShadow(
-                                        color: Color(0xffFFCC00),
-                                        offset: Offset(0, 2),
-                                        blurRadius: 17,
-                                        spreadRadius: 2)
-                                  ])),
-                              Container(
-                                  width: MediaQuery.of(context).size.width / 2,
-                                  margin: EdgeInsets.only(left: 20),
-                                  alignment: AlignmentDirectional.centerStart,
-                                  child: Text(
-                                    "Reminder",
-                                    style: TextStyle(
-                                        fontFamily: "Segoe UI",
-                                        fontSize: 20,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  )),
-                            ]),
+                            child: Text(
+                              "Reminder",
+                              style: TextStyle(
+                                  fontFamily: "Segoe UI",
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            )),
                         SizedBox(width: 20),
                         GestureDetector(
                           onTap: () {
@@ -395,9 +348,9 @@ class _AddNewTaskScreen extends State<AddNewTaskScreen> {
                             });
                           },
                           child: CustomSwitchButton(
-                            buttonWidth: 47,
-                            buttonHeight: 27,
-                            indicatorWidth: 20,
+                            buttonWidth: 45,
+                            buttonHeight: 25,
+                            indicatorWidth: 18,
                             backgroundColor: Colors.white,
                             unCheckedColor: Color(0xffFE5F5F),
                             animationDuration: Duration(milliseconds: 400),
@@ -410,32 +363,18 @@ class _AddNewTaskScreen extends State<AddNewTaskScreen> {
                     SizedBox(height: 20),
                     Row(
                       children: <Widget>[
-                        Stack(
+                        Container(
+                            width: MediaQuery.of(context).size.width / 2,
+                            margin: EdgeInsets.only(left: 20),
                             alignment: AlignmentDirectional.centerStart,
-                            children: <Widget>[
-                              Container(
-                                  width: 170,
-                                  margin: EdgeInsets.only(left: 20),
-                                  decoration: BoxDecoration(boxShadow: [
-                                    BoxShadow(
-                                        color: Color(0xffFFCC00),
-                                        offset: Offset(0, 2),
-                                        blurRadius: 17,
-                                        spreadRadius: 2)
-                                  ])),
-                              Container(
-                                  width: MediaQuery.of(context).size.width / 2,
-                                  margin: EdgeInsets.only(left: 20),
-                                  alignment: AlignmentDirectional.centerStart,
-                                  child: Text(
-                                    "Share With Friends",
-                                    style: TextStyle(
-                                        fontFamily: "Segoe UI",
-                                        fontSize: 20,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  )),
-                            ]),
+                            child: Text(
+                              "Share With Friends",
+                              style: TextStyle(
+                                  fontFamily: "Segoe UI",
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            )),
                         SizedBox(width: 25),
                         GestureDetector(
                           onTap: () {},
@@ -456,6 +395,7 @@ class _AddNewTaskScreen extends State<AddNewTaskScreen> {
                         );
                       },
                       child: Container(
+                        alignment: AlignmentDirectional.bottomCenter,
                         child: SvgPicture.asset("assets/images/time.svg"),
                       ),
                     ),
@@ -499,8 +439,7 @@ class _AddNewTaskScreen extends State<AddNewTaskScreen> {
                   }
                 });
               },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+              child: Wrap(
                 children: <Widget>[
                   isPressTime[index]
                       ? Stack(
@@ -509,125 +448,34 @@ class _AddNewTaskScreen extends State<AddNewTaskScreen> {
                             Container(
                                 child: SvgPicture.asset(
                                     colorsBlankImages[index % 5])),
-                            Icon(
-                              Icons.done,
-                              color: Colors.white,
-                              size: 20,
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 6),
+                              child: Icon(
+                                CupertinoIcons.check_mark,
+                                color: Colors.white,
+                                size: 35,
+                              ),
                             )
                           ],
                         )
                       : Container(
                           child: SvgPicture.asset(colorsBlankImages[index % 5]),
                         ),
-                  Wrap(
-                    children: <Widget>[
-                      Text(
-                        timeInterval[index],
-                        style: TextStyle(
-                            fontSize: 15,
-                            fontFamily: "Rubik",
-                            color: Colors.white),
-                      )
-                    ],
+                  Container(
+                    margin: EdgeInsets.only(top: 15, right: 5),
+                    child: Text(
+                      timeInterval[index],
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontFamily: "Rubik",
+                          color: Colors.white),
+                    ),
                   ),
                 ],
               ),
             );
           }),
     );
-  }
-
-  Widget getCategories() {
-    return FutureBuilder<List<Category>>(
-        future: dbHelper.showCategories(),
-        builder: (BuildContext context,
-            AsyncSnapshot<List<Category>> asyncSnapshot) {
-          if (asyncSnapshot.data == null) {
-            return Center(child: CircularProgressIndicator());
-          } else {
-            return ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: asyncSnapshot.data.length,
-                itemBuilder: (context, index) {
-                  print(asyncSnapshot.data[index].isPress.toString() + "1");
-
-                  //  asyncSnapshot.data[index].isPress = !asyncSnapshot.data[index].isPress;
-
-                  return GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        print(
-                            asyncSnapshot.data[index].isPress.toString() + "2");
-                        asyncSnapshot.data[index].isPress =
-                            !asyncSnapshot.data[index].isPress;
-                        task.categoryId = asyncSnapshot.data[index].id;
-
-                        print(
-                            asyncSnapshot.data[index].isPress.toString() + "3");
-                      });
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          child: SvgPicture.asset(colorsImages[index % 5]),
-                        ),
-                        asyncSnapshot.data[index].isPress
-                            ? Wrap(
-                                children: <Widget>[
-                                  Container(
-                                    padding: EdgeInsets.only(
-                                        left: 7, right: 7, top: 3, bottom: 3),
-                                    decoration: new BoxDecoration(
-                                      color: Colors.greenAccent,
-                                      shape: BoxShape.rectangle,
-                                      borderRadius: BorderRadius.circular(3),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.greenAccent,
-                                          blurRadius: 7.0,
-                                          offset: const Offset(0.0, 3.0),
-                                        ),
-                                      ],
-                                    ),
-                                    child: Center(
-                                        child: Text(
-                                      asyncSnapshot.data[index].title,
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          fontFamily: "Rubik",
-                                          color: Colors.white),
-                                    )),
-                                  ),
-                                ],
-                              )
-                            : Wrap(
-                                children: <Widget>[
-                                  Container(
-                                    padding: EdgeInsets.only(
-                                        left: 7, right: 7, top: 3, bottom: 3),
-                                    decoration: new BoxDecoration(
-                                      color: Colors.transparent,
-                                      shape: BoxShape.rectangle,
-                                      borderRadius: BorderRadius.circular(3),
-                                    ),
-                                    child: Center(
-                                        child: Text(
-                                      asyncSnapshot.data[index].title,
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          fontFamily: "Rubik",
-                                          color: Colors.white),
-                                    )),
-                                  ),
-                                ],
-                              ),
-                      ],
-                    ),
-                  );
-                });
-          }
-        });
   }
 
   void addTask(Task task) async {
@@ -653,5 +501,118 @@ class _AddNewTaskScreen extends State<AddNewTaskScreen> {
           textColor: Colors.black,
           fontSize: 16.0);
     }
+  }
+}
+
+class getCategories extends StatefulWidget {
+  Category category;
+
+  getCategories(this.category);
+
+  @override
+  _getCategories createState() => _getCategories(category);
+}
+
+class _getCategories extends State<getCategories> {
+  Category category;
+
+  _getCategories(this.category);
+
+  List<String> colorsImages = [
+    "assets/images/ic_red.svg",
+    "assets/images/ic_blue.svg",
+    "assets/images/ic_green.svg",
+    "assets/images/ic_yellow.svg",
+    "assets/images/ic_orange.svg"
+  ];
+  List<Color> colors = [
+    Color(0xffFE5F5F),
+    Color(0xff25B0FF),
+    Color(0xff7DE82B),
+    Color(0xffFFCC00),
+    Color(0xffF29130),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          category.isPress = !category.isPress;
+          task.categoryId = category.id;
+        });
+      },
+      child: Wrap(
+        children: <Widget>[
+          category.isPress
+              ? Wrap(
+                  children: <Widget>[
+                    Container(
+                      child: SvgPicture.asset(
+                        colorsImages[category.id  % 5],
+                        color: Colors.transparent,
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 12),
+                      padding:
+                          EdgeInsets.only(left: 7, right: 7, top: 3, bottom: 3),
+                      decoration: new BoxDecoration(
+                        color: colors[category.id  % 5],
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.circular(3),
+                        boxShadow: [
+                          BoxShadow(
+                            color: colors[category.id % 5],
+                            blurRadius: 7.0,
+                            offset: const Offset(0.0, 3.0),
+                          ),
+                        ],
+                      ),
+                      child: Text(
+                        category.title,
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontFamily: "Rubik",
+                            color: Colors.white),
+                      ),
+                    ),
+                  ],
+                )
+              : Wrap(
+                  children: <Widget>[
+                    Container(
+                      child:
+                          SvgPicture.asset(colorsImages[category.id % 5]),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 12),
+                      padding:
+                          EdgeInsets.only(left: 7, right: 7, top: 3, bottom: 3),
+                      decoration: new BoxDecoration(
+                        color: Colors.transparent,
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.circular(3),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.transparent,
+                            blurRadius: 7.0,
+                            offset: const Offset(0.0, 3.0),
+                          ),
+                        ],
+                      ),
+                      child: Text(
+                        category.title,
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontFamily: "Rubik",
+                            color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
+        ],
+      ),
+    );
   }
 }
