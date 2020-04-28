@@ -9,6 +9,7 @@ import 'package:projectflutterapp/screens/categoriesScreen.dart';
 import 'package:projectflutterapp/screens/friends.dart';
 import 'package:projectflutterapp/screens/task_attribute.dart';
 import 'package:projectflutterapp/utility/score_shape.dart';
+import 'package:projectflutterapp/services/auth.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -22,10 +23,25 @@ class _HomeScreen extends State<HomeScreen> {
 
   TextEditingController _searchQuery = TextEditingController();
 
+  final AuthServices _auth = AuthServices();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.brown[400],
+          elevation: 0.0,
+          actions: <Widget>[
+            FlatButton.icon(
+              icon: Icon(Icons.person),
+              label: Text("logout"),
+              onPressed: () async {
+                _auth.signOut();
+              },
+            ),
+          ],
+        ),
         backgroundColor: Color(0xff9966FF),
         body: ListView(
           children: <Widget>[
