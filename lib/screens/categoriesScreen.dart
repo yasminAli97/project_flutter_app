@@ -285,8 +285,8 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                                         color: Color(0xFFD5D5D5),
                                       ),
 
-                                      filled: true,
-                                      fillColor: Colors.transparent,
+                                      filled: false,
+                                    //  fillColor: Colors.transparent,
                                       enabledBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
                                             color: Colors.transparent),
