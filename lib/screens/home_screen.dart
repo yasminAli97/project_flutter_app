@@ -19,7 +19,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreen extends State<HomeScreen> {
-
   int score = 60;
 
   TextEditingController _searchQuery = TextEditingController();
@@ -264,8 +263,7 @@ class _HomeScreen extends State<HomeScreen> {
                                           color: Color(0xFFD5D5D5),
                                         ),
 
-                                        filled: true,
-                                        fillColor: Colors.transparent,
+                                        filled: false,
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                               color: Colors.transparent),
@@ -398,5 +396,3 @@ class _HomeScreen extends State<HomeScreen> {
     );
   }
 }
-
-
