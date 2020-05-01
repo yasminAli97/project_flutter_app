@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projectflutterapp/services/auth.dart';
+import 'package:projectflutterapp/constants/loading.dart';
+import 'package:projectflutterapp/constants/constants.dart';
 
 class SignIn extends StatefulWidget {
 
@@ -15,6 +17,7 @@ class _SignInState extends State<SignIn> {
 
   final AuthServices _auth = AuthServices();
   final _formKey = GlobalKey<FormState>();
+  bool loading = false;
 
   // text field state
   String email ="";
@@ -24,10 +27,10 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.purple[100],
+    return loading ? Loading() : Scaffold(
+      backgroundColor: Color(0xffD7AAED),
       appBar: AppBar(
-        backgroundColor: Colors.purple[300],
+        backgroundColor: Color(0xffCE83F1),
         elevation: 0.0,
         title: Text('Sign in'),
         actions: <Widget>[
@@ -41,13 +44,14 @@ class _SignInState extends State<SignIn> {
         ],
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(vertical: 20.0 , horizontal: 5.0),
+        padding: EdgeInsets.symmetric(vertical: 20.0 , horizontal: 20.0),
         child: Form(
           key:_formKey,
           child:Column(
             children:<Widget>[
               SizedBox(height:20.0),
               TextFormField(
+                decoration: textInputDecoration.copyWith(hintText: "Email"),
                 validator: (val) => val.isEmpty? "Enter an email" : null ,
                 onChanged:(val){
                   setState(() => email = val);
@@ -55,12 +59,14 @@ class _SignInState extends State<SignIn> {
               ),
               SizedBox(height:20.0),
               TextFormField(
+                  decoration: textInputDecoration.copyWith(hintText: "Password"),
                   validator: (val) => val.length < 6 ? "Enter a password6+ chars long" : null ,
                 obscureText: true,
                 onChanged:(val){
                   setState(() => password = val);
                   }
               ),
+              SizedBox(height:20.0),
               RaisedButton(
                 color: Colors.pink[400],
                 child: Text(
@@ -69,9 +75,14 @@ class _SignInState extends State<SignIn> {
                 ),
                 onPressed: () async {
                   if(_formKey.currentState.validate()){
+                    setState(() => loading = true);
                     dynamic result = await _auth.signInWithEmailAndPassword(email, password);
                     if(result == null){
-                      setState(() => error ="could not sign in with those credentials");
+                      setState(() {
+                        error ="could not sign in with those credentials";
+                        loading = false;
+                      }
+                      );
                     }
                   }
                 },
