@@ -64,18 +64,6 @@ class _TaskAttribute extends State<TaskAttribute> {
                                             bottomLeft: Radius.circular(0),
                                             topLeft: Radius.circular(0),
                                             topRight: Radius.circular(0)),
-//                                      border: Border(
-//                                        right: BorderSide(
-//                                          color: Colors.white,
-//                                          width: 1.0,
-//
-//                                        ),
-//                                        top: BorderSide(
-//                                          color: Colors.white,
-//                                          width: 1.0,
-//                                        ),
-//                                      ),
-
                                         boxShadow: [
                                           BoxShadow(
                                             color: Color(0xffBBB4C9)
