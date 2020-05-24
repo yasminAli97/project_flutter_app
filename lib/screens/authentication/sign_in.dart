@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/material.dart';
 import 'package:projectflutterapp/services/auth.dart';
 import 'package:projectflutterapp/constants/loading.dart';
@@ -104,8 +105,10 @@ class _SignInState extends State<SignIn> {
                               }
                             }
                           },
-                          /*print(email);
-                    print(password);*/
+                          */
+/*print(email);
+                    print(password);*//*
+
                         ),
                         SizedBox(
                           height: 12.0,
@@ -119,3 +122,4 @@ class _SignInState extends State<SignIn> {
           );
   }
 }
+*/

@@ -10,6 +10,9 @@ import 'package:projectflutterapp/screens/friends.dart';
 import 'package:projectflutterapp/screens/task_attribute.dart';
 import 'package:projectflutterapp/utility/score_shape.dart';
 import 'package:projectflutterapp/services/auth.dart';
+import 'package:projectflutterapp/screens/first_page.dart';
+
+final FirstPage firstPage = FirstPage();
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -23,12 +26,12 @@ class _HomeScreen extends State<HomeScreen> {
 
   TextEditingController _searchQuery = TextEditingController();
 
-  final AuthServices _auth = AuthServices();
+  //final AuthServices _auth = AuthServices();
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+
+      return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.brown[400],
           elevation: 0.0,
@@ -36,9 +39,11 @@ class _HomeScreen extends State<HomeScreen> {
             FlatButton.icon(
               icon: Icon(Icons.person),
               label: Text("logout"),
-              onPressed: () async {
+              onPressed: firstPage.logoutUser
+              /*() async {
                 _auth.signOut();
-              },
+               // _FirstPageState.logoutUser();
+              }*/,
             ),
           ],
         ),
@@ -392,7 +397,7 @@ class _HomeScreen extends State<HomeScreen> {
             )
           ],
         ),
-      ),
-    );
+      );
+
   }
 }

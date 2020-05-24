@@ -1,3 +1,4 @@
+/*
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:projectflutterapp/models/User.dart';
 import 'database.dart';
@@ -50,7 +51,7 @@ class AuthServices{
       FirebaseUser user = result.user;
 
       // create new document for the user with uid
-      await DatabaseService(uid : user.uid ).updateUserData("new user by noor");
+      await DatabaseService(uid : user.uid ).updateUserData("new user" ,"" ,"", 0);
       return _userFromFirebaseUser(user);
     }catch(e){
       print(e.toString());
@@ -70,4 +71,4 @@ class AuthServices{
 
 
 
-}
+}*/

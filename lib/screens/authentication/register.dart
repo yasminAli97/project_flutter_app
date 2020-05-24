@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/material.dart';
 import 'package:projectflutterapp/services/auth.dart';
 import 'package:projectflutterapp/constants/constants.dart';
@@ -100,3 +101,4 @@ class _RegisterState extends State<Register> {
     );
   }
 }
+*/

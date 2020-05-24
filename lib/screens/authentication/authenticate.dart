@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/material.dart';
 import 'sign_in.dart';
 import 'register.dart';
@@ -22,3 +23,4 @@ class _AuthenticateState extends State<Authenticate> {
     }
   }
 }
+*/
