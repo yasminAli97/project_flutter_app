@@ -6,13 +6,6 @@ import 'CustomAppBar.dart';
 import 'CustomTextField.dart';
 import 'ShowProfile2.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: MyWidget(),
-    debugShowCheckedModeBanner: false,
-  ));
-}
-
 class MyWidget extends StatelessWidget {
   List<TextField> tfList;
   @override
