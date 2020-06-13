@@ -32,21 +32,21 @@ class _HomeScreen extends State<HomeScreen> {
   Widget build(BuildContext context) {
 
       return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.brown[400],
-          elevation: 0.0,
-          actions: <Widget>[
-            FlatButton.icon(
-              icon: Icon(Icons.person),
-              label: Text("logout"),
-              onPressed: firstPage.logoutUser
-              /*() async {
-                _auth.signOut();
-               // _FirstPageState.logoutUser();
-              }*/,
-            ),
-          ],
-        ),
+//        appBar: AppBar(
+//          backgroundColor: Colors.brown[400],
+//          elevation: 0.0,
+//          actions: <Widget>[
+//            FlatButton.icon(
+//              icon: Icon(Icons.person),
+//              label: Text("logout"),
+//              onPressed: firstPage.logoutUser
+//              /*() async {
+//                _auth.signOut();
+//               // _FirstPageState.logoutUser();
+//              }*/,
+//            ),
+//          ],
+//        ),
         backgroundColor: Color(0xff9966FF),
         body: ListView(
           children: <Widget>[

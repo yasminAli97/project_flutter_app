@@ -9,21 +9,21 @@ import 'package:projectflutterapp/utility/sql_helper.dart';
 
 class CategoryDetails extends StatefulWidget {
   Category category;
-  bool isempty ;
+  bool isempty;
 
-  CategoryDetails(this.category ,this.isempty);
+  CategoryDetails(this.category, this.isempty);
 
   @override
-  _CategoryDetails createState() => _CategoryDetails(category , isempty);
+  _CategoryDetails createState() => _CategoryDetails(category, isempty);
 }
 
 class _CategoryDetails extends State<CategoryDetails> {
   Category category;
-  bool isempty ;
+  bool isempty;
 
   TextEditingController _searchQuery = TextEditingController();
 
-  _CategoryDetails(this.category , this.isempty);
+  _CategoryDetails(this.category, this.isempty);
 
   final dbHelper = SQL_Helper();
   Future<List<Task>> tasks;
@@ -34,7 +34,6 @@ class _CategoryDetails extends State<CategoryDetails> {
     // TODO: implement initState
     super.initState();
     tasks = dbHelper.tasksOfCategory(category.id);
-
   }
 
   @override
@@ -45,7 +44,7 @@ class _CategoryDetails extends State<CategoryDetails> {
           backgroundColor: Color(0xff9966FF),
           body: SingleChildScrollView(
             child: Container(
-              //  height: MediaQuery.of(context).size.height,
+              //  height: double.infinity,
                 width: MediaQuery.of(context).size.width,
                 margin: EdgeInsets.only(bottom: 10),
                 decoration: BoxDecoration(
@@ -81,18 +80,6 @@ class _CategoryDetails extends State<CategoryDetails> {
                                           bottomLeft: Radius.circular(0),
                                           topLeft: Radius.circular(0),
                                           topRight: Radius.circular(0)),
-//                                      border: Border(
-//                                        right: BorderSide(
-//                                          color: Colors.white,
-//                                          width: 1.0,
-//
-//                                        ),
-//                                        top: BorderSide(
-//                                          color: Colors.white,
-//                                          width: 1.0,
-//                                        ),
-//                                      ),
-
                                       boxShadow: [
                                         BoxShadow(
                                           color: Color(0xffBBB4C9)
@@ -121,7 +108,7 @@ class _CategoryDetails extends State<CategoryDetails> {
                                         ),
                                         child: Row(
                                           mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
+                                              MainAxisAlignment.spaceEvenly,
                                           children: <Widget>[
                                             SvgPicture.asset(
                                                 "assets/images/ic_back_arrow.svg"),
@@ -187,13 +174,6 @@ class _CategoryDetails extends State<CategoryDetails> {
                                       bottomLeft: Radius.circular(50),
                                       topLeft: Radius.circular(0),
                                       topRight: Radius.circular(0)),
-//                              boxShadow: [
-//                                BoxShadow(
-//                                  color: Color(0xffBBB4C9).withOpacity(.35),
-//                                  blurRadius: 15.0,
-//                                  offset: const Offset(0.0, 10.0),
-//                                ),
-//                              ],
                                 ),
                                 child: GestureDetector(
                                   onTap: () {
@@ -215,22 +195,10 @@ class _CategoryDetails extends State<CategoryDetails> {
                                           bottomLeft: Radius.circular(50),
                                           topLeft: Radius.circular(0),
                                           topRight: Radius.circular(0)),
-//                                      border: Border(
-//                                        right: BorderSide(
-//                                          color: Colors.white,
-//                                          width: 1.0,
-//
-//                                        ),
-//                                        top: BorderSide(
-//                                          color: Colors.white,
-//                                          width: 1.0,
-//                                        ),
-//
-//                                      ),
                                     ),
                                     child: Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                                          MainAxisAlignment.spaceEvenly,
                                       children: <Widget>[
                                         SvgPicture.asset(
                                           "assets/images/ic_plus.svg",
@@ -243,9 +211,8 @@ class _CategoryDetails extends State<CategoryDetails> {
                             ],
                           ),
                           SizedBox(height: 20),
-                          isempty
-                              ? myEmptyScreen()
-                              :  myFullScreen(),
+//                          isempty ? myEmptyScreen() :
+                          myFullScreen(),
                           SizedBox(height: 15),
                         ],
                       ),
@@ -262,13 +229,10 @@ class _CategoryDetails extends State<CategoryDetails> {
         builder:
             (BuildContext context, AsyncSnapshot<List<Task>> asyncSnapshot) {
           if (asyncSnapshot.data == null || !asyncSnapshot.hasData) {
-
             return Center(child: CircularProgressIndicator());
-          }  else {
-
+          } else {
             return GridView.builder(
-                gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2),
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: asyncSnapshot.data.length,
@@ -279,20 +243,21 @@ class _CategoryDetails extends State<CategoryDetails> {
                     onTap: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-
-
                         return TaskAttribute(asyncSnapshot.data[index]);
                       }));
                     },
                     child: Container(
+                      color: Colors.black12,
+                        width: MediaQuery.of(context).size.width/3,
+                        height: MediaQuery.of(context).size.width/3,
                         alignment: AlignmentDirectional.topStart,
-                        margin: EdgeInsets.only(left: 40, right: 20),
+                        margin: EdgeInsets.only(left: 20, right: 20),
                         child: Column(
                           children: <Widget>[
                             Container(
                                 alignment: AlignmentDirectional.topStart,
                                 child: SvgPicture.asset(
-                                    "assets/images/ic_task.svg")),
+                                    "assets/images/ic_task.svg", height: 50, width: 50,)),
                             SizedBox(height: 10),
                             Row(
                               children: <Widget>[
@@ -300,10 +265,10 @@ class _CategoryDetails extends State<CategoryDetails> {
                                   asyncSnapshot.data[index].title,
                                   style: TextStyle(
                                       fontFamily: "Segoe UI",
-                                      fontSize: 35,
+                                      fontSize: 30,
                                       color: Colors.white),
                                 ),
-                                SizedBox(width: 30),
+                                SizedBox(width: 10),
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: SvgPicture.asset(
@@ -319,13 +284,12 @@ class _CategoryDetails extends State<CategoryDetails> {
         });
   }
 
- Widget myEmptyScreen() {
+  Widget myEmptyScreen() {
     return Stack(
       alignment: AlignmentDirectional.bottomEnd,
       children: <Widget>[
         Container(
-          child: SvgPicture.asset(
-              "assets/images/img_notasks.svg"),
+          child: SvgPicture.asset("assets/images/img_notasks.svg"),
         ),
         Stack(
           alignment: AlignmentDirectional.center,
@@ -339,42 +303,33 @@ class _CategoryDetails extends State<CategoryDetails> {
             Text(
               "No Tasks",
               style: TextStyle(
-                  fontFamily: "Segoe UI",
-                  fontSize: 40,
-                  color: Colors.white),
+                  fontFamily: "Segoe UI", fontSize: 40, color: Colors.white),
             ),
           ],
         ),
       ],
     );
- }
+  }
 
   Widget myFullScreen() {
-    return  Column(
+    return Column(
       children: <Widget>[
         Container(
           width: MediaQuery.of(context).size.width,
-          margin:
-          EdgeInsets.only(left: 30, right: 30),
+          margin: EdgeInsets.only(left: 30, right: 30),
           height: 40,
           decoration: BoxDecoration(
-            borderRadius:
-            BorderRadius.circular(30.0),
-            border: Border.all(
-                color: Color(0xFFD5D5D5),
-                width: 1.5),
+            borderRadius: BorderRadius.circular(30.0),
+            border: Border.all(color: Color(0xFFD5D5D5), width: 1.5),
           ),
           child: Stack(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(
-                    left: 20, top: 5),
-                child: Icon(Icons.search,
-                    color: Color(0xFFD5D5D5)),
+                padding: const EdgeInsets.only(left: 20, top: 5),
+                child: Icon(Icons.search, color: Color(0xFFD5D5D5)),
               ),
               Padding(
-                padding: const EdgeInsets.only(
-                    left: 35, top: 16),
+                padding: const EdgeInsets.only(left: 35, top: 16),
                 child: new TextField(
                   controller: _searchQuery,
                   textAlign: TextAlign.start,
@@ -393,20 +348,14 @@ class _CategoryDetails extends State<CategoryDetails> {
 
                     filled: true,
                     fillColor: Colors.transparent,
-                    enabledBorder:
-                    UnderlineInputBorder(
-                      borderSide: BorderSide(
-                          color:
-                          Colors.transparent),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.transparent),
                     ),
 
-                    focusedBorder:
-                    OutlineInputBorder(
+                    focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
-                          color: Colors.transparent,
-                          width: .5),
-                      borderRadius:
-                      const BorderRadius.all(
+                          color: Colors.transparent, width: .5),
+                      borderRadius: const BorderRadius.all(
                         const Radius.circular(30),
                       ),
                     ),
@@ -417,24 +366,18 @@ class _CategoryDetails extends State<CategoryDetails> {
           ),
         ),
         SizedBox(height: 10),
-
-
         getTasks(),
-
-
-        Container(
-            margin: EdgeInsetsDirectional.only(
-                start: 20),
-            alignment:
-            AlignmentDirectional.topStart,
-            child: Text(
-              "Tasks with Friends",
-              style: TextStyle(
-                  fontFamily: "segoepr",
-                  fontSize: 22,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold),
-            )),
+//        Container(
+//            margin: EdgeInsetsDirectional.only(start: 20),
+//            alignment: AlignmentDirectional.topStart,
+//            child: Text(
+//              "Tasks with Friends",
+//              style: TextStyle(
+//                  fontFamily: "segoepr",
+//                  fontSize: 22,
+//                  color: Colors.white,
+//                  fontWeight: FontWeight.bold),
+//            )),
       ],
     );
   }

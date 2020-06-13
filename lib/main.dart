@@ -17,27 +17,39 @@ import 'package:projectflutterapp/screens/first_page.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
-
 }
 
-
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'BuddiesGram',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData
-        (
-        scaffoldBackgroundColor: Colors.black,
-        dialogBackgroundColor: Colors.black,
-        primarySwatch: Colors.grey,
-        cardColor: Colors.white70,
-        accentColor: Colors.black,
-      ),
-      home: FirstPage(),
-        );
+        title: 'Graduation Project',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          scaffoldBackgroundColor: Colors.white,
+          dialogBackgroundColor: Colors.white,
+          primarySwatch: Colors.purple,
+          cardColor: Colors.white70,
+          accentColor: Colors.purple,
+        ),
+        home: FirstPage(),
+        routes: <String, WidgetBuilder>{
+          HOME_SCREEN: (BuildContext context) => HomeScreen(),
+          ADD_NEW_TASK: (BuildContext context) => AddNewTaskScreen(),
+          CATEGORIES_SCREEN: (BuildContext context) => CategoriesScreen(),
+        });
+
+
+
+
+
+
+
+
+
+
+
 
     /*return StreamProvider<User>.value(
       value: AuthServices().user,
@@ -49,14 +61,8 @@ class MyApp extends StatelessWidget {
         ),
         home: Wrapper(),
         */
-    /*routes: <String, WidgetBuilder>{
-            HOME_SCREEN: (BuildContext context) => HomeScreen(),
-            ADD_NEW_TASK: (BuildContext context) => AddNewTaskScreen(),
-            CATEGORIES_SCREEN: (BuildContext context) => CategoriesScreen(),
-            //WRAPPER_SCREEN: (BuildContext context) => Wrapper(),
-          }*//*),
+    /*
+          }*/ /*),
     );*/
-
-
   }
 }

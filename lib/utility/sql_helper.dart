@@ -132,19 +132,18 @@ class SQL_Helper{
     return await db.delete(categoriesTable, where: '$_catId = ?', whereArgs: [id]);
   }
 
+
 /**//////////  Now Task Queries //////////////////**/
 
 
 
   Future<int> insertTask(Task row) async {
-
-
     Database db = await this.database;
     var result= await db.insert(tasksTable, row.toMap());
     return  result;
-
-
   }
+
+
   Future<Task> getTask(int taskId) async {
     Database db = await sql_helper.database;
     final List<Map<String, dynamic>> maps= await db.query(tasksTable, where: '$_taskId = ?', whereArgs: [taskId]);

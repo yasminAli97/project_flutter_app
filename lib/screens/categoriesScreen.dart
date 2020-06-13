@@ -45,6 +45,17 @@ class _CategoriesScreen extends State<CategoriesScreen> {
   TextEditingController _searchQuery = TextEditingController();
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    setState(() {
+      addDefCat();
+    });
+
+  }
+
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -52,13 +63,13 @@ class _CategoriesScreen extends State<CategoriesScreen> {
           body: SingleChildScrollView(
             child: Container(
                 width: MediaQuery.of(context).size.width,
-                //height:  MediaQuery.of(context).size.height,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/images/background.png"),
-                    fit: BoxFit.fill,
-                  ),
-                ),
+
+//                decoration: BoxDecoration(
+//                  image: DecorationImage(
+//                    image: AssetImage("assets/images/background.png"),
+//                    fit: BoxFit.fill,
+//                  ),
+//                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
@@ -85,18 +96,6 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                                           bottomLeft: Radius.circular(0),
                                           topLeft: Radius.circular(0),
                                           topRight: Radius.circular(0)),
-//                                      border: Border(
-//                                        right: BorderSide(
-//                                          color: Colors.white,
-//                                          width: 1.0,
-//
-//                                        ),
-//                                        top: BorderSide(
-//                                          color: Colors.white,
-//                                          width: 1.0,
-//                                        ),
-//                                      ),
-
                                       boxShadow: [
                                         BoxShadow(
                                           color: Color(0xffBBB4C9)
@@ -194,13 +193,6 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                                       bottomLeft: Radius.circular(50),
                                       topLeft: Radius.circular(0),
                                       topRight: Radius.circular(0)),
-//                              boxShadow: [
-//                                BoxShadow(
-//                                  color: Color(0xffBBB4C9).withOpacity(.35),
-//                                  blurRadius: 15.0,
-//                                  offset: const Offset(0.0, 10.0),
-//                                ),
-//                              ],
                                 ),
                                 child: GestureDetector(
                                   onTap: () {
@@ -221,18 +213,6 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                                           bottomLeft: Radius.circular(50),
                                           topLeft: Radius.circular(0),
                                           topRight: Radius.circular(0)),
-//                                      border: Border(
-//                                        right: BorderSide(
-//                                          color: Colors.white,
-//                                          width: 1.0,
-//
-//                                        ),
-//                                        top: BorderSide(
-//                                          color: Colors.white,
-//                                          width: 1.0,
-//                                        ),
-//
-//                                      ),
                                     ),
                                     child: Row(
                                       mainAxisAlignment:
@@ -286,7 +266,7 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                                       ),
 
                                       filled: false,
-                                    //  fillColor: Colors.transparent,
+                                      //  fillColor: Colors.transparent,
                                       enabledBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
                                             color: Colors.transparent),
@@ -308,6 +288,7 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                         ],
                       ),
                     ),
+
                     getCategories(),
                   ],
                 )),
@@ -346,6 +327,7 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                             color: Colors.transparent,
                             onTap: () {
                               setState(() {
+                             if( asyncSnapshot.data[index].title != 'Default')
                                 deleteCategory(asyncSnapshot.data[index]);
                               });
 //                              showDialog(
@@ -467,6 +449,7 @@ class _CategoriesScreen extends State<CategoriesScreen> {
                       onPressed: () {
                         setState(() {
                           addCategory(category);
+                          Navigator.of(context).pop();
                         });
 
                         // To close the dialog
@@ -572,7 +555,7 @@ class _CategoriesScreen extends State<CategoriesScreen> {
           textColor: Colors.white,
           fontSize: 16.0);
     } else {
-      Navigator.of(context).pop();
+    //  Navigator.of(context).pop();
       Fluttertoast.showToast(
           msg: "Category has been saved successfully",
           toastLength: Toast.LENGTH_SHORT,
@@ -622,7 +605,6 @@ class _CategoriesScreen extends State<CategoriesScreen> {
           textColor: Colors.white,
           fontSize: 16.0);
     } else {
-      Navigator.of(context).pop();
       Fluttertoast.showToast(
           msg: "Category has been deleted successfully",
           toastLength: Toast.LENGTH_SHORT,
@@ -844,17 +826,64 @@ class _CategoriesScreen extends State<CategoriesScreen> {
         builder:
             (BuildContext context, AsyncSnapshot<List<Task>> asyncSnapshot) {
           if (asyncSnapshot.data.length == 0) {
-
-              isEmpty = true;
-
+            isEmpty = true;
           } else {
-
-              isEmpty = false;
-
+            isEmpty = false;
           }
         });
     return isEmpty;
   }
+
+  /**//////////  Add Default Category  //////////////////**/
+
+  void addDefCat() async{
+    Category default1 = new Category();
+    default1.title ='Default';
+   int i = await dbHelper.queryCategoriesCount();
+    print(i);
+    if(i == 0)
+      addCategory(default1);
+  }
+
+
+
+//  Widget defaultCat() {
+//    return GestureDetector(
+//      onTap: () {
+//        Navigator.push(context,
+//            MaterialPageRoute(builder: (context) {
+//              return CategoryDetails(asyncSnapshot.data[index],
+//                  getTasks(asyncSnapshot.data[index].id));
+//            }));
+//      },
+//      child: Stack(
+//        alignment: AlignmentDirectional.centerStart,
+//        children: <Widget>[
+//          Container(
+//            height: 52,
+//            width: MediaQuery.of(context).size.width * 4 / 5,
+//            child: CustomPaint(
+//              painter: Chevron(),
+//              child: Center(
+//                child: Text(
+//                  'Default',
+//                  textAlign: TextAlign.center,
+//                  style: TextStyle(
+//                      fontFamily: "Segoe UI",
+//                      fontSize: 20,
+//                      color: colors[0],
+//                      fontWeight: FontWeight.bold),
+//                ),
+//              ),
+//            ),
+//          ),
+//          Container(
+//              margin: EdgeInsetsDirectional.only(top: 5),
+//              child: SvgPicture.asset(colorImageCatg[0])),
+//        ],
+//      ),
+//    );
+//  }
 }
 
 class Chevron extends CustomPainter {

@@ -148,23 +148,48 @@ class _FirstPageState extends State<FirstPage> {
           ),
           alignment: Alignment.center,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text("Done",
-                style: TextStyle(fontSize: 92.0 , color: Colors.white ,/*fontFamily: "Signatra"*/) ,
+              Container(
+                alignment: AlignmentDirectional.bottomEnd,
+                child: SizedBox(height: 20),
               ),
-              GestureDetector(
-                onTap: () => loginUser(),
-                child: Container(
-                  width: 270.0,
-                  height: 65.0,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/google_signin_button.png"),
-                        fit: BoxFit.cover,
-                      )
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Text("Done",
+                    style: TextStyle(fontSize: 92.0 , color: Colors.white ,/*fontFamily: "Signatra"*/) ,
                   ),
+                  GestureDetector(
+                    onTap: () => loginUser(),
+                    child: Container(
+                      width: 270.0,
+                      height: 65.0,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/google_signin_button.png"),
+                            fit: BoxFit.cover,
+                          )
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                alignment: AlignmentDirectional.bottomEnd,
+                child: FlatButton(onPressed: () {
+                  setState(() {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()),
+                    );
+                  });
+                }, child: Text('SKIP',
+                  style: TextStyle(fontSize: 20.0 , color: Colors.white ,fontFamily: 'Segoe UI'),
+
+                ),
+
                 ),
               )
             ],
