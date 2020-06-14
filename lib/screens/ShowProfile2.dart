@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -32,6 +33,7 @@ class CustomText extends StatelessWidget {
 }
 
 class CustomColumnText extends StatelessWidget {
+
   CustomColumnText(this.text0, this.text, this.customColor);
 
   String text0;
@@ -124,3 +126,4 @@ class ShowProfile2 extends StatelessWidget {
     );
   }
 }
+*/

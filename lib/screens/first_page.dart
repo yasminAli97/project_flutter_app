@@ -42,7 +42,12 @@ class _FirstPageState extends State<FirstPage> {
 
   bool isSignedIn = false ;
 
+  ///--------------------------------------//
 
+  ///--------------------------------------//
+  loginUser(){
+    gSignIn.signIn();
+  }
   ///-----------------------------------------------
   Widget buildHomeScreen(){
     return RaisedButton.icon(
@@ -54,13 +59,9 @@ class _FirstPageState extends State<FirstPage> {
   ///------------------------------------------------
   @override
   Widget build(BuildContext context) {
-
     if(isSignedIn){
       //return buildHomeScreen();
       return HomeScreen();
-//      return SafeArea(
-//        child :  Navigator.of(context).pushNamed(HOME_SCREEN),
-//      );
     }
     else{
       return buildSignInScreen();
@@ -73,9 +74,7 @@ class _FirstPageState extends State<FirstPage> {
     super.initState();
     gSignIn.onCurrentUserChanged.listen(
             (gSignInAccount){controlSignIn(gSignInAccount);},
-             onError : (gError){
-                print("Error Massage: " + gError);
-    });
+             onError : (gError){print("Error Massage: " + gError);});
     gSignIn.signInSilently(suppressErrors: false).then((gSignInAccount){
       controlSignIn(gSignInAccount);
     }).catchError((gError){
@@ -87,7 +86,7 @@ class _FirstPageState extends State<FirstPage> {
 ///------------------------------------------
   controlSignIn(GoogleSignInAccount signInAccount) async{
     if(signInAccount != null){
-      await saveUserInfoToFirestore();
+      //await saveUserInfoToFirestore();
       setState(() {
         isSignedIn = true;
   });
@@ -97,8 +96,6 @@ class _FirstPageState extends State<FirstPage> {
   });
   }
   }
-
-
   ///---------------------------------------
   saveUserInfoToFirestore() async{
     final GoogleSignInAccount gCurrentUser = gSignIn.currentUser;
@@ -123,17 +120,7 @@ class _FirstPageState extends State<FirstPage> {
 
     currentUser = User.fromDocument(documentSnapshot);
   }
-///--------------------------------------//
-  loginUser(){
-    gSignIn.signIn();
-  }
-
-
 ///---------------------------------------//
-  /*logoutUser(){
-    gSignIn.signOut();
-  }
-*/
 
 ///------------------------------------------//
   Scaffold buildSignInScreen(){
@@ -156,6 +143,11 @@ class _FirstPageState extends State<FirstPage> {
               ),
               GestureDetector(
                 onTap: () => loginUser(),
+                /*(){
+                  setState(() {
+                    print("on tapppppppppppppp");
+                  });
+                }*/
                 child: Container(
                   width: 270.0,
                   height: 65.0,

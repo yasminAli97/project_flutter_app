@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,14 +7,21 @@ import 'CustomAppBar.dart';
 import 'CustomTextField.dart';
 import 'ShowProfile2.dart';
 
+*/
+/*
 void main() {
   runApp(MaterialApp(
     home: MyWidget(),
     debugShowCheckedModeBanner: false,
   ));
 }
+*//*
 
-class MyWidget extends StatelessWidget {
+
+class ProfilePage extends StatelessWidget {
+
+  ProfilePage({Key key}) : super(key: key);
+
   List<TextField> tfList;
   @override
   Widget build(BuildContext context) {
@@ -58,3 +66,4 @@ class MyWidget extends StatelessWidget {
     );
   }
 }
+*/

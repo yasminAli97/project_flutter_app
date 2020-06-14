@@ -13,6 +13,7 @@ import 'package:projectflutterapp/services/auth.dart';
 import 'package:projectflutterapp/models/User.dart';
 import 'constants/constants.dart';
 import 'package:projectflutterapp/screens/first_page.dart';
+import 'package:projectflutterapp/screens/ProfilePage.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'BuddiesGram',
+      title: 'DONE',
       debugShowCheckedModeBanner: false,
       theme: ThemeData
         (
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
         cardColor: Colors.white70,
         accentColor: Colors.black,
       ),
-      home: FirstPage(),
+      home:FirstPage(), //MyWidget(),
         );
 
     /*return StreamProvider<User>.value(

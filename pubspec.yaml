@@ -56,6 +56,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+   - assets/images/Complitedtasks.svg
+   - assets/images/Profile.svg
+   - assets/images/about.svg
    - assets/images/Icon_material_edit.svg
    - assets/images/Icon_people.svg
    - assets/images/Requests.svg
@@ -101,7 +104,6 @@ flutter:
    - assets/images/img_notasks.svg
    - assets/images/bottomNoTask.svg
    - assets/images/rating.svg
-   - assets/images/bottomNoTask.svg
    - assets/images/score_stars.svg
    - assets/images/score_value.svg
    - assets/images/sore_items.svg
