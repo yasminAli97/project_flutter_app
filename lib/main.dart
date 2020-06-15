@@ -18,46 +18,29 @@ import 'package:projectflutterapp/screens/ProfilePage.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
-
 }
 
-
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'DONE',
+      title: 'Graduation Project',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData
-        (
-        scaffoldBackgroundColor: Colors.black,
-        dialogBackgroundColor: Colors.black,
-        primarySwatch: Colors.grey,
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+        dialogBackgroundColor: Colors.white,
+        primarySwatch: Colors.purple,
         cardColor: Colors.white70,
-        accentColor: Colors.black,
+        accentColor: Colors.purple,
       ),
       home:FirstPage(), //MyWidget(),
+      routes: <String, WidgetBuilder>{
+        HOME_SCREEN: (BuildContext context) => HomeScreen(),
+        ADD_NEW_TASK: (BuildContext context) => AddNewTaskScreen(),
+        CATEGORIES_SCREEN: (BuildContext context) => CategoriesScreen(),
+      }
         );
-
-    /*return StreamProvider<User>.value(
-      value: AuthServices().user,
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.deepPurple,
-        ),
-        home: Wrapper(),
-        */
-    /*routes: <String, WidgetBuilder>{
-            HOME_SCREEN: (BuildContext context) => HomeScreen(),
-            ADD_NEW_TASK: (BuildContext context) => AddNewTaskScreen(),
-            CATEGORIES_SCREEN: (BuildContext context) => CategoriesScreen(),
-            //WRAPPER_SCREEN: (BuildContext context) => Wrapper(),
-          }*//*),
-    );*/
-
 
   }
 }

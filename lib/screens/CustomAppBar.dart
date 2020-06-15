@@ -28,7 +28,7 @@ class CustomContainer extends StatelessWidget {
         ],
       ),
     );
-    ;
+
   }
 }
 

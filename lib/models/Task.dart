@@ -24,6 +24,7 @@ class Task {
 
   Task.withTitle(this._title);
 
+  Task.withDefautCat(this._categoryId);
   Task.withSomePar(this._title, this._time, this._taskComplete,
       this._categoryId);
 

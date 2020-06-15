@@ -11,7 +11,7 @@ import 'package:projectflutterapp/utility/sql_helper.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 final dbHelper = SQL_Helper();
-Task task = Task();
+Task task = Task.withDefautCat(1);
 
 class AddNewTaskScreen extends StatefulWidget {
   AddNewTaskScreen({Key key}) : super(key: key);
@@ -39,12 +39,9 @@ class _AddNewTaskScreen extends State<AddNewTaskScreen> {
   ];
 
   bool isChecked = true;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
+  DateTime selectedDate = DateTime.now();
+  TimeOfDay selectedTime = TimeOfDay.now();
+  bool isDetectTime = false;
 
   @override
   Widget build(BuildContext context) {
@@ -299,7 +296,6 @@ class _AddNewTaskScreen extends State<AddNewTaskScreen> {
                       ],
                     ),
                     timeIntervalWidget(),
-
                     Row(
                       children: <Widget>[
                         Container(
@@ -383,28 +379,97 @@ class _AddNewTaskScreen extends State<AddNewTaskScreen> {
                         )
                       ],
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        showDatePicker(
-                          context: context,
-                          initialDate: new DateTime.now(),
-                          firstDate: new DateTime.now()
-                              .subtract(new Duration(days: 30)),
-                          lastDate:
-                              new DateTime.now().add(new Duration(days: 30)),
-                        );
-                      },
-                      child: Container(
-                        alignment: AlignmentDirectional.bottomCenter,
-                        child: SvgPicture.asset("assets/images/time.svg"),
-                      ),
-                    ),
+                    isDetectTime
+                        ? detectedTimeContainer(context)
+                        : GestureDetector(
+                            onTap: () {
+                              _selectDate(context);
+                              setState(() {
+                                isDetectTime = true;
+                              });
+                            },
+                            child: Container(
+                              alignment: AlignmentDirectional.bottomCenter,
+                              child: SvgPicture.asset("assets/images/time.svg"),
+                            ),
+                          ),
                   ],
                 ),
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Future<Null> _selectDate(BuildContext context) async {
+    final DateTime picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: new DateTime.now().subtract(new Duration(days: 30)),
+      lastDate: new DateTime.now().add(new Duration(days: 30)),
+    );
+    if (picked != null)
+      setState(() {
+        selectedDate = picked;
+        _selectTime(context);
+      });
+  }
+
+  Future<Null> _selectTime(BuildContext context) async {
+    final TimeOfDay picked_s = await showTimePicker(
+        context: context,
+        initialTime: selectedTime,
+        builder: (BuildContext context, Widget child) {
+          return MediaQuery(
+            data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: false),
+            child: child,
+          );
+        });
+
+    if (picked_s != null)
+      setState(() {
+        selectedTime = picked_s;
+      });
+  }
+
+  Widget detectedTimeContainer(BuildContext context) {
+    return Container(
+      width: 120,
+      height: 100,
+      margin: EdgeInsetsDirectional.only(top: 20),
+      padding: EdgeInsetsDirectional.only(start: 10, end: 10),
+      alignment: AlignmentDirectional.topStart,
+      decoration: BoxDecoration(
+          color: Colors.white, borderRadius: BorderRadius.circular(10)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          GestureDetector(
+            onTap: () {
+              _selectDate(context);
+            },
+            child: Container(
+                padding: EdgeInsetsDirectional.only(start: 5, end: 5),
+                decoration: BoxDecoration(
+                    color: Color(0xffDAD0EE),
+                    borderRadius: BorderRadius.circular(10)),
+                child: Text(selectedDate.toIso8601String())),
+          ),
+          SizedBox(height: 10),
+          GestureDetector(
+            onTap: () {
+              _selectTime(context);
+            },
+            child: Container(
+                padding: EdgeInsetsDirectional.only(start: 5, end: 5),
+                decoration: BoxDecoration(
+                    color: Color(0xffDAD0EE),
+                    borderRadius: BorderRadius.circular(10)),
+                child: Text(selectedTime.toString())),
+          )
+        ],
       ),
     );
   }
@@ -549,7 +614,7 @@ class _getCategories extends State<getCategories> {
                   children: <Widget>[
                     Container(
                       child: SvgPicture.asset(
-                        colorsImages[category.id  % 5],
+                        colorsImages[category.id % 5],
                         color: Colors.transparent,
                       ),
                     ),
@@ -558,7 +623,7 @@ class _getCategories extends State<getCategories> {
                       padding:
                           EdgeInsets.only(left: 7, right: 7, top: 3, bottom: 3),
                       decoration: new BoxDecoration(
-                        color: colors[category.id  % 5],
+                        color: colors[category.id % 5],
                         shape: BoxShape.rectangle,
                         borderRadius: BorderRadius.circular(3),
                         boxShadow: [
@@ -582,8 +647,7 @@ class _getCategories extends State<getCategories> {
               : Wrap(
                   children: <Widget>[
                     Container(
-                      child:
-                          SvgPicture.asset(colorsImages[category.id % 5]),
+                      child: SvgPicture.asset(colorsImages[category.id % 5]),
                     ),
                     Container(
                       margin: EdgeInsets.only(top: 12),
