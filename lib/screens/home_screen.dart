@@ -451,7 +451,7 @@ class _HomeScreen extends State<HomeScreen> {
                   Navigator.push(context,
                       MaterialPageRoute(
                           builder: (context) {
-                            return ProfilePage(userProfileId : currentUser.id);
+                            /*return ProfilePage(userProfileId : currentUser.id);*/
                           }));
                 },
                 child: Container(
