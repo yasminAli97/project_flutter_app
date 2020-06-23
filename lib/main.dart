@@ -30,9 +30,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
         dialogBackgroundColor: Colors.white,
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.purple,//Color(0xffBBB4C9).withOpacity(.35),
         cardColor: Colors.white70,
-        accentColor: Colors.purple,
+        accentColor: Colors.purple,//Color(0xffBBB4C9).withOpacity(.35),
       ),
       home:FirstPage(), //MyWidget(),
       routes: <String, WidgetBuilder>{

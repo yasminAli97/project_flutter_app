@@ -9,6 +9,19 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'CustomAppBar.dart';
 import 'CustomTextField.dart';
 
+class EditProfile extends StatefulWidget {
+  @override
+  _EditProfileState createState() => _EditProfileState();
+}
+
+class _EditProfileState extends State<EditProfile> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+
 class CustomText extends StatelessWidget {
   CustomText(this.text, this.customColor);
 

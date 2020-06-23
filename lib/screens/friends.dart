@@ -1,3 +1,5 @@
+/*
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:projectflutterapp/customicons/my_flutter_app_icons.dart' as customicon1;
@@ -6,8 +8,11 @@ import 'package:projectflutterapp/customicons/requests_and_friends_icons.dart' a
 import 'package:projectflutterapp/customicons/requests_icon_icons.dart' as customicon4;
 import 'package:projectflutterapp/customicons/edit_icons.dart' as customicon5;
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:projectflutterapp/models/User.dart';
 import 'package:projectflutterapp/screens/edit_friends.dart';
 import 'package:projectflutterapp/screens/categoriesScreen.dart';
+import 'package:projectflutterapp/screens/first_page.dart';
+import 'package:projectflutterapp/screens/friends_pages/ExpPage.dart';
 import 'package:projectflutterapp/screens/home_screen.dart';
 
 
@@ -40,7 +45,7 @@ class _FriendsState extends State<Friends> {
             ),
           ),
           SizedBox(height: 20),
-          /*TextField(
+          TextField(
             controller: _searchFriendQuery,
             textAlign: TextAlign.start,
             style: new TextStyle(
@@ -73,7 +78,7 @@ class _FriendsState extends State<Friends> {
                 ),
               ),
             ),
-          ),*///error code for search box ,the true is below
+          ),//error code for search box ,the true is below
           Container(
             //width: MediaQuery.of(context).size.width,
             margin: EdgeInsets.only(left: 30, right: 30),
@@ -164,7 +169,8 @@ class _FriendsState extends State<Friends> {
               ),
             ),
           ),
-          /*TextField(
+          */
+/*TextField(
             controller: _searchFriendScoreQuery,
             textAlign: TextAlign.start,
             style: new TextStyle(
@@ -197,7 +203,8 @@ class _FriendsState extends State<Friends> {
                 ),
               ),
             ),
-          ),*/
+          ),*//*
+
           SizedBox(height: 10),
           Container(
             //width: MediaQuery.of(context).size.width,
@@ -256,10 +263,7 @@ class _FriendsState extends State<Friends> {
         ],
       ),
     ),
-//    Center(child: Text("Friends"),),
-//    Center(child: Text("Requests"),),
-//    Center(child: Text("Score")),
-
+    ExpPage(),// Container(child: Text("search")),//SearchPage(),//search//
   ];
 
   @override
@@ -294,6 +298,7 @@ class _FriendsState extends State<Friends> {
                Icon(customicon3.RequestsAndFriends.icon_people,color:Colors.black  ,size:20 ,),
                Icon(customicon4.RequestsIcon.icon_requests,color: Colors.black,),
                Icon(customicon2.AwesomeIcon.icon_awesome_hackerrank,color: Colors.black,),
+               Icon(Icons.search),
             ],
           ),
           body: ListView(
@@ -404,14 +409,18 @@ class _FriendsState extends State<Friends> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             Container(
-                              /*width: MediaQuery.of(context).size.width,
+                              */
+/*width: MediaQuery.of(context).size.width,
                               margin: EdgeInsets.only(left: 30, right: 30),
-                              height: 40,*/
-                              /*decoration: BoxDecoration(
+                              height: 40,*//*
+
+                              */
+/*decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(30.0),
                                 border: Border.all(
                                     color: Color(0xFFD5D5D5), width: 1.5),
-                              ),*/
+                              ),*//*
+
                               child: Container(
                                 child: tabs[_currentIndex],
                               ),
@@ -431,3 +440,8 @@ class _FriendsState extends State<Friends> {
     );
   }
 }
+
+
+///------SearchPage -------------------------------------------------///
+
+*/
