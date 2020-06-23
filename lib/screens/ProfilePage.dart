@@ -105,7 +105,7 @@ class _ProfilePageState extends State<ProfilePage>{
                         child: Column(
                           children: <Widget>[
                             CustomAppBar('assets/images/ic_pen_edit.svg', 'Profile',
-                                'assets/images/ic_back_arrow.svg',MaterialPageRoute(builder: (context) => EditProfile(currentUserId) )),
+                                'assets/images/ic_back_arrow.svg',MaterialPageRoute(builder: (context) => EditProfile(currentUserId: currentUserId) )),
                             SizedBox(
                               height: 35,
                             ),
